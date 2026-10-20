@@ -120,7 +120,7 @@ def edge_score(clean,result):
     return float(1/(1+np.mean(np.abs(h[mask]-g[mask]))/(np.mean(g[mask])+1e-12)))
 
 def denoise(repeats,seed):
-    rows=[];raw=[];folder=ROOT/'results/images';folder.mkdir(exist_ok=True,parents=True)
+    rows=[];raw=[];stages=[];folder=ROOT/'results/images';folder.mkdir(exist_ok=True,parents=True)
     for image_name,clean in fixtures().items():
         Image.fromarray(np.rint(clean*255).astype(np.uint8)).save(folder/f'{image_name}_clean.png')
         for sigma in [0.03,0.06,0.10]:
@@ -145,11 +145,16 @@ def denoise(repeats,seed):
                     if sigma==0.06 and noise_seed==seed:
                         safe={'PLP-Inspired Experimental Prototype':'prototype','Noisy input':'noisy'}.get(name,name.lower())
                         Image.fromarray(np.rint(np.clip(out,0,1)*255).astype(np.uint8)).save(folder/f'{image_name}_{safe}.png')
-                if sigma==0.06 and noise_seed==seed:
-                    for stage,img in zip(['plane','line','point'],prototype(noisy,sigma,True)):
+                for stage,img in zip(['plane','line','point'],prototype(noisy,sigma,True)):
+                    stages.append(dict(image=image_name,sigma=sigma,seed=noise_seed,stage=stage,
+                        psnr_db=float(metrics.peak_signal_noise_ratio(clean,img,data_range=1)),
+                        ssim=float(metrics.structural_similarity(clean,img,data_range=1)),
+                        edge_preservation=edge_score(clean,img),evidence='Experimental Prototype Results'))
+                    if sigma==0.06 and noise_seed==seed:
                         Image.fromarray(np.rint(np.clip(img,0,1)*255).astype(np.uint8)).save(folder/f'{image_name}_{stage}.png')
         print(f'Denoise complete: {image_name}',flush=True)
     write_csv(ROOT/'results/noise_benchmark.csv',rows);write_csv(ROOT/'results/noise_timing_samples.csv',raw)
+    write_csv(ROOT/'results/stage_quality.csv',stages)
 
 def main(sizes=(10000,100000,1000000,10000000),repeats=7,seed=20261020):
     cv2.setNumThreads(1);(ROOT/'results').mkdir(exist_ok=True)

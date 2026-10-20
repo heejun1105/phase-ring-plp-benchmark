@@ -1,5 +1,6 @@
 """Render 12-second technical animations from measured CSV data and real outputs."""
 from pathlib import Path
+from functools import lru_cache
 import csv, json, math
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
@@ -9,6 +10,7 @@ ROOT=Path(__file__).resolve().parents[1]
 W,H=1920,1080
 BG='#09111e';PANEL='#101d30';BORDER='#25374c';TEXT='#eaf2fc';MUTED='#91a6be';BLUE='#60a5fa';TEAL='#40dfbe';AMBER='#f2c36c'
 
+@lru_cache(maxsize=32)
 def font(size,bold=False):
     paths=[Path('C:/Windows/Fonts/'+('segoeuib.ttf' if bold else 'segoeui.ttf')),
            Path('/usr/share/fonts/truetype/dejavu/'+('DejaVuSans-Bold.ttf' if bold else 'DejaVuSans.ttf'))]
@@ -37,6 +39,10 @@ def data():
     b={r['method']:r for r in bench if int(r['n'])==size}
     a={r['method']:r for r in acc if int(r['n'])==size}
     n={r['method']:r for r in noise if r['image']=='camera' and float(r['sigma'])==0.06 and int(r['seed'])==20261020}
+    for r in load('stage_quality.csv'):
+        if r['image']=='camera' and float(r['sigma'])==0.06 and int(r['seed'])==20261020:
+            n['stage_'+r['stage']]=r
+    n['vectors']=load('reference_vectors.csv')
     return b,a,n
 
 def flow(d,x,y,width,names,color,t):
@@ -57,7 +63,7 @@ def progress(d,x,y,width,p,color):
     if p>0:d.rounded_rectangle((x,y,x+max(17,width*min(p,1)),y+17),radius=8,fill=color)
 
 def compute_frame(t,b,a,n):
-    im,d=base('DEMO 01  /  CPU MEASUREMENTS','One phase product. Three execution paths.',
+    im,d=base('DEMO 01  /  PAPER VIII EQ. (1)-(4) + LISTING 2','Unit phases: multiply, add, reconstruct.',
               f"{int(b['FP32 kernel']['n']):,} unit phasors  |  NumPy on the same CPU  |  median of {b['FP32 kernel']['repeats']} runs after 2 warm-ups")
     for x in [64,980]:panel(d,(x,202,x+876,804))
     label(d,(94,228),'Conventional FP32 Computing',34,BLUE,True)
@@ -83,9 +89,17 @@ def compute_frame(t,b,a,n):
     label(d,(1014,686),'Angular RMSE: Z1024 / Z2048',23,MUTED)
     label(d,(1014,724),f"{float(a['Z1024']['angular_rmse_rad']):.5f} / {float(a['Z2048']['angular_rmse_rad']):.5f} rad",32,TEAL,True)
     panel(d,(64,826,1856,986))
-    label(d,(94,845),'Equivalent complex output exposes LUT cost',28,TEXT,True)
-    label(d,(94,891),f"Pre-encoded: FP32 {fp:.2f} ms  |  Z1024 + LUT {float(b['Z1024 encoded-to-complex']['median_ms']):.2f} ms",27,MUTED)
-    label(d,(94,936),f"From raw angles: FP32 {float(b['FP32 end-to-end']['median_ms']):.2f} ms  |  Z1024 {float(b['Z1024 end-to-end']['median_ms']):.2f} ms  |  Z2048 {float(b['Z2048 end-to-end']['median_ms']):.2f} ms",26,TEXT)
+    if t<3.6:
+        v=n['vectors'][min(2,int(t/1.2))]
+        label(d,(94,842),'Exact rollover example / narrow register truncation',27,TEXT,True)
+        label(d,(94,888),f"({v['a']} + {v['b']}) mod {v['modulus']} = {v['sum']}",36,TEAL,True)
+        label(d,(1020,888),f"bits: {v['carry']} | {v['retained_bits']}",32,TEXT,True)
+        label(d,(94,942),f"Listing 2: signed Q15 sine LUT[{v['sum']}] = {v['sine_q15']}",23,MUTED)
+        label(d,(1020,942),'Discard the carry; retain 10 or 11 address bits',23,MUTED)
+    else:
+        label(d,(94,845),'Equivalent complex output exposes LUT cost',28,TEXT,True)
+        label(d,(94,891),f"Pre-encoded: FP32 {fp:.2f} ms  |  Z1024 + LUT {float(b['Z1024 encoded-to-complex']['median_ms']):.2f} ms  |  Z2048 + LUT {float(b['Z2048 encoded-to-complex']['median_ms']):.2f} ms",24,MUTED)
+        label(d,(94,936),f"From raw angles: FP32 {float(b['FP32 end-to-end']['median_ms']):.2f} ms  |  Z1024 {float(b['Z1024 end-to-end']['median_ms']):.2f} ms  |  Z2048 {float(b['Z2048 end-to-end']['median_ms']):.2f} ms",26,TEXT)
     label(d,(70,1012),'PAPER-REPORTED ESTIMATES ONLY: 10-bit adder ~0.015 pJ/op, ~270 um^2. No silicon or PIM energy measured here.',23,AMBER)
     return im
 
@@ -95,41 +109,49 @@ def tile(im,d,x,y,picture,caption,width=350):
     label(d,(x,y+width+10),caption,23,MUTED)
 
 def noise_frame(t,b,a,n):
-    im,d=base('DEMO 02  /  EXPERIMENTAL PROTOTYPE','Noise removal, measured against a clean reference.',
-              'CC0 camera photograph  |  512 x 512 grayscale  |  clipped Gaussian noise, sigma = 0.06  |  seed 20261020')
+    im,d=base('DEMO 02  /  PAPER IX APPENDIX B: INSPIRED STAGES','Noise removal: inspect every processing stage.',
+              'Camera + original text chart  |  512 x 512 grayscale  |  clipped Gaussian noise, sigma = 0.06  |  seed 20261020')
     for x in [64,980]:panel(d,(x,202,x+876,945))
     label(d,(92,226),'Conventional Noise Reduction',33,BLUE,True)
     label(d,(1008,225),'PLP-Inspired Experimental Prototype',31,TEAL,True)
     label(d,(94,273),'Bilateral filter: fixed parameters',23,MUTED)
-    label(d,(1008,273),'Plane / Line / Point are independently designed substitutes',22,MUTED)
+    label(d,(1008,273),'Stage tour uses presentation pace, not measured stage times',22,MUTED)
     imgs=IMAGE_CACHE
     baseline=float(n['Bilateral']['median_ms']);proto=float(n['PLP-Inspired Experimental Prototype']['median_ms'])
-    elapsed=max(0,t-1.5)/3.8*max(baseline,proto)
+    elapsed=max(0,t-1.0)/4.2*max(baseline,proto)
     p0=min(elapsed/baseline,1);p1=min(elapsed/proto,1)
-    # Whole-frame wipe reveals stored results; it is not an instrumented pixel trace.
+    # Wipes and stage dwell times are presentation effects, not pixel/stage traces.
     def wipe(final,p):
         image=imgs['noisy'].copy();cut=int(512*p)
         if cut:image.paste(final.crop((0,0,cut,512)),(0,0))
         return image
-    tile(im,d,94,322,wipe(imgs['bilateral'],p0),'Output reveal (illustrative)',350)
-    tile(im,d,1008,322,wipe(imgs['prototype'],p1),'Output reveal (illustrative)',350)
-    crop=(260,100,388,228)
-    for x,name,color in [(474,'bilateral',BLUE),(1388,'prototype',TEAL)]:
-        z=imgs[name if (p0 if name=='bilateral' else p1)>=1 else 'noisy'].crop(crop).resize((350,350),Image.Resampling.NEAREST)
-        im.paste(z,(x,322));d.rectangle((x,322,x+350,672),outline=color,width=2)
-        label(d,(x,682),'128 x 128 crop: camera detail',21,MUTED)
-    for x,name,color,p in [(94,'Bilateral',BLUE,p0),(1008,'PLP-Inspired Experimental Prototype',TEAL,p1)]:
-        r=n[name];progress(d,x,728,730,p,color)
+    left='bilateral' if t>=1 else 'noisy'
+    if t<1:right='noisy';stage_label='Identical noisy input';stage_row=n['Noisy input']
+    elif t<2.4:right='plane';stage_label='Plane: local Wiener shrinkage';stage_row=n['stage_plane']
+    elif t<3.8:right='line';stage_label='Line: guided local smoothing';stage_row=n['stage_line']
+    elif t<5.2:right='point';stage_label='Point: 10-bit intensity latching';stage_row=n['stage_point']
+    else:right='prototype';stage_label='Final output: all three stages';stage_row=n['PLP-Inspired Experimental Prototype']
+    tile(im,d,94,322,wipe(imgs['bilateral'],p0),'Final bilateral output reveal',350)
+    tile(im,d,1008,322,imgs[right],stage_label,350)
+    for x,key,color in [(474,left,BLUE),(1388,right,TEAL)]:
+        picture=TEXT_CACHE[key]
+        for box,yy,hh in [((20,30,492,185),322,115),((60,200,460,340),457,123),((20,360,492,430),607,52)]:
+            crop=picture.crop(box).resize((350,hh),Image.Resampling.LANCZOS)
+            im.paste(crop,(x,yy));d.rectangle((x,yy,x+350,yy+hh),outline=color,width=1)
+        label(d,(x,682),'Text / thin lines / small objects',21,MUTED)
+    for x,name,color,p,r in [(94,'Bilateral',BLUE,p0,n['Bilateral']),
+                            (1008,'PLP-Inspired Experimental Prototype',TEAL,p1,stage_row)]:
+        progress(d,x,728,730,p,color)
         label(d,(x,764),f"PSNR  {float(r['psnr_db']):.2f} dB    SSIM  {float(r['ssim']):.4f}",32,color,True)
-        label(d,(x,813),f"Median  {float(r['median_ms']):.2f} ms    Edge score  {float(r['edge_preservation']):.3f}",29,TEXT)
-    label(d,(94,868),'Measured CPU time; no hardware energy inference',22,MUTED)
-    label(d,(1008,868),'Local Wiener -> guided filter -> 10-bit quantization',23,MUTED)
-    stage=min(2,int(p1*3))
+        label(d,(x,813),f"Full median  {float(n[name]['median_ms']):.2f} ms    Edge  {float(r['edge_preservation']):.3f}",29,TEXT)
+    label(d,(94,868),'Final output metrics / full filter-call duration',22,MUTED)
+    label(d,(1008,868),'Current stage metrics / full pipeline duration',23,MUTED)
+    stage={'plane':0,'line':1,'point':2,'prototype':2}.get(right,-1)
     for j,text in enumerate(['PLANE','LINE','POINT']):
         xx=1008+j*248
         label(d,(xx,909),text,21,TEAL if stage==j else MUTED,True)
     label(d,(70,968),'The prototype is not a validated implementation of the PLP equations. No prime-orbit erasure or sub-pixel recovery is claimed.',24,AMBER)
-    label(d,(70,1013),'Sweep: 2 images x 3 noise levels x 3 seeds. Zooms and metrics are real outputs; reveal motion is illustrative.',23,MUTED)
+    label(d,(70,1013),'Bars stretch measured full-call durations equally. Stage images are real outputs; stage dwell times and wipes are illustrative.',23,MUTED)
     return im
 
 def noise_figure():
@@ -173,12 +195,16 @@ def export(name,frame_fn,b,a,n):
     print(f'Rendered {name}: GIF and 1080p MP4',flush=True)
 
 IMAGE_CACHE={}
+TEXT_CACHE={}
 def main():
     b,a,n=data();folder=ROOT/'results/images'
     for key in ['noisy','bilateral','prototype','plane','line','point','clean']:
         IMAGE_CACHE[key]=Image.open(folder/f'camera_{key}.png').convert('RGB')
+        TEXT_CACHE[key]=Image.open(folder/f'text_chart_{key}.png').convert('RGB')
     export('computing_comparison',compute_frame,b,a,n)
     export('noise_comparison',noise_frame,b,a,n)
     noise_figure().save(ROOT/'results/figures/text_detail_comparison.png')
+    for key,value in [('plane',1.7),('line',3.1),('point',4.5)]:
+        noise_frame(value,b,a,n).save(ROOT/f'results/figures/noise_stage_{key}.png')
 
 if __name__=='__main__':main()

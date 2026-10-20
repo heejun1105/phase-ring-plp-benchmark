@@ -1,8 +1,8 @@
 # Source review and evidence boundaries
 
-## Source identity and version uncertainty
+## Confirmed source identity
 
-The request names a translated Paper VIII PDF with a `(1)` suffix. That exact attachment was absent. Three local research PDFs were found and read in full. The primary source is the nine-page Korean translation dated October 1, 2026. The English counterpart is dated September 16, 2026, so it is a comparison source rather than an assumed identical edition. Original PDFs and extracted source text are excluded from this repository. The file hashes below identify the reviewed bytes without publishing their contents.
+The user explicitly designated the nine-page Korean translation of Paper VIII dated October 1, 2026. Its SHA-256 matches the primary source used in the initial review. The reference identity is therefore confirmed; see `results/source_manifest.json` and `docs/source_alignment.md`. The English counterpart is dated September 16, 2026, so it is a comparison source rather than an assumed identical edition. Three local research PDFs were read in full. Original PDFs and extracted source text are excluded from this repository. The file hashes below identify the reviewed bytes without publishing their contents.
 
 | ID | Source | Pages | SHA-256 |
 |---|---|---:|---|

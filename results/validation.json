@@ -1,6 +1,9 @@
 {
   "status": "passed",
-  "check_count": 1304,
+  "check_count": 1454,
+  "source_sha256": "249f651810bce6fab84693dd1049a3a551ab15e0b59893b5cd82a0461171ea41",
+  "user_designated_source_confirmed": true,
+  "intermediate_quality_rows": 54,
   "compute_rows": 52,
   "compute_timing_samples": 364,
   "noise_rows": 90,
@@ -28,7 +31,7 @@
       "path": "animations/noise_comparison.gif",
       "width": 960,
       "height": 540,
-      "frames": 46,
+      "frames": 51,
       "duration_ms": 12000
     },
     {

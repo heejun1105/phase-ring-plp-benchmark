@@ -29,6 +29,13 @@ def noise_summary(rows):
 
 def main():
     audit();bench=read('benchmark.csv');accuracy=read('accuracy.csv');noise=read('noise_benchmark.csv')
+    from src.phase_ring import paper_step
+    vectors=[]
+    for a,b,n in [(1023,1,1024),(750,400,1024),(1500,800,2048)]:
+        index,sine=paper_step(a,b,n);bits=n.bit_length()-1
+        vectors.append(dict(a=a,b=b,modulus=n,sum=index,sine_q15=sine,carry=(a+b)>>bits,retained_bits=f'{index:0{bits}b}'))
+    with (ROOT/'results/reference_vectors.csv').open('w',newline='',encoding='utf-8') as f:
+        w=csv.DictWriter(f,fieldnames=list(vectors[0]));w.writeheader();w.writerows(vectors)
     env=json.loads((ROOT/'results/environment.json').read_text(encoding='utf-8'))
     summary=noise_summary(noise);sizes=sorted({int(x['n']) for x in bench});size=max(sizes)
     b={(int(r['n']),r['method']):r for r in bench};acc={r['method']:r for r in accuracy if int(r['n'])==size}
@@ -57,7 +64,7 @@ A reproducible CPU study of Paper VIII's modular phase arithmetic, with an expli
 
 ![Noise reduction comparison](animations/noise_comparison.gif)
 
-[1080p compute MP4](animations/video/computing_comparison.mp4) | [1080p noise MP4](animations/video/noise_comparison.mp4) | [Full methodology](docs/methodology.md) | [Critical paper review](docs/paper_review.md)
+[1080p compute MP4](animations/video/computing_comparison.mp4) | [1080p noise MP4](animations/video/noise_comparison.mp4) | [Full methodology](docs/methodology.md) | [Source alignment](docs/source_alignment.md) | [Critical paper review](docs/paper_review.md)
 
 ## 1. Project Overview
 
@@ -65,7 +72,7 @@ The project implements Z1024/Z2048 masked addition, signed-Q15 LUT lookup, compl
 
 ## 2. Research Background
 
-The primary reviewed source is the nine-page Korean translation of Kim Chul's Paper VIII dated October 1, 2026. Pages 1-5 contain VIII; pages 6-9 append Paper IX on PLP signal/image processing. The separate September 16 English edition and a different standalone Paper IX were also reviewed. The specifically requested `(1)` filename was unavailable, so exact edition equivalence remains unconfirmed. Source hashes, section-level analysis and evidence gaps are recorded in [the review](docs/paper_review.md). Original research PDFs are intentionally excluded.
+The user-designated reference is the nine-page Korean translation of Kim Chul's Paper VIII dated October 1, 2026. Its SHA-256 matches the primary source used in the initial implementation; source selection is now confirmed. Pages 1-5 contain VIII; pages 6-9 append Paper IX on PLP signal/image processing. The separate September 16 English edition and a different standalone Paper IX were also reviewed. [Source alignment](docs/source_alignment.md) maps equations and listings to code, tests and evidence categories. [The review](docs/paper_review.md) records source hashes, section-level analysis and evidence gaps. Original research PDFs are intentionally excluded.
 
 Three evidence categories are used throughout:
 
@@ -85,7 +92,7 @@ The experiment is restricted to elementwise unit-phasor products. Complex64 is t
 
 ## 5. DEMO 01 - Computational Performance Comparison
 
-The blue and teal paths show the operation structures and median timings on the same CPU. Progress uses a common linear time stretch of actual kernel durations; arrows are explanatory rather than instruction traces. Both Z1024 and Z2048 timings and accuracy are shown. Q15 reconstruction and raw-angle pipelines are visible alongside kernel results, including slower outcomes. Paper energy/area values are explicitly labeled estimates.
+The blue and teal paths show the operation structures and median timings on the same CPU. Three exact rollover examples show carry-bit truncation and actual signed-Q15 LUT values from Listing 2. Progress uses a common linear time stretch of actual kernel durations; arrows are explanatory rather than instruction traces. Both Z1024 and Z2048 timings and accuracy are shown. Q15 reconstruction and raw-angle pipelines are visible alongside kernel results, including slower outcomes. Paper energy/area values are explicitly labeled estimates.
 
 The required rollover cases pass: `(1023+1) mod 1024=0`, `(750+400) mod 1024=126`, `(1500+800) mod 2048=252`. Tests additionally exhaust all 1,048,576 Z1024 input pairs and all 4,194,304 Z2048 pairs in software.
 
@@ -93,7 +100,9 @@ The required rollover cases pass: `(1023+1) mod 1024=0`, `(750+400) mod 1024=126
 
 The paper does not supply a complete discrete image-denoising algorithm. The **PLP-Inspired Experimental Prototype** instead uses local Wiener shrinkage (Plane), guided smoothing (Line), and clipped 10-bit intensity quantization (Point). These are disclosed design choices, not a derived implementation of the master equation. No entropy absorption, prime-orbit erasure, exact sub-pixel localization, or super-resolution is claimed.
 
-The sweep includes a real CC0 camera photograph and an original text/line/dot chart, three Gaussian noise strengths, and three seeds: 18 noisy cases, each shared across Gaussian, Bilateral, Median and the prototype. The GIF focuses on Bilateral and the prototype for one fully identified camera case. Reveal wipes are illustrative; stored images and displayed metrics come from actual executions.
+The sweep includes a real CC0 camera photograph and an original text/line/dot chart, three Gaussian noise strengths, and three seeds: 18 noisy cases, each shared across Gaussian, Bilateral, Median and the prototype. The rebuilt GIF shows actual Plane, Line and Point intermediate outputs, followed by the final Bilateral/prototype comparison. Text, thin-line and small-object crops are taken from the chart. Displayed PSNR/SSIM/edge scores refer to the camera image at the current prototype stage; full-call timing remains explicitly separate. Stage dwell times and reveal wipes are illustrative; stored images and metrics come from actual executions.
+
+![Actual intermediate Plane stage](results/figures/noise_stage_plane.png)
 
 ![Text and small-feature details for all filters](results/figures/text_detail_comparison.png)
 
@@ -152,7 +161,7 @@ results/               raw samples, CSV summaries, images and figures
 docs/                  methodology, paper review, hardware instructions
 ```
 
-`results/timing_samples.csv` and `results/noise_timing_samples.csv` retain every repetition. `noise_benchmark.csv` stores per-case PSNR/SSIM/edge scores and timing dispersion. `noise_summary.csv` aggregates noise realizations. `lut_setup.csv` measures construction separately.
+`results/timing_samples.csv` and `results/noise_timing_samples.csv` retain every repetition. `noise_benchmark.csv` stores per-case PSNR/SSIM/edge scores and timing dispersion. `noise_summary.csv` aggregates noise realizations. `stage_quality.csv` retains actual prototype intermediate quality for all 18 cases. `reference_vectors.csv` stores rollover/LUT examples. `lut_setup.csv` measures construction separately.
 
 ## 9. Reproducibility
 
@@ -173,6 +182,7 @@ python scripts/reproduce.py --quick
 python scripts/reproduce.py --skip-benchmark
 python scripts/reproduce.py --skip-render
 python scripts/validate.py
+python scripts/verify_source.py /path/to/reference.pdf
 ```
 
 `--quick` replaces the computational sweep with 10K/100K sizes and three repetitions; its generated results are labeled with the actual size. The image sweep remains unchanged. `--skip-benchmark` regenerates docs/media from existing CSV data; `--skip-render` runs measurements without video encoding. First-time scikit-image example-data access may require internet. The committed clean chart/photo and result images permit inspection without fetching new data. Optional RTL instructions and execution status are in [hardware validation](docs/hardware.md).
@@ -183,7 +193,7 @@ python scripts/validate.py
 - The PLP-inspired prototype is floating-point software with known noise sigma; it is not the paper's integer-only PLP pipeline. Its three stages are practical substitutes, not a proof of topological claims.
 - Denoising covers only two grayscale images and clipped additive Gaussian noise. It does not validate color/RAW pipelines, video, motion/ghosting, compression artifacts, illumination robustness or super-resolution.
 - The reported contraction factor alone does not establish exact 4-6 iteration recovery; finite prime sums do not automatically obey the claimed exact orthogonality. A small numerical audit is included, with limits explained.
-- The exact requested `(1)` PDF edition and a project-wide license still require owner confirmation. The source archive reference contains a placeholder DOI.
+- The user-designated PDF identity is confirmed by SHA-256. A project-wide license still requires owner selection. The source archive reference contains a placeholder DOI.
 - Next steps: obtain the complete discrete PLP operator and raw source experiments; expand images/noise families; add tuned baselines and a fused compiled CPU implementation; execute RTL simulation and synthesis with documented tools; then validate a physical memory macro and measured system energy.
 
 ## 11. Research Paper References

@@ -15,6 +15,13 @@ def main(require_media=True):
     def check(condition,text):
         if not condition:raise AssertionError(text)
         checks.append(text)
+    source=json.loads((ROOT/'results/source_manifest.json').read_text(encoding='utf-8'))
+    check(source.get('user_designated_reference') is True,'Source is explicitly user-designated')
+    check(source['sha256']=='249f651810bce6fab84693dd1049a3a551ab15e0b59893b5cd82a0461171ea41','Source fingerprint matches the reviewed PDF')
+    check(source['paper_viii_pages']==[1,2,3,4,5] and source['appended_paper_ix_pages']==[6,7,8,9],'Paper VIII and appended IX page ranges are distinct')
+    for row in rows('reference_vectors.csv'):
+        check((int(row['a'])+int(row['b']))%int(row['modulus'])==int(row['sum']),'Rollover example matches modular arithmetic')
+        check(int(row['retained_bits'],2)==int(row['sum']),'Displayed retained binary bits match LUT address')
     samples=rows('timing_samples.csv');bench=rows('benchmark.csv')
     for row in bench:
         values=[float(r['elapsed_ms']) for r in samples if r['n']==row['n'] and r['method']==row['method']]
@@ -29,6 +36,17 @@ def main(require_media=True):
         for field,value in [('median_ms',statistics.median(values)),('mean_ms',statistics.mean(values)),('std_ms',statistics.stdev(values))]:
             check(np.isclose(float(row[field]),value,rtol=1e-10,atol=1e-10),f'Noise raw samples match {field}')
         check(all(np.isfinite(float(row[k])) for k in ['psnr_db','ssim','edge_preservation']), 'Noise quality values are finite')
+    stage_rows=rows('stage_quality.csv')
+    check(len(stage_rows)==54,'18 noisy cases x 3 actual prototype stages')
+    check(len({(r['image'],r['sigma'],r['seed'],r['stage']) for r in stage_rows})==54,'Stage quality keys are unique')
+    final_rows={(r['image'],r['sigma'],r['seed']):r for r in noise if r['method']=='PLP-Inspired Experimental Prototype'}
+    for row in stage_rows:
+        check(row['stage'] in ['plane','line','point'],'Stage name is a documented prototype stage')
+        check(all(np.isfinite(float(row[k])) for k in ['psnr_db','ssim','edge_preservation']),'Intermediate quality is finite')
+        if row['stage']=='point':
+            final=final_rows[row['image'],row['sigma'],row['seed']]
+            check(all(np.isclose(float(row[k]),float(final[k])) for k in ['psnr_db','ssim','edge_preservation']),
+                'Point stage quality equals the final prototype result')
     for file in [ROOT/'README.md',*list((ROOT/'docs').glob('*.md'))]:
         content=file.read_text(encoding='utf-8')
         for target in re.findall(r'!?\[[^\]]*\]\(([^)]+)\)',content):
@@ -67,7 +85,8 @@ def main(require_media=True):
             check(abs(meta['fps']-24)<0.01,f'{name} MP4 frame rate')
             check(abs(meta['duration']-12)<0.1,f'{name} MP4 duration')
             media.append(dict(path=video.relative_to(ROOT).as_posix(),width=1920,height=1080,frames=count,fps=meta['fps'],duration_seconds=meta['duration']))
-    record=dict(status='passed',check_count=len(checks),compute_rows=len(bench),compute_timing_samples=len(samples),
+    record=dict(status='passed',check_count=len(checks),source_sha256=source['sha256'],user_designated_source_confirmed=True,
+        intermediate_quality_rows=len(stage_rows),compute_rows=len(bench),compute_timing_samples=len(samples),
         noise_rows=len(noise),noise_timing_samples=len(raw),python_tests=8,
         rtl_simulation='not run: no simulator installed',silicon_or_pim_validation='not performed',media=media)
     (ROOT/'results/validation.json').write_text(json.dumps(record,indent=2),encoding='utf-8')
