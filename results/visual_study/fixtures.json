@@ -1,0 +1,50 @@
+[
+  {
+    "image": "camera",
+    "shape": [
+      512,
+      512
+    ],
+    "sha256_float32": "94fa84d84f89a1db670d8e25b18dbaffb8f1f03a9204542205e224766a82d367"
+  },
+  {
+    "image": "text_chart",
+    "shape": [
+      512,
+      512
+    ],
+    "sha256_float32": "a1781e0d92d1859f1e877fe15745149354877d117b7c6d0f688cf3224f2d630d"
+  },
+  {
+    "image": "microtext",
+    "shape": [
+      512,
+      512
+    ],
+    "sha256_float32": "d14fee38b6d0d892c45eb7d9b95b6194351290a1b9dc895c3d825c6507c7b6f6"
+  },
+  {
+    "image": "line_grid",
+    "shape": [
+      512,
+      512
+    ],
+    "sha256_float32": "0b050ec1368add8718109a6a28711b10156b81c189574bda31f4722f71d20549"
+  },
+  {
+    "image": "geometry",
+    "shape": [
+      512,
+      512
+    ],
+    "sha256_float32": "b38703f464ab583f140f77269e78a3b553439ffd1784a268102cfe0d3c87d7f3"
+  },
+  {
+    "image": "dark_texture",
+    "shape": [
+      512,
+      512
+    ],
+    "sha256_float32": "a2a1c8641b01b956de8331d71d7982a375812ee2b8f15d623c781526b647dfd5"
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "compiler": "clang version 21.1.0",
+  "flags": [
+    "-O3",
+    "-std=c++17"
+  ],
+  "threads": 1,
+  "allocation": "Preallocated output and operand arrays; allocation excluded for all native methods",
+  "input": "C++ mt19937 seed 20261020, uniform angles in [-pi,pi); same native inputs for all methods; different dataset from NumPy run",
+  "limitations": "Separate fused-loop study; not an isolated language-speed comparison and not PIM hardware evidence",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "processor": "Intel64 Family 6 Model 151 Stepping 5, GenuineIntel",
+  "logical_cpus": 12,
+  "measured_at_utc": "2026-10-20T05:18:04.768126+00:00",
+  "lut_storage": "Paired int16 Q15 values, 4/8 KiB; integer-to-float conversion and scaling inside timed loops"
+}

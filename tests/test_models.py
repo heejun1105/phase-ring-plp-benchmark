@@ -2,7 +2,7 @@
 import unittest
 import numpy as np
 from src import phase_ring as ring
-from src.plp import prototype
+from src.plp import prototype,prototype_v2,wiener_plane,latch
 
 class PhaseRingTests(unittest.TestCase):
     def test_requested_vectors(self):
@@ -37,6 +37,21 @@ class PhaseRingTests(unittest.TestCase):
         with self.assertRaises(ValueError):ring.add(1,2,360)
 
 class PrototypeTests(unittest.TestCase):
+    def test_legacy_plane_is_preserved(self):
+        x=np.random.default_rng(72).random((32,32),dtype=np.float32)
+        np.testing.assert_array_equal(wiener_plane(x,0.06),prototype(x,0.06,True)[0])
+
+    def test_intensity_latch_error_bound(self):
+        x=np.linspace(0,1,10001,dtype=np.float32)
+        self.assertLessEqual(float(np.max(np.abs(latch(x)-x))),1/2046+1e-7)
+
+    def test_v2_reduces_flat_noise_and_is_deterministic(self):
+        x=np.clip(0.4+np.random.default_rng(8).normal(0,0.06,(48,48)),0,1).astype(np.float32)
+        result=prototype_v2(x,0.06)
+        self.assertLess(float(np.mean((result-0.4)**2)),float(np.mean((x-0.4)**2)))
+        self.assertTrue(np.isfinite(result).all())
+        np.testing.assert_array_equal(result,prototype_v2(x,0.06))
+
     def test_constant_and_bounds(self):
         x=np.full((32,32),0.5,np.float32);y=prototype(x,0.06)
         self.assertEqual(y.shape,x.shape)

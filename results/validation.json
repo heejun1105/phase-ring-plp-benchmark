@@ -1,46 +1,92 @@
 {
   "status": "passed",
-  "check_count": 1454,
-  "source_sha256": "249f651810bce6fab84693dd1049a3a551ab15e0b59893b5cd82a0461171ea41",
-  "user_designated_source_confirmed": true,
-  "intermediate_quality_rows": 54,
-  "compute_rows": 52,
-  "compute_timing_samples": 364,
-  "noise_rows": 90,
-  "noise_timing_samples": 630,
-  "python_tests": 8,
-  "rtl_simulation": "not run: no simulator installed",
-  "silicon_or_pim_validation": "not performed",
+  "check_count": 9588,
+  "python_tests": 11,
+  "retained_numpy_rows": 52,
+  "expanded_noise_cases": 54,
+  "expanded_noise_rows": 324,
+  "native_measured": true,
   "media": [
     {
-      "path": "animations/computing_comparison.gif",
-      "width": 960,
-      "height": 540,
-      "frames": 120,
-      "duration_ms": 12000
+      "name": "computing_architecture",
+      "gif_bytes": 1246513,
+      "gif_frames": 150,
+      "gif_duration_ms": 12000,
+      "decoded_source_frame_mean_abs_error": 1.179861111111111,
+      "mp4_frames": 288,
+      "mp4_fps": 24.0,
+      "mp4_size": [
+        1920,
+        1080
+      ]
     },
     {
-      "path": "animations/video/computing_comparison.mp4",
-      "width": 1920,
-      "height": 1080,
-      "frames": 288,
-      "fps": 24.0,
-      "duration_seconds": 12.0
+      "name": "benchmark_speed_race",
+      "gif_bytes": 974957,
+      "gif_frames": 125,
+      "gif_duration_ms": 12000,
+      "decoded_source_frame_mean_abs_error": 1.3110783179012346,
+      "mp4_frames": 288,
+      "mp4_fps": 24.0,
+      "mp4_size": [
+        1920,
+        1080
+      ]
     },
     {
-      "path": "animations/noise_comparison.gif",
-      "width": 960,
-      "height": 540,
-      "frames": 51,
-      "duration_ms": 12000
+      "name": "phase_overflow_lut",
+      "gif_bytes": 542229,
+      "gif_frames": 92,
+      "gif_duration_ms": 12000,
+      "decoded_source_frame_mean_abs_error": 0.9948488940329218,
+      "mp4_frames": 288,
+      "mp4_fps": 24.0,
+      "mp4_size": [
+        1920,
+        1080
+      ]
     },
     {
-      "path": "animations/video/noise_comparison.mp4",
-      "width": 1920,
-      "height": 1080,
-      "frames": 288,
-      "fps": 24.0,
-      "duration_seconds": 12.0
+      "name": "noise_reduction_comparison",
+      "gif_bytes": 8001182,
+      "gif_frames": 150,
+      "gif_duration_ms": 12000,
+      "decoded_source_frame_mean_abs_error": 1.6421161265432098,
+      "mp4_frames": 288,
+      "mp4_fps": 24.0,
+      "mp4_size": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "name": "phase_precision_comparison",
+      "gif_bytes": 774434,
+      "gif_frames": 148,
+      "gif_duration_ms": 12000,
+      "decoded_source_frame_mean_abs_error": 0.917227366255144,
+      "mp4_frames": 288,
+      "mp4_fps": 24.0,
+      "mp4_size": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "name": "edge_preservation_comparison",
+      "gif_bytes": 1003957,
+      "gif_frames": 150,
+      "gif_duration_ms": 12000,
+      "decoded_source_frame_mean_abs_error": 1.7873566100823046,
+      "mp4_frames": 288,
+      "mp4_fps": 24.0,
+      "mp4_size": [
+        1920,
+        1080
+      ]
     }
-  ]
+  ],
+  "source_confirmed": true,
+  "rtl_simulation": "not run; testbench supplied",
+  "silicon_validation": "not performed"
 }

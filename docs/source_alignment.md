@@ -27,6 +27,10 @@ The reference is documented in [source_manifest.json](../results/source_manifest
 - Intermediate-stage image quality is retained in `results/stage_quality.csv`. The stage tour runs at presentation pace; no stage-specific processing times are invented.
 - The full CPU and image benchmark suite is rerun. Raw repetitions, regenerated English tables and new media all derive from the same current run.
 
+## V3 extension
+
+The six-animation gallery now separates conceptual architecture, measured speed, exact overflow/LUT addressing, experimental noise processing, actual quantization, and legacy/V2 ablation. `src/benchmark/visual_study.py` expands testing to six content classes and 54 noisy cases. V1 remains unchanged; V2 removes the guided pass to expose its quality/edge/latency tradeoff, rather than claiming a new paper-derived PLP algorithm. `native/benchmark.cpp` adds a separately measured fused, preallocated CPU study. No new source-paper equation or hardware performance has been invented. See [visual_study.md](visual_study.md) and [visual_quality.md](visual_quality.md).
+
 ## Local source check
 
 ```bash

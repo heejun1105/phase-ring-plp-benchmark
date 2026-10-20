@@ -1,0 +1,12 @@
+{
+  "image": "microtext",
+  "sigma": 0.06,
+  "seed": 20261020,
+  "psnr_v2_minus_bilateral": -0.2739194913214362,
+  "edge_v2_minus_v1": -0.00016105175018310547,
+  "rank_ascending_psnr_gain": 34,
+  "total_cases": 54,
+  "selection_rule": "Predeclared microtext, sigma=0.06, first seed; not selected by quality gain",
+  "conventional_method": "Bilateral",
+  "conventional_reason": "Fixed edge-aware classical baseline; Gaussian and Median also measured"
+}

@@ -1,0 +1,24 @@
+{
+  "packages": {
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "opencv-python-headless": "5.0.0.93",
+    "scikit-image": "0.26.0",
+    "Pillow": "13.0.0",
+    "imageio": "2.38.1",
+    "imageio-ffmpeg": "0.6.0",
+    "matplotlib": "3.11.2"
+  },
+  "master_size": [
+    1920,
+    1080
+  ],
+  "master_fps": 24,
+  "gif_size": [
+    960,
+    540
+  ],
+  "gif_frame_ms": 80,
+  "duration_seconds": 12,
+  "fonts": "Segoe UI / Consolas on supplied Windows host; DejaVu fallback; font binaries excluded"
+}

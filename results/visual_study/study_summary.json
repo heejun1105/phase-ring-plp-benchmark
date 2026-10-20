@@ -1,0 +1,74 @@
+{
+  "Gaussian": {
+    "method": "Gaussian",
+    "cases": 54,
+    "psnr_db": 25.846089871851806,
+    "sd_psnr_db": 6.9627255274367235,
+    "ssim": 0.7221844902162469,
+    "sd_ssim": 0.15241923296589968,
+    "edge_preservation": 0.698870814508862,
+    "sd_edge_preservation": 0.04012427008422605,
+    "median_ms": 0.3751203703703704,
+    "sd_median_ms": 0.06402766318311505
+  },
+  "Bilateral": {
+    "method": "Bilateral",
+    "cases": 54,
+    "psnr_db": 34.14218621007294,
+    "sd_psnr_db": 3.9643749046630226,
+    "ssim": 0.8207605295463666,
+    "sd_ssim": 0.12026471481095194,
+    "edge_preservation": 0.8965425204347681,
+    "sd_edge_preservation": 0.10032630171975176,
+    "median_ms": 5.279431481481481,
+    "sd_median_ms": 0.6891544602788928
+  },
+  "Median": {
+    "method": "Median",
+    "cases": 54,
+    "psnr_db": 26.150177788047564,
+    "sd_psnr_db": 7.845734664134186,
+    "ssim": 0.5920584799130487,
+    "sd_ssim": 0.212560633045047,
+    "edge_preservation": 0.80890135301484,
+    "sd_edge_preservation": 0.08728747767525868,
+    "median_ms": 0.32201851851851854,
+    "sd_median_ms": 0.0515138013164015
+  },
+  "Legacy V1": {
+    "method": "Legacy V1",
+    "cases": 54,
+    "psnr_db": 33.99920218817429,
+    "sd_psnr_db": 5.254784903629471,
+    "ssim": 0.9271331193941087,
+    "sd_ssim": 0.05720922375701504,
+    "edge_preservation": 0.8657786051432291,
+    "sd_edge_preservation": 0.1211926658148114,
+    "median_ms": 12.410198148148147,
+    "sd_median_ms": 0.7390868763218725
+  },
+  "Prototype V2": {
+    "method": "Prototype V2",
+    "cases": 54,
+    "psnr_db": 32.6861157494975,
+    "sd_psnr_db": 4.704261858129031,
+    "ssim": 0.8616930098142068,
+    "sd_ssim": 0.08092232190465395,
+    "edge_preservation": 0.8794557010685956,
+    "sd_edge_preservation": 0.09861022599964207,
+    "median_ms": 6.0816,
+    "sd_median_ms": 0.3640940154348485
+  },
+  "Noisy input": {
+    "method": "Noisy input",
+    "cases": 54,
+    "psnr_db": 25.416185168908285,
+    "sd_psnr_db": 3.9763432995742276,
+    "ssim": 0.4576955276443312,
+    "sd_ssim": 0.24694972854699596,
+    "edge_preservation": 0.8613379354830142,
+    "sd_edge_preservation": 0.1541890361909993,
+    "median_ms": 0.2659944444444444,
+    "sd_median_ms": 0.04452169882952206
+  }
+}

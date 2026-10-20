@@ -1,0 +1,631 @@
+image,sigma,seed,method,repeat,elapsed_ms
+camera,0.03,20261020,Bilateral,0,5.1523
+camera,0.03,20261020,Median,0,0.2712
+camera,0.03,20261020,PLP-Inspired Experimental Prototype,0,14.5888
+camera,0.03,20261020,Gaussian,0,1.3154
+camera,0.03,20261020,Noisy input,0,0.7978
+camera,0.03,20261020,Bilateral,1,12.3567
+camera,0.03,20261020,Noisy input,1,0.7385
+camera,0.03,20261020,PLP-Inspired Experimental Prototype,1,22.8882
+camera,0.03,20261020,Median,1,0.4875
+camera,0.03,20261020,Gaussian,1,0.4852
+camera,0.03,20261020,Median,2,0.9954
+camera,0.03,20261020,Bilateral,2,7.4344
+camera,0.03,20261020,Noisy input,2,0.5417
+camera,0.03,20261020,PLP-Inspired Experimental Prototype,2,13.4347
+camera,0.03,20261020,Gaussian,2,0.5627
+camera,0.03,20261020,Noisy input,3,0.403
+camera,0.03,20261020,Bilateral,3,5.5397
+camera,0.03,20261020,Gaussian,3,0.2631
+camera,0.03,20261020,Median,3,0.2543
+camera,0.03,20261020,PLP-Inspired Experimental Prototype,3,10.7745
+camera,0.03,20261020,Median,4,0.3424
+camera,0.03,20261020,Noisy input,4,0.4171
+camera,0.03,20261020,Bilateral,4,4.3729
+camera,0.03,20261020,PLP-Inspired Experimental Prototype,4,12.419
+camera,0.03,20261020,Gaussian,4,0.4708
+camera,0.03,20261020,Bilateral,5,8.6875
+camera,0.03,20261020,PLP-Inspired Experimental Prototype,5,10.666
+camera,0.03,20261020,Gaussian,5,0.3682
+camera,0.03,20261020,Median,5,0.6004
+camera,0.03,20261020,Noisy input,5,0.693
+camera,0.03,20261020,Gaussian,6,0.2832
+camera,0.03,20261020,Bilateral,6,7.8881
+camera,0.03,20261020,Median,6,0.3354
+camera,0.03,20261020,PLP-Inspired Experimental Prototype,6,13.4618
+camera,0.03,20261020,Noisy input,6,0.4545
+camera,0.03,20261021,PLP-Inspired Experimental Prototype,0,12.348
+camera,0.03,20261021,Noisy input,0,0.3654
+camera,0.03,20261021,Median,0,0.2652
+camera,0.03,20261021,Bilateral,0,4.8641
+camera,0.03,20261021,Gaussian,0,0.3756
+camera,0.03,20261021,Gaussian,1,0.3511
+camera,0.03,20261021,Noisy input,1,0.4171
+camera,0.03,20261021,Bilateral,1,5.6781
+camera,0.03,20261021,PLP-Inspired Experimental Prototype,1,12.5526
+camera,0.03,20261021,Median,1,0.559
+camera,0.03,20261021,Noisy input,2,0.5276
+camera,0.03,20261021,PLP-Inspired Experimental Prototype,2,13.3792
+camera,0.03,20261021,Median,2,0.7809
+camera,0.03,20261021,Bilateral,2,5.3948
+camera,0.03,20261021,Gaussian,2,0.4267
+camera,0.03,20261021,Bilateral,3,5.6054
+camera,0.03,20261021,PLP-Inspired Experimental Prototype,3,13.1982
+camera,0.03,20261021,Median,3,0.4283
+camera,0.03,20261021,Gaussian,3,0.3151
+camera,0.03,20261021,Noisy input,3,0.2484
+camera,0.03,20261021,Gaussian,4,0.2887
+camera,0.03,20261021,PLP-Inspired Experimental Prototype,4,10.9801
+camera,0.03,20261021,Bilateral,4,4.573
+camera,0.03,20261021,Median,4,0.2595
+camera,0.03,20261021,Noisy input,4,0.2094
+camera,0.03,20261021,Median,5,0.2562
+camera,0.03,20261021,Noisy input,5,0.2132
+camera,0.03,20261021,PLP-Inspired Experimental Prototype,5,10.7613
+camera,0.03,20261021,Bilateral,5,4.523
+camera,0.03,20261021,Gaussian,5,0.2751
+camera,0.03,20261021,PLP-Inspired Experimental Prototype,6,10.4494
+camera,0.03,20261021,Bilateral,6,4.5859
+camera,0.03,20261021,Noisy input,6,0.2179
+camera,0.03,20261021,Median,6,0.2581
+camera,0.03,20261021,Gaussian,6,0.5172
+camera,0.03,20261022,Gaussian,0,0.3007
+camera,0.03,20261022,Bilateral,0,4.5675
+camera,0.03,20261022,Noisy input,0,0.2399
+camera,0.03,20261022,PLP-Inspired Experimental Prototype,0,10.6742
+camera,0.03,20261022,Median,0,0.4725
+camera,0.03,20261022,PLP-Inspired Experimental Prototype,1,11.9111
+camera,0.03,20261022,Gaussian,1,0.5049
+camera,0.03,20261022,Noisy input,1,0.3535
+camera,0.03,20261022,Median,1,0.4873
+camera,0.03,20261022,Bilateral,1,5.2296
+camera,0.03,20261022,Noisy input,2,0.2379
+camera,0.03,20261022,Gaussian,2,0.2921
+camera,0.03,20261022,Bilateral,2,5.7628
+camera,0.03,20261022,PLP-Inspired Experimental Prototype,2,11.828
+camera,0.03,20261022,Median,2,0.4043
+camera,0.03,20261022,Noisy input,3,0.2305
+camera,0.03,20261022,PLP-Inspired Experimental Prototype,3,12.8008
+camera,0.03,20261022,Bilateral,3,4.6932
+camera,0.03,20261022,Median,3,0.2735
+camera,0.03,20261022,Gaussian,3,0.317
+camera,0.03,20261022,Bilateral,4,4.6738
+camera,0.03,20261022,Median,4,0.2784
+camera,0.03,20261022,Noisy input,4,0.368
+camera,0.03,20261022,PLP-Inspired Experimental Prototype,4,11.4529
+camera,0.03,20261022,Gaussian,4,0.6635
+camera,0.03,20261022,Gaussian,5,0.3762
+camera,0.03,20261022,Noisy input,5,0.2143
+camera,0.03,20261022,PLP-Inspired Experimental Prototype,5,10.8569
+camera,0.03,20261022,Median,5,0.5433
+camera,0.03,20261022,Bilateral,5,7.8615
+camera,0.03,20261022,Median,6,0.2478
+camera,0.03,20261022,Noisy input,6,0.2167
+camera,0.03,20261022,Bilateral,6,5.0971
+camera,0.03,20261022,Gaussian,6,0.4734
+camera,0.03,20261022,PLP-Inspired Experimental Prototype,6,10.018
+camera,0.06,20261020,Noisy input,0,0.2151
+camera,0.06,20261020,Bilateral,0,4.4602
+camera,0.06,20261020,PLP-Inspired Experimental Prototype,0,10.8954
+camera,0.06,20261020,Gaussian,0,0.381
+camera,0.06,20261020,Median,0,0.2872
+camera,0.06,20261020,Bilateral,1,4.8402
+camera,0.06,20261020,Median,1,0.6328
+camera,0.06,20261020,Gaussian,1,0.4759
+camera,0.06,20261020,Noisy input,1,0.2714
+camera,0.06,20261020,PLP-Inspired Experimental Prototype,1,12.0526
+camera,0.06,20261020,PLP-Inspired Experimental Prototype,2,11.1055
+camera,0.06,20261020,Median,2,0.4055
+camera,0.06,20261020,Bilateral,2,4.4843
+camera,0.06,20261020,Noisy input,2,0.2092
+camera,0.06,20261020,Gaussian,2,0.2771
+camera,0.06,20261020,Bilateral,3,7.5513
+camera,0.06,20261020,PLP-Inspired Experimental Prototype,3,11.157
+camera,0.06,20261020,Median,3,0.415
+camera,0.06,20261020,Noisy input,3,0.3326
+camera,0.06,20261020,Gaussian,3,0.4453
+camera,0.06,20261020,Noisy input,4,0.336
+camera,0.06,20261020,Gaussian,4,0.4352
+camera,0.06,20261020,PLP-Inspired Experimental Prototype,4,14.1545
+camera,0.06,20261020,Bilateral,4,6.1594
+camera,0.06,20261020,Median,4,0.2776
+camera,0.06,20261020,Gaussian,5,0.2935
+camera,0.06,20261020,Noisy input,5,0.2256
+camera,0.06,20261020,Median,5,0.2611
+camera,0.06,20261020,PLP-Inspired Experimental Prototype,5,12.7154
+camera,0.06,20261020,Bilateral,5,7.1498
+camera,0.06,20261020,Median,6,0.3562
+camera,0.06,20261020,Noisy input,6,0.2616
+camera,0.06,20261020,PLP-Inspired Experimental Prototype,6,11.2555
+camera,0.06,20261020,Gaussian,6,0.8311
+camera,0.06,20261020,Bilateral,6,6.553
+camera,0.06,20261021,Bilateral,0,5.5487
+camera,0.06,20261021,Gaussian,0,0.4538
+camera,0.06,20261021,PLP-Inspired Experimental Prototype,0,13.2262
+camera,0.06,20261021,Median,0,0.4817
+camera,0.06,20261021,Noisy input,0,0.2306
+camera,0.06,20261021,Median,1,0.2795
+camera,0.06,20261021,PLP-Inspired Experimental Prototype,1,12.3367
+camera,0.06,20261021,Bilateral,1,5.0141
+camera,0.06,20261021,Noisy input,1,0.2738
+camera,0.06,20261021,Gaussian,1,0.3806
+camera,0.06,20261021,PLP-Inspired Experimental Prototype,2,11.0166
+camera,0.06,20261021,Bilateral,2,4.5104
+camera,0.06,20261021,Gaussian,2,0.2837
+camera,0.06,20261021,Noisy input,2,0.2143
+camera,0.06,20261021,Median,2,0.2687
+camera,0.06,20261021,Gaussian,3,0.2732
+camera,0.06,20261021,PLP-Inspired Experimental Prototype,3,10.9206
+camera,0.06,20261021,Bilateral,3,4.5459
+camera,0.06,20261021,Median,3,0.32
+camera,0.06,20261021,Noisy input,3,0.2627
+camera,0.06,20261021,Noisy input,4,0.2388
+camera,0.06,20261021,Gaussian,4,0.322
+camera,0.06,20261021,PLP-Inspired Experimental Prototype,4,12.861
+camera,0.06,20261021,Bilateral,4,4.4917
+camera,0.06,20261021,Median,4,0.3096
+camera,0.06,20261021,Bilateral,5,5.194
+camera,0.06,20261021,PLP-Inspired Experimental Prototype,5,11.4282
+camera,0.06,20261021,Median,5,0.9104
+camera,0.06,20261021,Gaussian,5,0.3574
+camera,0.06,20261021,Noisy input,5,0.4168
+camera,0.06,20261021,Bilateral,6,8.1999
+camera,0.06,20261021,PLP-Inspired Experimental Prototype,6,14.372
+camera,0.06,20261021,Median,6,0.5468
+camera,0.06,20261021,Gaussian,6,0.5724
+camera,0.06,20261021,Noisy input,6,0.5323
+camera,0.06,20261022,Noisy input,0,0.2536
+camera,0.06,20261022,Median,0,0.2834
+camera,0.06,20261022,PLP-Inspired Experimental Prototype,0,14.8561
+camera,0.06,20261022,Gaussian,0,0.5033
+camera,0.06,20261022,Bilateral,0,4.5509
+camera,0.06,20261022,PLP-Inspired Experimental Prototype,1,13.8925
+camera,0.06,20261022,Gaussian,1,0.4991
+camera,0.06,20261022,Noisy input,1,0.2727
+camera,0.06,20261022,Bilateral,1,7.6697
+camera,0.06,20261022,Median,1,0.3536
+camera,0.06,20261022,PLP-Inspired Experimental Prototype,2,13.7936
+camera,0.06,20261022,Gaussian,2,0.604
+camera,0.06,20261022,Bilateral,2,5.5071
+camera,0.06,20261022,Median,2,0.333
+camera,0.06,20261022,Noisy input,2,0.2344
+camera,0.06,20261022,Gaussian,3,0.3157
+camera,0.06,20261022,Noisy input,3,0.4425
+camera,0.06,20261022,Median,3,0.2869
+camera,0.06,20261022,PLP-Inspired Experimental Prototype,3,12.6635
+camera,0.06,20261022,Bilateral,3,5.0989
+camera,0.06,20261022,Bilateral,4,7.9034
+camera,0.06,20261022,Gaussian,4,0.394
+camera,0.06,20261022,Median,4,0.2944
+camera,0.06,20261022,Noisy input,4,0.2582
+camera,0.06,20261022,PLP-Inspired Experimental Prototype,4,13.2178
+camera,0.06,20261022,Gaussian,5,0.3983
+camera,0.06,20261022,Bilateral,5,4.4479
+camera,0.06,20261022,PLP-Inspired Experimental Prototype,5,11.874
+camera,0.06,20261022,Noisy input,5,0.3958
+camera,0.06,20261022,Median,5,0.2659
+camera,0.06,20261022,Bilateral,6,4.442
+camera,0.06,20261022,Gaussian,6,0.2769
+camera,0.06,20261022,Median,6,0.2893
+camera,0.06,20261022,PLP-Inspired Experimental Prototype,6,12.7575
+camera,0.06,20261022,Noisy input,6,0.4387
+camera,0.1,20261020,PLP-Inspired Experimental Prototype,0,12.5664
+camera,0.1,20261020,Noisy input,0,0.3394
+camera,0.1,20261020,Gaussian,0,0.7577
+camera,0.1,20261020,Median,0,0.4032
+camera,0.1,20261020,Bilateral,0,6.452
+camera,0.1,20261020,Median,1,0.2942
+camera,0.1,20261020,Bilateral,1,5.5321
+camera,0.1,20261020,PLP-Inspired Experimental Prototype,1,11.4184
+camera,0.1,20261020,Noisy input,1,0.4175
+camera,0.1,20261020,Gaussian,1,0.3314
+camera,0.1,20261020,PLP-Inspired Experimental Prototype,2,12.0748
+camera,0.1,20261020,Bilateral,2,4.6387
+camera,0.1,20261020,Gaussian,2,0.2968
+camera,0.1,20261020,Noisy input,2,0.2205
+camera,0.1,20261020,Median,2,0.274
+camera,0.1,20261020,Gaussian,3,0.2852
+camera,0.1,20261020,PLP-Inspired Experimental Prototype,3,10.6379
+camera,0.1,20261020,Bilateral,3,4.5201
+camera,0.1,20261020,Noisy input,3,0.2164
+camera,0.1,20261020,Median,3,0.2675
+camera,0.1,20261020,PLP-Inspired Experimental Prototype,4,15.7069
+camera,0.1,20261020,Bilateral,4,6.4167
+camera,0.1,20261020,Noisy input,4,0.3075
+camera,0.1,20261020,Gaussian,4,0.3288
+camera,0.1,20261020,Median,4,0.2886
+camera,0.1,20261020,Bilateral,5,4.5014
+camera,0.1,20261020,Gaussian,5,0.2659
+camera,0.1,20261020,Median,5,0.2549
+camera,0.1,20261020,PLP-Inspired Experimental Prototype,5,11.3422
+camera,0.1,20261020,Noisy input,5,0.4408
+camera,0.1,20261020,Gaussian,6,0.3566
+camera,0.1,20261020,Bilateral,6,4.5382
+camera,0.1,20261020,PLP-Inspired Experimental Prototype,6,13.3539
+camera,0.1,20261020,Median,6,0.3545
+camera,0.1,20261020,Noisy input,6,0.2873
+camera,0.1,20261021,PLP-Inspired Experimental Prototype,0,14.6436
+camera,0.1,20261021,Median,0,0.425
+camera,0.1,20261021,Gaussian,0,0.3146
+camera,0.1,20261021,Bilateral,0,4.6399
+camera,0.1,20261021,Noisy input,0,0.2295
+camera,0.1,20261021,Gaussian,1,0.2758
+camera,0.1,20261021,Median,1,0.4201
+camera,0.1,20261021,PLP-Inspired Experimental Prototype,1,10.1758
+camera,0.1,20261021,Noisy input,1,0.3659
+camera,0.1,20261021,Bilateral,1,5.7721
+camera,0.1,20261021,Noisy input,2,0.2264
+camera,0.1,20261021,Gaussian,2,0.3477
+camera,0.1,20261021,Bilateral,2,4.4208
+camera,0.1,20261021,PLP-Inspired Experimental Prototype,2,13.7591
+camera,0.1,20261021,Median,2,0.3639
+camera,0.1,20261021,Median,3,0.2579
+camera,0.1,20261021,Bilateral,3,4.4683
+camera,0.1,20261021,PLP-Inspired Experimental Prototype,3,14.0895
+camera,0.1,20261021,Gaussian,3,0.474
+camera,0.1,20261021,Noisy input,3,0.2681
+camera,0.1,20261021,Bilateral,4,8.5314
+camera,0.1,20261021,PLP-Inspired Experimental Prototype,4,14.7076
+camera,0.1,20261021,Gaussian,4,0.3416
+camera,0.1,20261021,Median,4,0.2766
+camera,0.1,20261021,Noisy input,4,0.2255
+camera,0.1,20261021,Median,5,0.2795
+camera,0.1,20261021,Gaussian,5,0.285
+camera,0.1,20261021,Noisy input,5,0.2218
+camera,0.1,20261021,PLP-Inspired Experimental Prototype,5,14.3131
+camera,0.1,20261021,Bilateral,5,4.4057
+camera,0.1,20261021,Gaussian,6,0.3265
+camera,0.1,20261021,Noisy input,6,0.2401
+camera,0.1,20261021,PLP-Inspired Experimental Prototype,6,12.6874
+camera,0.1,20261021,Median,6,0.2959
+camera,0.1,20261021,Bilateral,6,4.5663
+camera,0.1,20261022,PLP-Inspired Experimental Prototype,0,10.1758
+camera,0.1,20261022,Gaussian,0,0.4757
+camera,0.1,20261022,Noisy input,0,0.2353
+camera,0.1,20261022,Median,0,0.2726
+camera,0.1,20261022,Bilateral,0,4.4502
+camera,0.1,20261022,PLP-Inspired Experimental Prototype,1,15.2604
+camera,0.1,20261022,Gaussian,1,0.4777
+camera,0.1,20261022,Noisy input,1,0.3318
+camera,0.1,20261022,Median,1,0.4741
+camera,0.1,20261022,Bilateral,1,5.7292
+camera,0.1,20261022,PLP-Inspired Experimental Prototype,2,19.1554
+camera,0.1,20261022,Gaussian,2,0.3888
+camera,0.1,20261022,Noisy input,2,0.3043
+camera,0.1,20261022,Median,2,0.573
+camera,0.1,20261022,Bilateral,2,4.4314
+camera,0.1,20261022,Gaussian,3,0.2645
+camera,0.1,20261022,Noisy input,3,0.2205
+camera,0.1,20261022,PLP-Inspired Experimental Prototype,3,17.2135
+camera,0.1,20261022,Bilateral,3,7.2312
+camera,0.1,20261022,Median,3,0.4744
+camera,0.1,20261022,Gaussian,4,0.4725
+camera,0.1,20261022,Median,4,0.4264
+camera,0.1,20261022,Bilateral,4,5.1028
+camera,0.1,20261022,Noisy input,4,0.2335
+camera,0.1,20261022,PLP-Inspired Experimental Prototype,4,11.0848
+camera,0.1,20261022,Bilateral,5,4.589
+camera,0.1,20261022,Gaussian,5,0.2903
+camera,0.1,20261022,PLP-Inspired Experimental Prototype,5,10.7246
+camera,0.1,20261022,Median,5,0.2941
+camera,0.1,20261022,Noisy input,5,0.265
+camera,0.1,20261022,PLP-Inspired Experimental Prototype,6,12.469
+camera,0.1,20261022,Gaussian,6,0.3252
+camera,0.1,20261022,Bilateral,6,4.4077
+camera,0.1,20261022,Median,6,0.2796
+camera,0.1,20261022,Noisy input,6,0.234
+text_chart,0.03,20261020,Bilateral,0,4.7738
+text_chart,0.03,20261020,Median,0,0.3711
+text_chart,0.03,20261020,PLP-Inspired Experimental Prototype,0,12.4737
+text_chart,0.03,20261020,Gaussian,0,0.5396
+text_chart,0.03,20261020,Noisy input,0,0.2396
+text_chart,0.03,20261020,Bilateral,1,4.5002
+text_chart,0.03,20261020,Noisy input,1,0.2464
+text_chart,0.03,20261020,PLP-Inspired Experimental Prototype,1,12.7757
+text_chart,0.03,20261020,Median,1,0.4231
+text_chart,0.03,20261020,Gaussian,1,0.3538
+text_chart,0.03,20261020,Median,2,0.3053
+text_chart,0.03,20261020,Bilateral,2,4.5008
+text_chart,0.03,20261020,Noisy input,2,0.3305
+text_chart,0.03,20261020,PLP-Inspired Experimental Prototype,2,11.6575
+text_chart,0.03,20261020,Gaussian,2,0.5018
+text_chart,0.03,20261020,Noisy input,3,0.2336
+text_chart,0.03,20261020,Bilateral,3,4.4342
+text_chart,0.03,20261020,Gaussian,3,0.2573
+text_chart,0.03,20261020,Median,3,0.2628
+text_chart,0.03,20261020,PLP-Inspired Experimental Prototype,3,10.8045
+text_chart,0.03,20261020,Median,4,0.3544
+text_chart,0.03,20261020,Noisy input,4,0.2154
+text_chart,0.03,20261020,Bilateral,4,4.5497
+text_chart,0.03,20261020,PLP-Inspired Experimental Prototype,4,10.9111
+text_chart,0.03,20261020,Gaussian,4,0.4507
+text_chart,0.03,20261020,Bilateral,5,4.4864
+text_chart,0.03,20261020,PLP-Inspired Experimental Prototype,5,10.7403
+text_chart,0.03,20261020,Gaussian,5,0.4697
+text_chart,0.03,20261020,Median,5,0.2616
+text_chart,0.03,20261020,Noisy input,5,0.2065
+text_chart,0.03,20261020,Gaussian,6,0.2565
+text_chart,0.03,20261020,Bilateral,6,4.552
+text_chart,0.03,20261020,Median,6,0.3965
+text_chart,0.03,20261020,PLP-Inspired Experimental Prototype,6,11.4462
+text_chart,0.03,20261020,Noisy input,6,0.37
+text_chart,0.03,20261021,PLP-Inspired Experimental Prototype,0,10.5977
+text_chart,0.03,20261021,Noisy input,0,0.3582
+text_chart,0.03,20261021,Median,0,0.291
+text_chart,0.03,20261021,Bilateral,0,5.1964
+text_chart,0.03,20261021,Gaussian,0,0.3805
+text_chart,0.03,20261021,Gaussian,1,0.3597
+text_chart,0.03,20261021,Noisy input,1,0.3116
+text_chart,0.03,20261021,Bilateral,1,6.0433
+text_chart,0.03,20261021,PLP-Inspired Experimental Prototype,1,11.3619
+text_chart,0.03,20261021,Median,1,0.4243
+text_chart,0.03,20261021,Noisy input,2,0.2872
+text_chart,0.03,20261021,PLP-Inspired Experimental Prototype,2,14.9088
+text_chart,0.03,20261021,Median,2,0.5026
+text_chart,0.03,20261021,Bilateral,2,5.6656
+text_chart,0.03,20261021,Gaussian,2,0.3436
+text_chart,0.03,20261021,Bilateral,3,4.5722
+text_chart,0.03,20261021,PLP-Inspired Experimental Prototype,3,17.4572
+text_chart,0.03,20261021,Median,3,0.366
+text_chart,0.03,20261021,Gaussian,3,0.5681
+text_chart,0.03,20261021,Noisy input,3,0.319
+text_chart,0.03,20261021,Gaussian,4,0.3715
+text_chart,0.03,20261021,PLP-Inspired Experimental Prototype,4,14.5257
+text_chart,0.03,20261021,Bilateral,4,5.0224
+text_chart,0.03,20261021,Median,4,0.3351
+text_chart,0.03,20261021,Noisy input,4,0.2573
+text_chart,0.03,20261021,Median,5,0.2925
+text_chart,0.03,20261021,Noisy input,5,0.2657
+text_chart,0.03,20261021,PLP-Inspired Experimental Prototype,5,11.3173
+text_chart,0.03,20261021,Bilateral,5,5.2386
+text_chart,0.03,20261021,Gaussian,5,0.3642
+text_chart,0.03,20261021,PLP-Inspired Experimental Prototype,6,15.7199
+text_chart,0.03,20261021,Bilateral,6,4.8016
+text_chart,0.03,20261021,Noisy input,6,0.2764
+text_chart,0.03,20261021,Median,6,0.3289
+text_chart,0.03,20261021,Gaussian,6,0.3833
+text_chart,0.03,20261022,Gaussian,0,0.355
+text_chart,0.03,20261022,Bilateral,0,7.6601
+text_chart,0.03,20261022,Noisy input,0,0.355
+text_chart,0.03,20261022,PLP-Inspired Experimental Prototype,0,14.1084
+text_chart,0.03,20261022,Median,0,0.5058
+text_chart,0.03,20261022,PLP-Inspired Experimental Prototype,1,13.344
+text_chart,0.03,20261022,Gaussian,1,0.5723
+text_chart,0.03,20261022,Noisy input,1,0.5618
+text_chart,0.03,20261022,Median,1,0.867
+text_chart,0.03,20261022,Bilateral,1,5.3811
+text_chart,0.03,20261022,Noisy input,2,0.2714
+text_chart,0.03,20261022,Gaussian,2,0.347
+text_chart,0.03,20261022,Bilateral,2,5.2884
+text_chart,0.03,20261022,PLP-Inspired Experimental Prototype,2,15.6764
+text_chart,0.03,20261022,Median,2,0.382
+text_chart,0.03,20261022,Noisy input,3,0.3105
+text_chart,0.03,20261022,PLP-Inspired Experimental Prototype,3,20.4758
+text_chart,0.03,20261022,Bilateral,3,7.4049
+text_chart,0.03,20261022,Median,3,0.4028
+text_chart,0.03,20261022,Gaussian,3,0.4369
+text_chart,0.03,20261022,Bilateral,4,4.9358
+text_chart,0.03,20261022,Median,4,0.3074
+text_chart,0.03,20261022,Noisy input,4,0.4781
+text_chart,0.03,20261022,PLP-Inspired Experimental Prototype,4,17.4228
+text_chart,0.03,20261022,Gaussian,4,0.7773
+text_chart,0.03,20261022,Gaussian,5,0.4643
+text_chart,0.03,20261022,Noisy input,5,0.3532
+text_chart,0.03,20261022,PLP-Inspired Experimental Prototype,5,21.9902
+text_chart,0.03,20261022,Median,5,0.4346
+text_chart,0.03,20261022,Bilateral,5,5.4779
+text_chart,0.03,20261022,Median,6,0.275
+text_chart,0.03,20261022,Noisy input,6,0.2273
+text_chart,0.03,20261022,Bilateral,6,5.5777
+text_chart,0.03,20261022,Gaussian,6,0.5841
+text_chart,0.03,20261022,PLP-Inspired Experimental Prototype,6,11.6953
+text_chart,0.06,20261020,Noisy input,0,0.307
+text_chart,0.06,20261020,Bilateral,0,7.0404
+text_chart,0.06,20261020,PLP-Inspired Experimental Prototype,0,17.3206
+text_chart,0.06,20261020,Gaussian,0,0.9441
+text_chart,0.06,20261020,Median,0,1.135
+text_chart,0.06,20261020,Bilateral,1,8.3191
+text_chart,0.06,20261020,Median,1,0.4342
+text_chart,0.06,20261020,Gaussian,1,0.6617
+text_chart,0.06,20261020,Noisy input,1,0.3755
+text_chart,0.06,20261020,PLP-Inspired Experimental Prototype,1,13.3602
+text_chart,0.06,20261020,PLP-Inspired Experimental Prototype,2,16.5268
+text_chart,0.06,20261020,Median,2,0.3797
+text_chart,0.06,20261020,Bilateral,2,9.9147
+text_chart,0.06,20261020,Noisy input,2,0.3485
+text_chart,0.06,20261020,Gaussian,2,0.4395
+text_chart,0.06,20261020,Bilateral,3,5.0505
+text_chart,0.06,20261020,PLP-Inspired Experimental Prototype,3,13.4868
+text_chart,0.06,20261020,Median,3,0.8233
+text_chart,0.06,20261020,Noisy input,3,0.4595
+text_chart,0.06,20261020,Gaussian,3,0.6443
+text_chart,0.06,20261020,Noisy input,4,0.6805
+text_chart,0.06,20261020,Gaussian,4,0.4861
+text_chart,0.06,20261020,PLP-Inspired Experimental Prototype,4,11.6467
+text_chart,0.06,20261020,Bilateral,4,6.9023
+text_chart,0.06,20261020,Median,4,0.4212
+text_chart,0.06,20261020,Gaussian,5,0.3558
+text_chart,0.06,20261020,Noisy input,5,0.2514
+text_chart,0.06,20261020,Median,5,0.2963
+text_chart,0.06,20261020,PLP-Inspired Experimental Prototype,5,12.5625
+text_chart,0.06,20261020,Bilateral,5,5.997
+text_chart,0.06,20261020,Median,6,0.3962
+text_chart,0.06,20261020,Noisy input,6,0.2892
+text_chart,0.06,20261020,PLP-Inspired Experimental Prototype,6,13.2033
+text_chart,0.06,20261020,Gaussian,6,0.433
+text_chart,0.06,20261020,Bilateral,6,5.2426
+text_chart,0.06,20261021,Bilateral,0,7.8986
+text_chart,0.06,20261021,Gaussian,0,0.9057
+text_chart,0.06,20261021,PLP-Inspired Experimental Prototype,0,14.6704
+text_chart,0.06,20261021,Median,0,0.3114
+text_chart,0.06,20261021,Noisy input,0,0.2607
+text_chart,0.06,20261021,Median,1,0.2932
+text_chart,0.06,20261021,PLP-Inspired Experimental Prototype,1,12.5402
+text_chart,0.06,20261021,Bilateral,1,4.577
+text_chart,0.06,20261021,Noisy input,1,0.2235
+text_chart,0.06,20261021,Gaussian,1,0.2788
+text_chart,0.06,20261021,PLP-Inspired Experimental Prototype,2,11.8255
+text_chart,0.06,20261021,Bilateral,2,5.9657
+text_chart,0.06,20261021,Gaussian,2,0.3044
+text_chart,0.06,20261021,Noisy input,2,0.2086
+text_chart,0.06,20261021,Median,2,0.2542
+text_chart,0.06,20261021,Gaussian,3,0.2693
+text_chart,0.06,20261021,PLP-Inspired Experimental Prototype,3,12.6033
+text_chart,0.06,20261021,Bilateral,3,5.0574
+text_chart,0.06,20261021,Median,3,0.2557
+text_chart,0.06,20261021,Noisy input,3,0.2017
+text_chart,0.06,20261021,Noisy input,4,0.2188
+text_chart,0.06,20261021,Gaussian,4,0.2927
+text_chart,0.06,20261021,PLP-Inspired Experimental Prototype,4,12.5422
+text_chart,0.06,20261021,Bilateral,4,4.5457
+text_chart,0.06,20261021,Median,4,0.2546
+text_chart,0.06,20261021,Bilateral,5,4.3708
+text_chart,0.06,20261021,PLP-Inspired Experimental Prototype,5,10.7022
+text_chart,0.06,20261021,Median,5,0.5239
+text_chart,0.06,20261021,Gaussian,5,0.8977
+text_chart,0.06,20261021,Noisy input,5,0.5693
+text_chart,0.06,20261021,Bilateral,6,8.8019
+text_chart,0.06,20261021,PLP-Inspired Experimental Prototype,6,13.0996
+text_chart,0.06,20261021,Median,6,0.2974
+text_chart,0.06,20261021,Gaussian,6,0.3176
+text_chart,0.06,20261021,Noisy input,6,0.2379
+text_chart,0.06,20261022,Noisy input,0,0.34
+text_chart,0.06,20261022,Median,0,0.3019
+text_chart,0.06,20261022,PLP-Inspired Experimental Prototype,0,12.1401
+text_chart,0.06,20261022,Gaussian,0,0.3582
+text_chart,0.06,20261022,Bilateral,0,5.1016
+text_chart,0.06,20261022,PLP-Inspired Experimental Prototype,1,10.428
+text_chart,0.06,20261022,Gaussian,1,0.3643
+text_chart,0.06,20261022,Noisy input,1,0.2833
+text_chart,0.06,20261022,Bilateral,1,8.9106
+text_chart,0.06,20261022,Median,1,0.9447
+text_chart,0.06,20261022,PLP-Inspired Experimental Prototype,2,12.995
+text_chart,0.06,20261022,Gaussian,2,0.3749
+text_chart,0.06,20261022,Bilateral,2,4.4437
+text_chart,0.06,20261022,Median,2,0.292
+text_chart,0.06,20261022,Noisy input,2,0.2445
+text_chart,0.06,20261022,Gaussian,3,0.3028
+text_chart,0.06,20261022,Noisy input,3,0.2419
+text_chart,0.06,20261022,Median,3,0.2768
+text_chart,0.06,20261022,PLP-Inspired Experimental Prototype,3,13.5351
+text_chart,0.06,20261022,Bilateral,3,4.5192
+text_chart,0.06,20261022,Bilateral,4,4.5072
+text_chart,0.06,20261022,Gaussian,4,0.2936
+text_chart,0.06,20261022,Median,4,0.2674
+text_chart,0.06,20261022,Noisy input,4,0.2279
+text_chart,0.06,20261022,PLP-Inspired Experimental Prototype,4,11.243
+text_chart,0.06,20261022,Gaussian,5,0.8551
+text_chart,0.06,20261022,Bilateral,5,4.393
+text_chart,0.06,20261022,PLP-Inspired Experimental Prototype,5,11.9976
+text_chart,0.06,20261022,Noisy input,5,0.2632
+text_chart,0.06,20261022,Median,5,0.2942
+text_chart,0.06,20261022,Bilateral,6,5.0631
+text_chart,0.06,20261022,Gaussian,6,0.3122
+text_chart,0.06,20261022,Median,6,0.2732
+text_chart,0.06,20261022,PLP-Inspired Experimental Prototype,6,12.6845
+text_chart,0.06,20261022,Noisy input,6,0.3571
+text_chart,0.1,20261020,PLP-Inspired Experimental Prototype,0,13.2761
+text_chart,0.1,20261020,Noisy input,0,0.5316
+text_chart,0.1,20261020,Gaussian,0,0.4484
+text_chart,0.1,20261020,Median,0,0.2749
+text_chart,0.1,20261020,Bilateral,0,4.9833
+text_chart,0.1,20261020,Median,1,0.2964
+text_chart,0.1,20261020,Bilateral,1,6.0531
+text_chart,0.1,20261020,PLP-Inspired Experimental Prototype,1,12.382
+text_chart,0.1,20261020,Noisy input,1,0.3529
+text_chart,0.1,20261020,Gaussian,1,0.2944
+text_chart,0.1,20261020,PLP-Inspired Experimental Prototype,2,11.1527
+text_chart,0.1,20261020,Bilateral,2,4.7721
+text_chart,0.1,20261020,Gaussian,2,0.3123
+text_chart,0.1,20261020,Noisy input,2,0.2196
+text_chart,0.1,20261020,Median,2,0.2727
+text_chart,0.1,20261020,Gaussian,3,0.3168
+text_chart,0.1,20261020,PLP-Inspired Experimental Prototype,3,10.7719
+text_chart,0.1,20261020,Bilateral,3,4.6456
+text_chart,0.1,20261020,Noisy input,3,0.2681
+text_chart,0.1,20261020,Median,3,0.2905
+text_chart,0.1,20261020,PLP-Inspired Experimental Prototype,4,11.0659
+text_chart,0.1,20261020,Bilateral,4,4.5771
+text_chart,0.1,20261020,Noisy input,4,0.279
+text_chart,0.1,20261020,Gaussian,4,0.3245
+text_chart,0.1,20261020,Median,4,0.263
+text_chart,0.1,20261020,Bilateral,5,5.8725
+text_chart,0.1,20261020,Gaussian,5,0.4474
+text_chart,0.1,20261020,Median,5,0.2728
+text_chart,0.1,20261020,PLP-Inspired Experimental Prototype,5,10.5614
+text_chart,0.1,20261020,Noisy input,5,0.341
+text_chart,0.1,20261020,Gaussian,6,0.2969
+text_chart,0.1,20261020,Bilateral,6,7.0747
+text_chart,0.1,20261020,PLP-Inspired Experimental Prototype,6,12.6063
+text_chart,0.1,20261020,Median,6,0.3689
+text_chart,0.1,20261020,Noisy input,6,0.2217
+text_chart,0.1,20261021,PLP-Inspired Experimental Prototype,0,13.1503
+text_chart,0.1,20261021,Median,0,0.5871
+text_chart,0.1,20261021,Gaussian,0,0.322
+text_chart,0.1,20261021,Bilateral,0,7.7082
+text_chart,0.1,20261021,Noisy input,0,0.2941
+text_chart,0.1,20261021,Gaussian,1,0.372
+text_chart,0.1,20261021,Median,1,0.4597
+text_chart,0.1,20261021,PLP-Inspired Experimental Prototype,1,10.9389
+text_chart,0.1,20261021,Noisy input,1,0.3583
+text_chart,0.1,20261021,Bilateral,1,4.4988
+text_chart,0.1,20261021,Noisy input,2,0.2148
+text_chart,0.1,20261021,Gaussian,2,0.3283
+text_chart,0.1,20261021,Bilateral,2,4.6158
+text_chart,0.1,20261021,PLP-Inspired Experimental Prototype,2,15.0764
+text_chart,0.1,20261021,Median,2,0.4645
+text_chart,0.1,20261021,Median,3,0.2716
+text_chart,0.1,20261021,Bilateral,3,4.4708
+text_chart,0.1,20261021,PLP-Inspired Experimental Prototype,3,10.9156
+text_chart,0.1,20261021,Gaussian,3,0.4705
+text_chart,0.1,20261021,Noisy input,3,0.2343
+text_chart,0.1,20261021,Bilateral,4,6.1253
+text_chart,0.1,20261021,PLP-Inspired Experimental Prototype,4,14.854
+text_chart,0.1,20261021,Gaussian,4,0.4146
+text_chart,0.1,20261021,Median,4,0.2721
+text_chart,0.1,20261021,Noisy input,4,0.2197
+text_chart,0.1,20261021,Median,5,0.2701
+text_chart,0.1,20261021,Gaussian,5,0.297
+text_chart,0.1,20261021,Noisy input,5,0.3636
+text_chart,0.1,20261021,PLP-Inspired Experimental Prototype,5,11.9111
+text_chart,0.1,20261021,Bilateral,5,4.9117
+text_chart,0.1,20261021,Gaussian,6,0.4555
+text_chart,0.1,20261021,Noisy input,6,0.3193
+text_chart,0.1,20261021,PLP-Inspired Experimental Prototype,6,13.6568
+text_chart,0.1,20261021,Median,6,0.4032
+text_chart,0.1,20261021,Bilateral,6,5.1893
+text_chart,0.1,20261022,PLP-Inspired Experimental Prototype,0,14.1564
+text_chart,0.1,20261022,Gaussian,0,0.5389
+text_chart,0.1,20261022,Noisy input,0,0.2133
+text_chart,0.1,20261022,Median,0,0.3408
+text_chart,0.1,20261022,Bilateral,0,7.393
+text_chart,0.1,20261022,PLP-Inspired Experimental Prototype,1,16.1682
+text_chart,0.1,20261022,Gaussian,1,0.5126
+text_chart,0.1,20261022,Noisy input,1,0.2122
+text_chart,0.1,20261022,Median,1,0.2499
+text_chart,0.1,20261022,Bilateral,1,4.6929
+text_chart,0.1,20261022,PLP-Inspired Experimental Prototype,2,10.4653
+text_chart,0.1,20261022,Gaussian,2,0.5953
+text_chart,0.1,20261022,Noisy input,2,0.2501
+text_chart,0.1,20261022,Median,2,0.2575
+text_chart,0.1,20261022,Bilateral,2,4.5051
+text_chart,0.1,20261022,Gaussian,3,0.2664
+text_chart,0.1,20261022,Noisy input,3,0.3803
+text_chart,0.1,20261022,PLP-Inspired Experimental Prototype,3,10.4002
+text_chart,0.1,20261022,Bilateral,3,4.5426
+text_chart,0.1,20261022,Median,3,0.2746
+text_chart,0.1,20261022,Gaussian,4,0.2928
+text_chart,0.1,20261022,Median,4,0.2657
+text_chart,0.1,20261022,Bilateral,4,4.4478
+text_chart,0.1,20261022,Noisy input,4,0.3466
+text_chart,0.1,20261022,PLP-Inspired Experimental Prototype,4,11.9963
+text_chart,0.1,20261022,Bilateral,5,4.6185
+text_chart,0.1,20261022,Gaussian,5,0.2955
+text_chart,0.1,20261022,PLP-Inspired Experimental Prototype,5,11.5887
+text_chart,0.1,20261022,Median,5,0.3738
+text_chart,0.1,20261022,Noisy input,5,0.2194
+text_chart,0.1,20261022,PLP-Inspired Experimental Prototype,6,10.8326
+text_chart,0.1,20261022,Gaussian,6,0.4414
+text_chart,0.1,20261022,Bilateral,6,4.4404
+text_chart,0.1,20261022,Median,6,0.2568
+text_chart,0.1,20261022,Noisy input,6,0.2116

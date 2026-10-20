@@ -2,6 +2,34 @@
 import cv2
 import numpy as np
 
+def wiener_plane(image, sigma):
+    """Single 5x5 local Wiener estimator; independent of the paper operators."""
+    x=np.asarray(image,dtype=np.float32)
+    mean=cv2.boxFilter(x,-1,(5,5),borderType=cv2.BORDER_REFLECT_101)
+    var=np.maximum(cv2.boxFilter(x*x,-1,(5,5),borderType=cv2.BORDER_REFLECT_101)-mean*mean,0)
+    gain=np.maximum(var-sigma*sigma,0)/(var+1e-8)
+    return mean+gain*(x-mean)
+
+def guided_stage(plane,sigma):
+    """Legacy second spatial pass, factored out for an honest ablation."""
+    m=cv2.boxFilter(plane,-1,(5,5),borderType=cv2.BORDER_REFLECT_101)
+    v=np.maximum(cv2.boxFilter(plane*plane,-1,(5,5),borderType=cv2.BORDER_REFLECT_101)-m*m,0)
+    a=v/(v+0.25*sigma*sigma+1e-8);b=m-a*m
+    return cv2.boxFilter(a,-1,(5,5),borderType=cv2.BORDER_REFLECT_101)*plane+cv2.boxFilter(b,-1,(5,5),borderType=cv2.BORDER_REFLECT_101)
+
+def latch(image):
+    """Nearest 10-bit intensity quantization, not phase wrap or localization."""
+    return (np.rint(np.clip(image,0,1)*1023)/1023).astype(np.float32)
+
+def prototype_v2(image,sigma):
+    """Edge-retention variant: remove the legacy second smoothing pass.
+
+    This is a single local Wiener estimator plus 10-bit quantization. It trades
+    residual noise for less gradient attenuation and less work; quality gains
+    are not guaranteed. It is not a validated implementation of PLP equations.
+    """
+    return latch(wiener_plane(image,sigma))
+
 def prototype(image, sigma, return_stages=False):
     """Plane: local Wiener shrinkage; Line: guided smoothing; Point: 10-bit latching.
 

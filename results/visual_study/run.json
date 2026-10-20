@@ -1,0 +1,17 @@
+{
+  "measured_at_utc": "2026-10-20T05:02:40.576083+00:00",
+  "repeats": 7,
+  "warmups": 2,
+  "images": 6,
+  "noise_levels": [
+    0.03,
+    0.06,
+    0.1
+  ],
+  "seeds": [
+    20261020,
+    20261021,
+    20261022
+  ],
+  "opencv_threads": 1
+}
