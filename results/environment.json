@@ -1,0 +1,29 @@
+{
+  "measured_at_utc": "2026-10-20T04:15:07.960359+00:00",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.10",
+  "processor": "Intel64 Family 6 Model 151 Stepping 5, GenuineIntel",
+  "logical_cpus": 12,
+  "physical_cpus": 6,
+  "ram_bytes": 16908730368,
+  "packages": {
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "scikit-image": "0.26.0",
+    "opencv-python-headless": "5.0.0.93",
+    "Pillow": "13.0.0",
+    "imageio": "2.38.1",
+    "imageio-ffmpeg": "0.6.0",
+    "psutil": "7.2.2"
+  },
+  "seed": 20261020,
+  "repeats": 7,
+  "warmups": 2,
+  "opencv_threads": 1,
+  "thread_environment": {
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1"
+  },
+  "cpu_model": "12th Gen Intel(R) Core(TM) i5-12400"
+}

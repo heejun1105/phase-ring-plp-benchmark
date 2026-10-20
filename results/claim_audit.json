@@ -1,0 +1,15 @@
+{
+  "contraction_factor": 0.984375,
+  "six_step_bound_relative_to_initial": 0.9098367039259756,
+  "steps_for_bound_below_0_001": 439,
+  "prime_sum_counterexample": {
+    "N": 1024,
+    "p1": 3,
+    "p2": 5,
+    "magnitude": 0.002387817289096726,
+    "real": -0.0011939086445484173,
+    "imag": 0.0020679104319534245,
+    "expected_by_exact_delta_claim": 0
+  },
+  "pixels_per_second_for_4k_in_0_08ms": 103679999999.99998
+}
