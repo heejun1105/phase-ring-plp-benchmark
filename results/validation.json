@@ -1,6 +1,6 @@
 {
   "status": "passed",
-  "check_count": 9588,
+  "check_count": 10305,
   "python_tests": 11,
   "retained_numpy_rows": 52,
   "expanded_noise_cases": 54,
@@ -48,11 +48,11 @@
     },
     {
       "name": "noise_reduction_comparison",
-      "gif_bytes": 8001182,
-      "gif_frames": 150,
-      "gif_duration_ms": 12000,
-      "decoded_source_frame_mean_abs_error": 1.6421161265432098,
-      "mp4_frames": 288,
+      "gif_bytes": 4558989,
+      "gif_frames": 43,
+      "gif_duration_ms": 15000,
+      "decoded_source_frame_mean_abs_error": 2.2648707561728396,
+      "mp4_frames": 360,
       "mp4_fps": 24.0,
       "mp4_size": [
         1920,
@@ -84,8 +84,23 @@
         1920,
         1080
       ]
+    },
+    {
+      "name": "native_cpp_performance",
+      "gif_bytes": 982211,
+      "gif_frames": 76,
+      "gif_duration_ms": 15000,
+      "decoded_source_frame_mean_abs_error": 1.447361111111111,
+      "mp4_frames": 360,
+      "mp4_fps": 24.0,
+      "mp4_size": [
+        1920,
+        1080
+      ]
     }
   ],
+  "native_control_audit": true,
+  "native_audit_repetitions": 225,
   "source_confirmed": true,
   "rtl_simulation": "not run; testbench supplied",
   "silicon_validation": "not performed"

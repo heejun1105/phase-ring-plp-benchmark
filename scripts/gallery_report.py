@@ -189,6 +189,9 @@ Both prototype variants must retain the label **PLP-Inspired Experimental Protot
         inventory.append(dict(package=name,version=importlib.metadata.version(name),license_expression=m.get('License-Expression'),
             license_metadata=(m.get('License') or '')[:1200],license_files=m.get_all('License-File') or [],project_urls=m.get_all('Project-URL') or []))
     (ROOT/'results/visual_dependency_licenses.json').write_text(json.dumps(inventory,indent=2),encoding='utf-8')
+    if (ROOT/'results/native_audit_benchmark.csv').exists():
+        from scripts.refinement_report import main as refinement
+        refinement()
     print('Built visual-first README and separate measurement, ablation and quality documents.',flush=True)
 
 if __name__=='__main__':main()

@@ -1,114 +1,110 @@
 # Phase-Ring PIM & PLP Engine
 
-**Watch unit-phase multiplication become modular addition, bit truncation and an addressed LUT read.**
+**Visualizing Modular Phase Computing, Processing Efficiency, and Experimental Signal Processing**
 
-Executable CPU models and honest measurements inspired by Paper VIII. The circuit views are conceptual; the denoisers are explicitly experimental. No fabricated PIM chip is demonstrated.
+Executable unit-phase arithmetic, independently measured CPU workloads, and clearly labeled experimental image processing. Start with the measured race; then follow the bits and memory address.
 
-### Add -> overflow -> memory address
+### 1. Native C++ Performance Comparison
 
-![Phase overflow and addressed SRAM LUT](animations/phase_overflow_lut.gif)
+![Native C++ performance comparison](animations/native_cpp_performance.gif)
 
-**Direct arithmetic reproduction.** A rotating phase dial, 10/11-bit registers and a selected LUT word stay linked across all three required rollover examples.
+**10 million shared phase products.** Z1024 / Z2048 take **36.95 / 33.26 ms**, versus **330.40 ms** for the four-trig product baseline (**8.94x / 9.93x** shorter median runtime). The mathematically equivalent **angle-sum + two-trig control takes 195.61 ms**, reducing the ratios to **5.29x / 5.88x**. All use float64 angle inputs and complex<float> outputs; ring outputs include floor/Q15 approximation. This specific CPU workload does not measure general FP32 or physical PIM acceleration.
 
-### The same inputs take different paths
+[1080p MP4](animations/video/native_cpp_performance.mp4) · [Renderer](scripts/visualize_v4.py) · [C++ code](native/audit_benchmark.cpp) · [New data](results/native_audit_benchmark.csv) · [Audit and reproducibility](docs/native_audit.md)
+
+### 2. Phase Overflow & SRAM LUT
+
+![Phase overflow and SRAM LUT](animations/phase_overflow_lut.gif)
+
+**Direct arithmetic reproduction:** addition, discarded carry and addressed Q15 table remain linked. [MP4](animations/video/phase_overflow_lut.mp4) · [Renderer](scripts/visualize_v3.py) · [RTL](hardware/phase_adder.v) · [Reference vectors](results/reference_vectors.csv)
+
+### 3. Computational Architecture
 
 ![Computational architecture](animations/computing_architecture.gif)
 
-**Conceptual circuit animation with real values.** Both branches restore complex output; paired Q15 lookup and quantization are explicit. Editorial pacing and block count do not imply a speed advantage.
+**Conceptual dataflow with real values:** both paths reconstruct complex output. Block count and editorial pacing do not imply physical latency. [MP4](animations/video/computing_architecture.mp4) · [Renderer](scripts/visualize_v3.py) · [Model](src/phase_ring/__init__.py) · [Vectors](results/reference_vectors.csv)
 
-### Race the measured CPU paths
+## A. NumPy CPU Benchmark
 
-![Real computational speed race](animations/benchmark_speed_race.gif)
+![NumPy benchmark speed race](animations/benchmark_speed_race.gif)
 
-**Independently measured results.** Four workload sizes, two distinct scopes: arithmetic kernels first, then the full raw-angle-to-complex pipeline. Slower ring results are retained.
-
-## Demo gallery
-
-| Demo | Watch GIF | 1080p H.264 | Evidence / code / data |
-| --- | --- | --- | --- |
-| Computational architecture | [GIF](animations/computing_architecture.gif) | [MP4](animations/video/computing_architecture.mp4) | Conceptual dataflow + real numerical example; [code](src/phase_ring/__init__.py), [data](results/reference_vectors.csv) |
-| Real CPU speed race | [GIF](animations/benchmark_speed_race.gif) | [MP4](animations/video/benchmark_speed_race.mp4) | Measured NumPy medians; kernel and full pipeline; [code](src/benchmark/run.py), [data](results/benchmark.csv) |
-| Phase overflow and SRAM LUT | [GIF](animations/phase_overflow_lut.gif) | [MP4](animations/video/phase_overflow_lut.mp4) | Bit-exact modular arithmetic and Q15 lookup; [code](hardware/phase_adder.v), [data](results/reference_vectors.csv) |
-| Noise reduction and error maps | [GIF](animations/noise_reduction_comparison.gif) | [MP4](animations/video/noise_reduction_comparison.mp4) | Experimental prototype; common-scale errors; [code](src/benchmark/visual_study.py), [data](results/expanded_noise.csv) |
-| Quantization and precision | [GIF](animations/phase_precision_comparison.gif) | [MP4](animations/video/phase_precision_comparison.mp4) | Real floor quantization and complex64 reference; [code](src/phase_ring/__init__.py), [data](results/precision_sweep.csv) |
-| Edge preservation and ablation | [GIF](animations/edge_preservation_comparison.gif) | [MP4](animations/video/edge_preservation_comparison.mp4) | Legacy V1 versus detail/latency V2; [code](src/plp/__init__.py), [data](results/noise_ablation.csv) |
-
-All six masters are 1920x1080, H.264, 24 fps and 12 seconds. GIFs are 960x540, looping at a nominal 12.5 fps. The three hero GIFs total approximately 2.76 MB. [Shared animation renderer](scripts/visualize_v3.py) · [Presentation semantics and quality review](docs/visual_quality.md).
-
-### See the precision cost
-
-![Phase quantization and precision](animations/phase_precision_comparison.gif)
-
-A 4-degree window magnifies the true floor-quantization steps. Z1024 resolves 0.3515625 degrees per bin; Z2048 resolves 0.17578125. The orange gaps are actual floor error. Measured product RMSE is reported separately from this single-input illustration.
-
-### Image processing: a research supplement
-
-The image demos compare Clean Original, Noisy Input, Bilateral and a **PLP-Inspired Experimental Prototype - Not a Validated Implementation of the Original PLP Equations**. They use synchronized zooms, actual pixel/edge errors, true profiles and measured processing time. They are kept out of the hero section because this study does not establish general denoising superiority.
-
-[Noise GIF](animations/noise_reduction_comparison.gif) / [MP4](animations/video/noise_reduction_comparison.mp4) · [Ablation GIF](animations/edge_preservation_comparison.gif) / [MP4](animations/video/edge_preservation_comparison.mp4)
-
-![Full-suite quality, edge and latency tradeoffs](results/visual_study/suite_tradeoffs.png)
-
-Legacy V1 remains available unchanged. V2 removes its second spatial smoothing pass: mean edge fidelity and runtime improve, while mean PSNR and SSIM decline. This is an exposed tradeoff, not a universal quality improvement. The fixed microtext example has V2-minus-Bilateral PSNR **-0.274 dB**, ranking **34/54** in ascending gain. It was declared before quality comparison, not selected as the best case. [Full image study and ablation](docs/visual_study.md).
-
-## Independently measured CPU results
-
-At 10,000,000 products on 12th Gen Intel(R) Core(TM) i5-12400, NumPy 2.5.4, two warm-ups and seven repetitions:
-
-| Method | Kernel only (ms) | End-to-end (ms) |
+| NumPy CPU path / 10M | Kernel ms | Raw angles to complex64 ms |
 | --- | --- | --- |
 | FP32 | 26.707 | 765.735 |
 | Z1024 | 15.851 | 683.486 |
 | Z2048 | 15.061 | 695.404 |
 
-**Kernel outputs differ:** FP32 returns complex values, integer addition returns indices. With common pre-encoded complex output at 10,000,000, FP32 takes **26.71 ms**, Z1024 + LUT **231.04 ms**. Full-pipeline timings include input conversion, quantization, LUT lookup and restoration. These CPU results do not validate hardware energy, area or in-memory performance.
+Kernel outputs differ: FP32 returns complex values; masked integer addition returns indices. The same pre-encoded complex-output comparison is **26.71 ms FP32** versus **231.04 ms Z1024 + LUT**. NumPy uses separate array operations and allocations; its input dataset differs from native C++. These are separate experiments.
 
-A separate optimized C++ run is included: at 10M products its raw-angle medians are FP32 **375.66 ms**, Z1024 **42.00 ms**, Z2048 **39.26 ms**. Native loops are fused and preallocated, so these numbers cannot be attributed to language alone. [Native method and reproduction](docs/native_benchmark.md).
+[Race MP4](animations/video/benchmark_speed_race.mp4) · [Renderer](scripts/visualize_v3.py) · [Code](src/benchmark/run.py) · [Data](results/benchmark.csv) · [All measured results](docs/measurements.md)
 
-[All sizes, dispersion, throughput, memory and accuracy](docs/measurements.md) · [NumPy environment](results/environment.json) · [Raw samples](results/timing_samples.csv)
+## B. Optimized Native C++ Benchmark
 
-## Implementation and evidence boundaries
+| Native path / 10M products | Median ms | Sample SD ms | M products/s | Angular RMSE rad |
+| --- | --- | --- | --- | --- |
+| FP32 four-trig product | 330.396 | 21.774 | 30.27 | 2.571e-08 |
+| FP32 summed-angle trig | 195.607 | 19.642 | 51.12 | 1.188e-08 |
+| Z1024 Q15 end-to-end | 36.952 | 4.425 | 270.62 | 6.617e-03 |
+| Z2048 Q15 end-to-end | 33.259 | 2.304 | 300.67 | 3.311e-03 |
+| Z2048 float LUT control | 20.095 | 2.880 | 497.63 | 3.311e-03 |
 
-- **Paper implementations / faithful arithmetic:** Eq. (1)-(4), 10/11-bit masked addition, Listing 2 signed-Q15 sine LUT, adapted Listing 1 RTL with deterministic memory initialization. All modular input pairs are checked in software.
-- **Independent experimental design:** V1 local Wiener + guided smoothing + intensity quantization; V2 local Wiener + intensity quantization. Neither implements the PLP master equation, prime-orbit erasure, entropy absorption or Dirac sub-pixel recovery.
-- **Paper-Reported Estimates:** approximately 0.015 pJ/op and 270 um^2 for a 10-bit adder (VIII Table I); 48.6 dB PSNR, 0.993 SSIM and 0.036 pJ/pixel (appended IX Table II). No independent implementation evidence for those hardware/image claims was supplied. They never populate the measured CSV files.
+Same inputs and output representation within this new audit, preallocated fused loops, one CPU thread, `-O3 -std=c++17`, no fast-math. Two warm-ups and nine randomized repeats. LUT construction and allocation are excluded; quantization, table access and output restoration are timed. The float-LUT control is also quantized, not full-precision FP32.
 
-[Source-to-code alignment](docs/source_alignment.md) · [Full paper review](docs/paper_review.md) · [Missing PLP definitions and image-study limits](docs/visual_study.md) · [RTL status](docs/hardware.md)
+The retained earlier native run measured **375.66 / 42.00 / 39.26 ms**. It is stored separately and never averaged with the new audit. A separate 10M repeat changed medians by up to 10.32% and reversed the Z1024/Z2048 speed ranking. Fewer transcendental evaluations, quantized representation, fused memory passes and compiler choices all affect the gap. The new two-trig control exposes the baseline dependence; it does not isolate an intrinsic adder advantage.
 
-## Reproduce
+[Original native method](docs/native_benchmark.md) · [New audit](docs/native_audit.md) · [Raw repeats](results/native_audit_samples.csv) · [Accuracy](results/native_audit_accuracy.csv) · [Compiler diagnostics](results/native_audit_compiler.json) · [Environment](results/native_audit_environment.json)
 
-Use Python 3.12. Commands below run from the repository root. A full run writes new current results; preserved measurements remain under `results/archive/pre-v3-db8bbe5/` and in the backup branch.
+## C. Mathematical and Architectural Comparison
+
+For unit-magnitude phasors, `exp(i*a) * exp(i*b) = exp(i*(a+b))`. Quantize each angle by `floor(angle*N/(2*pi))`, add and mask by `N-1`, then read paired Q15 cosine/sine. This reproduces the paper's modular phase arithmetic and signed-Q15 table; it is not general complex MAC equivalence. The paired LUT occupies 4 / 8 KiB for N=1024 / 2048; the scalar sine table is 2 / 4 KiB.
+
+![Phase precision comparison](animations/phase_precision_comparison.gif)
+
+True floor-quantization steps in a magnified 4-degree input window. Product RMSE uses two quantized inputs and is reported separately. [MP4](animations/video/phase_precision_comparison.mp4) · [Renderer](scripts/visualize_v3.py) · [Code](src/phase_ring/__init__.py) · [Recorded sweep](results/precision_sweep.csv) · [Source alignment](docs/source_alignment.md)
+
+## D. Paper-Reported Hardware Estimates
+
+Paper VIII reports approximately **0.015 pJ/op, 270 um^2 and ~4 FO4** for a 10-bit adder. The appended IX reports **48.6 dB PSNR, 0.993 SSIM and 0.036 pJ/pixel**. These are **unverified paper estimates**, separate from every measured CPU/image CSV. No SRAM macro, synthesis, FPGA or silicon energy/area/timing validation was performed. CPU ratios cannot validate those claims. [Paper review](docs/paper_review.md) · [RTL status](docs/hardware.md)
+
+## Research Supplement: Faster Processing vs. Noise Removal Quality
+
+![Image-first noise comparison](animations/noise_reduction_comparison.gif)
+
+Large actual-image comparisons come first, followed by synchronized detail crops and shared-scale errors. The sliding boundary is an **editorial wipe between completed outputs**, not an iterative PLP process. [Noise MP4](animations/video/noise_reduction_comparison.mp4) · [Renderer](scripts/visualize_noise_v4.py) · [Code](src/plp/__init__.py) · [All 54 cases](results/expanded_noise.csv) · [Visual revision](docs/noise_visual_revision.md)
+
+**PLP-Inspired Experimental Prototype — Not a Validated Implementation of the Original PLP Equations**
+
+| 54-case arithmetic mean | PSNR dB | SSIM | Custom edge score | Mean timing median ms |
+| --- | --- | --- | --- | --- |
+| Bilateral | 34.142 | 0.821 | 0.897 | 5.279 |
+| Legacy V1 | 33.999 | 0.927 | 0.866 | 12.410 |
+| Prototype V2 | 32.686 | 0.862 | 0.879 | 6.082 |
+
+Legacy V1 uses local Wiener shrinkage + guided smoothing + 10-bit quantization; V2 removes guided smoothing. V2 lowers mean runtime and improves this mean edge score, while PSNR and SSIM decline. Bilateral also remains faster than V2 in this study. **Edge score** is a custom Sobel-fidelity score on the strongest clean edges, not a standardized perceptual metric. No general denoising superiority is established.
+
+[Retained edge/latency GIF](animations/edge_preservation_comparison.gif) · [MP4](animations/video/edge_preservation_comparison.mp4) · [Renderer](scripts/visualize_v3.py) · [Ablation data](results/noise_ablation.csv) · [Study, metric definitions and selection policy](docs/visual_study.md)
+
+## Reproduce and verify
+
+Python 3.12; run from the repository root. The original measurements remain unchanged by this refinement. Full remeasurement intentionally writes current-run result files; preserve them before running a new study.
 
 ```bash
 python -m venv .venv
 # Windows: .venv/Scripts/Activate.ps1
 # Linux/macOS: source .venv/bin/activate
 python -m pip install -r requirements.txt
-python scripts/reproduce.py
-```
-
-```bash
-# Optional fused native CPU benchmark:
 python -m pip install -r requirements-native.txt
-python scripts/reproduce.py --native
-
-# Reuse measurements and rebuild all six animations:
-python scripts/reproduce.py --skip-benchmark
-
-# Quick compute sizes / 3 repetitions; expanded image suite retained:
-python scripts/reproduce.py --quick
-
+python -m scripts.run_native_audit
+python -m scripts.visualize_v4
+python -m scripts.gallery_report
 python -m unittest discover -s tests -v
 python -m scripts.validate_v3
-python scripts/verify_source.py /path/to/reference.pdf
 ```
 
-The normal NumPy/expanded-image reproduction does not require a compiler. Native measurements are a separately requested step. First example-data access may require internet. Cross-platform fonts may alter generated text fixtures; committed clean images and fixture hashes identify the supplied run. [Methodology](docs/methodology.md), [image experiment](docs/visual_study.md), [native experiment](docs/native_benchmark.md).
+To repeat the earlier full NumPy/image experiment: `python scripts/reproduce.py`. To reuse all supplied measurements and rebuild media: `python scripts/reproduce.py --skip-benchmark`. [Native audit options](docs/native_audit.md) · [Original methodology](docs/methodology.md) · [Presentation semantics](docs/visual_quality.md) · [Retained-file verification](results/refinement_preservation.json)
 
-## Source, limitations and next steps
+Seven current GIF/MP4 pairs are provided: five retained 12-second demos, and the new native and revised noise 15-second demos. MP4: 1920x1080 / 24 fps. GIF: 960x540 / looping. Original legacy media also remains available in Git history and the backup branch.
 
-The user-designated nine-page Korean translation of Kim Chul's Paper VIII, dated October 1, 2026, is fingerprinted in [source_manifest.json](results/source_manifest.json). VIII is pages 1-5; the appended IX signal/image-processing paper is pages 6-9. The separate English edition is dated September 16, 2026. Original PDFs are excluded.
+## Source and limits
 
-The paper's unspecified discrete PLP estimator prevents a faithful full image implementation. CPU benchmarks do not validate a physical PIM architecture. The supplied RTL bench has not been run; no synthesis, FPGA or silicon power/area/timing result is claimed. The expanded study is six grayscale images with clipped additive Gaussian noise, not general video/RAW/super-resolution validation. The source archive DOI is a placeholder.
-
-Next: obtain the complete discrete PLP algorithm and source experiments, expand independently licensed images/noise models, run documented RTL/synthesis and memory-macro validation, then measure physical system energy. Project-wide license selection remains pending. [LICENSE](LICENSE) · [Third-party notices](THIRD_PARTY_NOTICES.md).
+The user-designated nine-page Korean translation of Kim Chul's Paper VIII (October 1, 2026) is fingerprinted in [source_manifest.json](results/source_manifest.json). VIII occupies pages 1–5; the appended image-processing IX occupies pages 6–9. Original PDFs are excluded. The source archive DOI is a placeholder. The paper lacks a complete discrete PLP estimator, so V1/V2 are independently designed substitutes; neither validates prime-orbit erasure, entropy absorption or Dirac recovery. Six grayscale images and clipped Gaussian noise do not establish general image/video/RAW performance. Project-wide licensing remains pending. [LICENSE](LICENSE) · [Third-party notices](THIRD_PARTY_NOTICES.md)

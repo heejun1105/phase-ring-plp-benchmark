@@ -18,7 +18,15 @@
     960,
     540
   ],
-  "gif_frame_ms": 80,
-  "duration_seconds": 12,
+  "gif_frame_ms": {
+    "retained": 80,
+    "native_cpp_performance": 100,
+    "noise_reduction_comparison": 100
+  },
+  "duration_seconds": {
+    "retained": 12,
+    "native_cpp_performance": 15,
+    "noise_reduction_comparison": 15
+  },
   "fonts": "Segoe UI / Consolas on supplied Windows host; DejaVu fallback; font binaries excluded"
 }

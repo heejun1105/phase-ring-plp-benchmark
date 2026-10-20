@@ -1,0 +1,104 @@
+{
+  "functions": {
+    "audit_fp32_product": {
+      "symbol_found": true,
+      "assembly_line_count": 161,
+      "call_targets": [
+        "__mulsc3",
+        "cos",
+        "sin"
+      ],
+      "call_site_count": 5,
+      "packed_instructions_observed": [],
+      "fused_instructions_observed": [],
+      "interpretation": "Packed instructions can combine operands or components within one item; they do not alone establish vectorization across input items."
+    },
+    "audit_fp32_sum": {
+      "symbol_found": true,
+      "assembly_line_count": 169,
+      "call_targets": [
+        "cos",
+        "sin"
+      ],
+      "call_site_count": 6,
+      "packed_instructions_observed": [],
+      "fused_instructions_observed": [],
+      "interpretation": "Packed instructions can combine operands or components within one item; they do not alone establish vectorization across input items."
+    },
+    "audit_z1024": {
+      "symbol_found": true,
+      "assembly_line_count": 109,
+      "call_targets": [],
+      "call_site_count": 0,
+      "packed_instructions_observed": [
+        "vdivpd",
+        "vmulpd"
+      ],
+      "fused_instructions_observed": [],
+      "interpretation": "Packed instructions can combine operands or components within one item; they do not alone establish vectorization across input items."
+    },
+    "audit_z2048": {
+      "symbol_found": true,
+      "assembly_line_count": 109,
+      "call_targets": [],
+      "call_site_count": 0,
+      "packed_instructions_observed": [
+        "vdivpd",
+        "vmulpd"
+      ],
+      "fused_instructions_observed": [],
+      "interpretation": "Packed instructions can combine operands or components within one item; they do not alone establish vectorization across input items."
+    },
+    "audit_float_lut": {
+      "symbol_found": true,
+      "assembly_line_count": 86,
+      "call_targets": [],
+      "call_site_count": 0,
+      "packed_instructions_observed": [
+        "vdivpd",
+        "vmulpd"
+      ],
+      "fused_instructions_observed": [],
+      "interpretation": "Packed instructions can combine operands or components within one item; they do not alone establish vectorization across input items."
+    }
+  },
+  "loop_remarks": [
+    "C:\\Users\\PC-R07\\Documents\\Codex\\2026-10-20\\files-pasted-by-the-user-viii\\outputs\\phase-ring-plp-benchmark\\native\\audit_benchmark.cpp:38:1: remark: loop not vectorized: library call cannot be vectorized. Try compiling with -fno-math-errno, -ffast-math, or similar flags [-Rpass-analysis=loop-vectorize]",
+    "C:\\Users\\PC-R07\\Documents\\Codex\\2026-10-20\\files-pasted-by-the-user-viii\\outputs\\phase-ring-plp-benchmark\\native\\audit_benchmark.cpp:37:1: remark: loop not vectorized: instruction cannot be vectorized [-Rpass-analysis=loop-vectorize]",
+    "C:\\Users\\PC-R07\\Documents\\Codex\\2026-10-20\\files-pasted-by-the-user-viii\\outputs\\phase-ring-plp-benchmark\\native\\audit_benchmark.cpp:37:1: remark: loop not vectorized [-Rpass-missed=loop-vectorize]",
+    "C:\\Users\\PC-R07\\Documents\\Codex\\2026-10-20\\files-pasted-by-the-user-viii\\outputs\\phase-ring-plp-benchmark\\native\\audit_benchmark.cpp:43:1: remark: loop not vectorized: library call cannot be vectorized. Try compiling with -fno-math-errno, -ffast-math, or similar flags [-Rpass-analysis=loop-vectorize]",
+    "C:\\Users\\PC-R07\\Documents\\Codex\\2026-10-20\\files-pasted-by-the-user-viii\\outputs\\phase-ring-plp-benchmark\\native\\audit_benchmark.cpp:41:1: remark: loop not vectorized: instruction cannot be vectorized [-Rpass-analysis=loop-vectorize]",
+    "C:\\Users\\PC-R07\\Documents\\Codex\\2026-10-20\\files-pasted-by-the-user-viii\\outputs\\phase-ring-plp-benchmark\\native\\audit_benchmark.cpp:41:1: remark: loop not vectorized [-Rpass-missed=loop-vectorize]",
+    "C:\\Users\\PC-R07\\Documents\\Codex\\2026-10-20\\files-pasted-by-the-user-viii\\outputs\\phase-ring-plp-benchmark\\native\\audit_benchmark.cpp:48:1: remark: loop not vectorized: cannot identify array bounds [-Rpass-analysis=loop-vectorize]",
+    "C:\\Users\\PC-R07\\Documents\\Codex\\2026-10-20\\files-pasted-by-the-user-viii\\outputs\\phase-ring-plp-benchmark\\native\\audit_benchmark.cpp:47:1: remark: loop not vectorized [-Rpass-missed=loop-vectorize]",
+    "C:\\Users\\PC-R07\\Documents\\Codex\\2026-10-20\\files-pasted-by-the-user-viii\\outputs\\phase-ring-plp-benchmark\\native\\audit_benchmark.cpp:52:1: remark: loop not vectorized: cannot identify array bounds [-Rpass-analysis=loop-vectorize]",
+    "C:\\Users\\PC-R07\\Documents\\Codex\\2026-10-20\\files-pasted-by-the-user-viii\\outputs\\phase-ring-plp-benchmark\\native\\audit_benchmark.cpp:51:1: remark: loop not vectorized [-Rpass-missed=loop-vectorize]",
+    "C:\\Users\\PC-R07\\Documents\\Codex\\2026-10-20\\files-pasted-by-the-user-viii\\outputs\\phase-ring-plp-benchmark\\native\\audit_benchmark.cpp:56:1: remark: loop not vectorized: cannot identify array bounds [-Rpass-analysis=loop-vectorize]",
+    "C:\\Users\\PC-R07\\Documents\\Codex\\2026-10-20\\files-pasted-by-the-user-viii\\outputs\\phase-ring-plp-benchmark\\native\\audit_benchmark.cpp:55:1: remark: loop not vectorized [-Rpass-missed=loop-vectorize]",
+    "C:\\Users\\PC-R07\\Documents\\Codex\\2026-10-20\\files-pasted-by-the-user-viii\\outputs\\phase-ring-plp-benchmark\\native\\audit_benchmark.cpp:133:1: remark: loop not vectorized: value that could not be identified as reduction is used outside the loop [-Rpass-analysis=loop-vectorize]",
+    "C:\\Users\\PC-R07\\Documents\\Codex\\2026-10-20\\files-pasted-by-the-user-viii\\outputs\\phase-ring-plp-benchmark\\native\\audit_benchmark.cpp:133:1: remark: loop not vectorized: instruction cannot be vectorized [-Rpass-analysis=loop-vectorize]",
+    "C:\\Users\\PC-R07\\Documents\\Codex\\2026-10-20\\files-pasted-by-the-user-viii\\outputs\\phase-ring-plp-benchmark\\native\\audit_benchmark.cpp:133:1: remark: loop not vectorized [-Rpass-missed=loop-vectorize]",
+    "C:\\Users\\PC-R07\\Documents\\Codex\\2026-10-20\\files-pasted-by-the-user-viii\\outputs\\phase-ring-plp-benchmark\\native\\audit_benchmark.cpp:102:1: remark: loop not vectorized: cannot prove it is safe to reorder floating-point operations; allow reordering by specifying '#pragma clang loop vectorize(enable)' before the loop or by providing the compiler option '-ffast-math' [-Rpass-analysis=loop-vectorize]",
+    "C:\\Users\\PC-R07\\Documents\\Codex\\2026-10-20\\files-pasted-by-the-user-viii\\outputs\\phase-ring-plp-benchmark\\native\\audit_benchmark.cpp:102:1: remark: loop not vectorized [-Rpass-missed=loop-vectorize]",
+    "C:\\Users\\PC-R07\\Documents\\Codex\\2026-10-20\\files-pasted-by-the-user-viii\\outputs\\phase-ring-plp-benchmark\\native\\audit_benchmark.cpp:126:1: remark: loop not vectorized: cannot prove it is safe to reorder floating-point operations; allow reordering by specifying '#pragma clang loop vectorize(enable)' before the loop or by providing the compiler option '-ffast-math' [-Rpass-analysis=loop-vectorize]",
+    "C:\\Users\\PC-R07\\Documents\\Codex\\2026-10-20\\files-pasted-by-the-user-viii\\outputs\\phase-ring-plp-benchmark\\native\\audit_benchmark.cpp:126:1: remark: loop not vectorized [-Rpass-missed=loop-vectorize]",
+    "C:\\Users\\PC-R07\\Documents\\Codex\\2026-10-20\\files-pasted-by-the-user-viii\\outputs\\phase-ring-plp-benchmark\\native\\audit_benchmark.cpp:102:1: remark: loop not vectorized: cannot prove it is safe to reorder floating-point operations; allow reordering by specifying '#pragma clang loop vectorize(enable)' before the loop or by providing the compiler option '-ffast-math' [-Rpass-analysis=loop-vectorize]",
+    "C:\\Users\\PC-R07\\Documents\\Codex\\2026-10-20\\files-pasted-by-the-user-viii\\outputs\\phase-ring-plp-benchmark\\native\\audit_benchmark.cpp:102:1: remark: loop not vectorized [-Rpass-missed=loop-vectorize]",
+    "C:\\Users\\PC-R07\\Documents\\Codex\\2026-10-20\\files-pasted-by-the-user-viii\\outputs\\phase-ring-plp-benchmark\\native\\audit_benchmark.cpp:102:1: remark: loop not vectorized: cannot prove it is safe to reorder floating-point operations; allow reordering by specifying '#pragma clang loop vectorize(enable)' before the loop or by providing the compiler option '-ffast-math' [-Rpass-analysis=loop-vectorize]",
+    "C:\\Users\\PC-R07\\Documents\\Codex\\2026-10-20\\files-pasted-by-the-user-viii\\outputs\\phase-ring-plp-benchmark\\native\\audit_benchmark.cpp:102:1: remark: loop not vectorized [-Rpass-missed=loop-vectorize]",
+    "C:\\Users\\PC-R07\\Documents\\Codex\\2026-10-20\\files-pasted-by-the-user-viii\\outputs\\phase-ring-plp-benchmark\\native\\audit_benchmark.cpp:102:1: remark: loop not vectorized: cannot prove it is safe to reorder floating-point operations; allow reordering by specifying '#pragma clang loop vectorize(enable)' before the loop or by providing the compiler option '-ffast-math' [-Rpass-analysis=loop-vectorize]",
+    "C:\\Users\\PC-R07\\Documents\\Codex\\2026-10-20\\files-pasted-by-the-user-viii\\outputs\\phase-ring-plp-benchmark\\native\\audit_benchmark.cpp:102:1: remark: loop not vectorized [-Rpass-missed=loop-vectorize]",
+    "C:\\Users\\PC-R07\\Documents\\Codex\\2026-10-20\\files-pasted-by-the-user-viii\\outputs\\phase-ring-plp-benchmark\\native\\audit_benchmark.cpp:88:1: remark: loop not vectorized: value that could not be identified as reduction is used outside the loop [-Rpass-analysis=loop-vectorize]",
+    "C:\\Users\\PC-R07\\Documents\\Codex\\2026-10-20\\files-pasted-by-the-user-viii\\outputs\\phase-ring-plp-benchmark\\native\\audit_benchmark.cpp:88:1: remark: loop not vectorized [-Rpass-missed=loop-vectorize]",
+    "C:\\Users\\PC-R07\\Documents\\Codex\\2026-10-20\\files-pasted-by-the-user-viii\\outputs\\phase-ring-plp-benchmark\\native\\audit_benchmark.cpp:86:1: remark: loop not vectorized: library call cannot be vectorized. Try compiling with -fno-math-errno, -ffast-math, or similar flags [-Rpass-analysis=loop-vectorize]",
+    "C:\\Users\\PC-R07\\Documents\\Codex\\2026-10-20\\files-pasted-by-the-user-viii\\outputs\\phase-ring-plp-benchmark\\native\\audit_benchmark.cpp:85:1: remark: loop not vectorized: instruction cannot be vectorized [-Rpass-analysis=loop-vectorize]",
+    "C:\\Users\\PC-R07\\Documents\\Codex\\2026-10-20\\files-pasted-by-the-user-viii\\outputs\\phase-ring-plp-benchmark\\native\\audit_benchmark.cpp:85:1: remark: loop not vectorized [-Rpass-missed=loop-vectorize]",
+    "C:\\Users\\PC-R07\\Documents\\Codex\\2026-10-20\\files-pasted-by-the-user-viii\\outputs\\phase-ring-plp-benchmark\\native\\audit_benchmark.cpp:83:1: remark: loop not vectorized: library call cannot be vectorized. Try compiling with -fno-math-errno, -ffast-math, or similar flags [-Rpass-analysis=loop-vectorize]",
+    "C:\\Users\\PC-R07\\Documents\\Codex\\2026-10-20\\files-pasted-by-the-user-viii\\outputs\\phase-ring-plp-benchmark\\native\\audit_benchmark.cpp:82:1: remark: loop not vectorized: instruction cannot be vectorized [-Rpass-analysis=loop-vectorize]",
+    "C:\\Users\\PC-R07\\Documents\\Codex\\2026-10-20\\files-pasted-by-the-user-viii\\outputs\\phase-ring-plp-benchmark\\native\\audit_benchmark.cpp:82:1: remark: loop not vectorized [-Rpass-missed=loop-vectorize]",
+    "C:\\Users\\PC-R07\\Documents\\Codex\\2026-10-20\\files-pasted-by-the-user-viii\\outputs\\phase-ring-plp-benchmark\\native\\audit_benchmark.cpp:83:1: remark: loop not vectorized: library call cannot be vectorized. Try compiling with -fno-math-errno, -ffast-math, or similar flags [-Rpass-analysis=loop-vectorize]",
+    "C:\\Users\\PC-R07\\Documents\\Codex\\2026-10-20\\files-pasted-by-the-user-viii\\outputs\\phase-ring-plp-benchmark\\native\\audit_benchmark.cpp:82:1: remark: loop not vectorized: instruction cannot be vectorized [-Rpass-analysis=loop-vectorize]",
+    "C:\\Users\\PC-R07\\Documents\\Codex\\2026-10-20\\files-pasted-by-the-user-viii\\outputs\\phase-ring-plp-benchmark\\native\\audit_benchmark.cpp:82:1: remark: loop not vectorized [-Rpass-missed=loop-vectorize]"
+  ],
+  "scope": "Compiler assembly and remarks for this build only. No hardware performance counters or bandwidth/IPC measurement."
+}

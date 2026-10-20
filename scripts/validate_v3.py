@@ -1,4 +1,4 @@
-"""Validate retained data, new experiments, publication links and all six decoded animations."""
+"""Validate retained data, separate native controls, links and all decoded animations."""
 from pathlib import Path
 import collections,contextlib,csv,hashlib,io,json,re,statistics
 import numpy as np
@@ -22,7 +22,8 @@ def main(require_media=True):
     # Recompute all aggregates from raw samples, including the native study.
     for summary_name,raw_name,keys in [('expanded_noise.csv','expanded_noise_samples.csv',['image','sigma','seed','method']),
             ('noise_ablation.csv','noise_ablation_samples.csv',['image','sigma','seed','method']),
-            ('native_benchmark.csv','native_samples.csv',['n','method'])]:
+            ('native_benchmark.csv','native_samples.csv',['n','method']),
+            ('native_audit_benchmark.csv','native_audit_samples.csv',['n','method'])]:
         if not (ROOT/'results'/summary_name).exists():continue
         raw=read(raw_name);groups=collections.defaultdict(list)
         for row in raw:groups[tuple(row[k] for k in keys)].append(float(row['elapsed_ms']))
@@ -49,6 +50,26 @@ def main(require_media=True):
         for row in read('native_accuracy.csv'):
             n=1024 if '1024' in row['method'] else (2048 if '2048' in row['method'] else None)
             check(float(row['max_angular_error_rad'])<(4*np.pi/n+0.0001 if n else 2e-6),'Native numerical error bound')
+    if (ROOT/'results/native_audit_accuracy.csv').exists():
+        from scripts.run_native_audit import validate_data,sha,SOURCE
+        for folder in [ROOT/'results',ROOT/'results/native_audit_repeat']:
+            validate_data(folder)
+            audit_env=json.loads((folder/'native_audit_environment.json').read_text())
+            check(audit_env['source_sha256']==sha(SOURCE),'Audited C++ source matches measured binary source')
+        with (ROOT/'results/native_audit_repeat/native_audit_inputs.csv').open() as f:
+            repeat_inputs=list(csv.DictReader(f))
+        check(repeat_inputs==[r for r in read('native_audit_inputs.csv') if int(r['n'])==10000000],'Independent 10M run input checksums agree')
+        with (ROOT/'results/native_audit_repeat/native_audit_accuracy.csv').open() as f:
+            repeat_accuracy=list(csv.DictReader(f))
+        check(repeat_accuracy==[r for r in read('native_audit_accuracy.csv') if int(r['n'])==10000000],'Independent 10M numerical outputs agree')
+        for row in read('native_audit_accuracy.csv'):
+            n=1024 if '1024' in row['method'] else (2048 if '2048' in row['method'] else None)
+            check(float(row['max_angular_error_rad'])<(4*np.pi/n+0.0001 if n else 2e-6),'Audited numerical error bound')
+            check(np.isfinite(float(row['complex_rmse'])),'Audited finite complex RMSE')
+    preservation=ROOT/'results/refinement_preservation.json'
+    if preservation.exists():
+        for name,digest in json.loads(preservation.read_text())['sha256'].items():
+            check(hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest,'Retained file unchanged: '+name)
     for path in [ROOT/'README.md',*list((ROOT/'docs').glob('*.md'))]:
         for target in re.findall(r'!?\[[^\]]*\]\(([^)]+)\)',path.read_text(encoding='utf-8')):
             if '://' not in target and not target.startswith('#'):
@@ -61,25 +82,36 @@ def main(require_media=True):
     media=[]
     if require_media:
         study=Study()
-        for name in NAMES:
+        names=list(NAMES)
+        revised=(ROOT/'results/native_audit_benchmark.csv').exists()
+        if revised:names.append('native_cpp_performance')
+        for name in names:
+            is_new=revised and name in ['native_cpp_performance','noise_reduction_comparison']
+            seconds=15 if is_new else 12
+            if is_new:
+                from scripts.visualize_v4 import renderer,source_frame
+                scene_study=renderer(name)
+                render=lambda t:source_frame(name,t,scene_study)
+            else:render=lambda t:RENDERERS[name](t,study)
             gif=ROOT/'animations'/f'{name}.gif';duration=0;errors=[]
             with Image.open(gif) as im:
                 check(im.size==(960,540),'GIF size '+name);check(im.info.get('loop')==0,'Infinite loop '+name)
                 check(im.n_frames>=30,'Visible animation frames '+name)
-                selected={0,20,40,80,130};timeline=0;first=None;middle=None
+                selected={0,1600,3200,6400,10400,13800} if is_new else {0,1600,3200,6400,10400};timeline=0;first=None;middle=None;last=None
                 for i in range(im.n_frames):
                     im.seek(i);ms=im.info.get('duration',0)
                     # Test exact times, even if an encoder merges repeated frames.
-                    for frame_no in sorted(selected):
-                        tt=frame_no*80
+                    for tt in sorted(selected):
                         if timeline<=tt<timeline+ms:
-                            reference=RENDERERS[name](tt/1000,study).resize((960,540),Image.Resampling.LANCZOS)
+                            reference=render(tt/1000).resize((960,540),Image.Resampling.LANCZOS)
                             error=float(np.mean(np.abs(np.asarray(reference,dtype=np.int16)-np.asarray(im.convert('RGB'),dtype=np.int16))))
                             errors.append(error);check(error<8,'Decoded GIF matches source scene '+name)
                     if first is None:first=im.convert('RGB').copy()
+                    last=im.convert('RGB').copy()
                     if timeline<=6000<timeline+ms:middle=im.convert('RGB').copy()
                     timeline+=ms;duration+=ms
-                check(duration==12000,'12-second GIF '+name)
+                check(duration==seconds*1000,'GIF duration '+name)
+                if is_new:check(float(np.mean(np.abs(np.asarray(first,dtype=np.int16)-np.asarray(last,dtype=np.int16))))<5,'Smooth loop join '+name)
                 check(middle is not None and ImageChops.difference(first,middle).getbbox() is not None,'Image content changes '+name)
                 gifframes=im.n_frames
             reader=imageio.get_reader(str(ROOT/'animations/video'/f'{name}.mp4'));meta=reader.get_meta_data();frames=0
@@ -87,8 +119,8 @@ def main(require_media=True):
                 for frame in reader:
                     check(frame.shape[:2]==(1080,1920),'Decoded MP4 dimensions '+name);frames+=1
             finally:reader.close()
-            check(frames==288,'All MP4 frames decode '+name)
-            check(abs(meta['fps']-24)<0.01 and abs(meta['duration']-12)<0.1,'MP4 frame rate/duration '+name)
+            check(frames==seconds*24,'All MP4 frames decode '+name)
+            check(abs(meta['fps']-24)<0.01 and abs(meta['duration']-seconds)<0.1,'MP4 frame rate/duration '+name)
             media.append(dict(name=name,gif_bytes=gif.stat().st_size,gif_frames=gifframes,gif_duration_ms=duration,
                 decoded_source_frame_mean_abs_error=max(errors),mp4_frames=frames,mp4_fps=meta['fps'],mp4_size=[1920,1080]))
     tests=json.loads((ROOT/'results/test_results.json').read_text())
@@ -96,6 +128,8 @@ def main(require_media=True):
     record=dict(status='passed',check_count=count,python_tests=tests['tests_run'],
         retained_numpy_rows=len(read('benchmark.csv')),expanded_noise_cases=54,expanded_noise_rows=len(expanded),
         native_measured=(ROOT/'results/native_benchmark.csv').exists(),media=media,
+        native_control_audit=(ROOT/'results/native_audit_benchmark.csv').exists(),
+        native_audit_repetitions=225 if (ROOT/'results/native_audit_benchmark.csv').exists() else 0,
         source_confirmed=True,rtl_simulation='not run; testbench supplied',silicon_validation='not performed')
     (ROOT/'results/validation.json').write_text(json.dumps(record,indent=2),encoding='utf-8')
     manifest={p.relative_to(ROOT).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in files if p.name!='sha256_manifest.json'}

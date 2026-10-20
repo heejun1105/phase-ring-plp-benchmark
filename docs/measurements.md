@@ -136,3 +136,15 @@ Native inputs differ from NumPy. Fusion and preallocation differ too. This is no
 | Wiener float | 32.68706 | 0.86174 | 0.87945 | 4.60368 |
 
 All aggregate quality is arithmetic mean of per-case quality; time is the mean of per-case medians. It is not pooled-MSE PSNR or a pooled timing median. Full raw quality, time dispersion and seed-specific results are retained in [expanded CSV](../results/expanded_noise.csv), [expanded timing samples](../results/expanded_noise_samples.csv), [ablation CSV](../results/noise_ablation.csv), and [ablation timing samples](../results/noise_ablation_samples.csv). [Study interpretation](visual_study.md).
+
+## Final native control audit
+
+| Native path / 10M products | Median ms | Sample SD ms | M products/s | Angular RMSE rad |
+| --- | --- | --- | --- | --- |
+| FP32 four-trig product | 330.396 | 21.774 | 30.27 | 2.571e-08 |
+| FP32 summed-angle trig | 195.607 | 19.642 | 51.12 | 1.188e-08 |
+| Z1024 Q15 end-to-end | 36.952 | 4.425 | 270.62 | 6.617e-03 |
+| Z2048 Q15 end-to-end | 33.259 | 2.304 | 300.67 | 3.311e-03 |
+| Z2048 float LUT control | 20.095 | 2.880 | 497.63 | 3.311e-03 |
+
+This is a separate nine-repeat run. Do not merge it with the earlier seven-repeat native results above. [Scope, optimized control, compiler and cache audit](native_audit.md).

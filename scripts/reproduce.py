@@ -12,6 +12,7 @@ def main():
     p.add_argument('--skip-benchmark',action='store_true',help='Render from existing measured CSV files.')
     p.add_argument('--skip-render',action='store_true')
     p.add_argument('--native',action='store_true',help='Compile and run the optional fused C++ CPU study.')
+    p.add_argument('--native-audit',action='store_true',help='Collect the separate optimized-control audit; retain original native results.')
     a=p.parse_args();os.chdir(ROOT)
     suite=unittest.defaultTestLoader.discover(str(ROOT/'tests'))
     result=unittest.TextTestRunner(verbosity=2).run(suite)
@@ -27,12 +28,19 @@ def main():
         from src.benchmark.visual_study import main as visual_study
         visual_study(repeats=3 if a.quick else 7)
     if a.native:subprocess.run([sys.executable,'-m','scripts.run_native'],check=True)
+    if a.native_audit:subprocess.run([sys.executable,'-m','scripts.run_native_audit'],check=True)
     from scripts.study_figures import main as figures
     figures()
     if not a.skip_render:
         from scripts.visualize_v3 import Study,NAMES,export
         study=Study()
-        for name in NAMES:export(name,study)
+        audited=(ROOT/'results/native_audit_benchmark.csv').exists()
+        for name in NAMES:
+            if audited and name=='noise_reduction_comparison':continue
+            export(name,study)
+        if audited:
+            from scripts.visualize_v4 import NAMES as revised_names,export as revised_export
+            for name in revised_names:revised_export(name)
     from scripts.gallery_report import main as report
     report()
     from scripts.validate_v3 import main as validate
