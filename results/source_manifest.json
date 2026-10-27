@@ -12,6 +12,10 @@
   "repository_pdf_path": "paper/Paper_VIII_Dual_Layer_Topological_Neuromorphic_Architecture.pdf",
   "pdf_upload_authorized_by_user": true,
   "comparison_record": "docs/paper_comparison.md",
+  "author_supplied_doi": "10.5281/zenodo.22782241",
+  "doi_url": "https://doi.org/10.5281/zenodo.22782241",
+  "author_email": "voodoo6000@daum.net",
+  "link_provenance": "DOI and contact supplied by the owner; no remote metadata or file identity inferred",
   "previous_reference": {
     "source_id": "VIII-KO",
     "language": "Korean translation",

@@ -51,7 +51,7 @@ def main(require_media=True):
     for file in [ROOT/'README.md',*list((ROOT/'docs').glob('*.md'))]:
         content=file.read_text(encoding='utf-8')
         for target in re.findall(r'!?\[[^\]]*\]\(([^)]+)\)',content):
-            if '://' not in target and not target.startswith('#'):
+            if '://' not in target and not target.startswith(('#','mailto:')):
                 check((file.parent/target.split('#')[0]).exists(),f'Local Markdown target exists: {target}')
     text_extensions={'.py','.md','.v','.txt','.json','.csv','.hex'}
     files=[p for p in ROOT.rglob('*') if p.is_file() and '.git' not in p.parts and '__pycache__' not in p.parts]

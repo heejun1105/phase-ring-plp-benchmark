@@ -1,0 +1,117 @@
+{
+  "status": "passed",
+  "check_count": 3420,
+  "model_tests": 11,
+  "new_variants": 5,
+  "previous_gifs_preserved": 15,
+  "all_gifs_visible": 20,
+  "old_scientific_assets_preserved": 286,
+  "new_benchmark_results": false,
+  "media": [
+    {
+      "name": "phase_wave_basics",
+      "duration_seconds": 14.0,
+      "gif_nominal_fps": 25.0,
+      "gif_frames": 350,
+      "gif_bytes": 3804778,
+      "gif_max_source_mae": 2.0196894290123457,
+      "loop_join_mae": 0.05926183127572016,
+      "mp4_frames": 336,
+      "mp4_fps": 24,
+      "mp4_bytes": 1497020
+    },
+    {
+      "name": "calculate_or_lookup",
+      "duration_seconds": 16.0,
+      "gif_nominal_fps": 25.0,
+      "gif_frames": 400,
+      "gif_bytes": 3587604,
+      "gif_max_source_mae": 1.3275135030864198,
+      "loop_join_mae": 0.057313528806584364,
+      "mp4_frames": 384,
+      "mp4_fps": 24,
+      "mp4_bytes": 1123363
+    },
+    {
+      "name": "angle_snap_targets",
+      "duration_seconds": 16.0,
+      "gif_nominal_fps": 25.0,
+      "gif_frames": 271,
+      "gif_bytes": 1990663,
+      "gif_max_source_mae": 0.6627617026748971,
+      "loop_join_mae": 0.26514017489711933,
+      "mp4_frames": 384,
+      "mp4_fps": 24,
+      "mp4_bytes": 977562
+    },
+    {
+      "name": "wrap_and_fetch",
+      "duration_seconds": 18.0,
+      "gif_nominal_fps": 25.0,
+      "gif_frames": 329,
+      "gif_bytes": 1669978,
+      "gif_max_source_mae": 0.8576523919753086,
+      "loop_join_mae": 0.12113683127572017,
+      "mp4_frames": 432,
+      "mp4_fps": 24,
+      "mp4_bytes": 959188
+    },
+    {
+      "name": "noise_detail_lens",
+      "duration_seconds": 18.0,
+      "gif_nominal_fps": 20.0,
+      "gif_frames": 109,
+      "gif_bytes": 9241473,
+      "gif_max_source_mae": 2.14008487654321,
+      "loop_join_mae": 0.7052430555555556,
+      "mp4_frames": 432,
+      "mp4_fps": 24,
+      "mp4_bytes": 5021265
+    }
+  ],
+  "motion_probes": [
+    {
+      "name": "phase_wave_basics",
+      "times": [
+        1,
+        1.5
+      ],
+      "main_image_mean_abs_change": 3.936295291300878
+    },
+    {
+      "name": "calculate_or_lookup",
+      "times": [
+        5,
+        5.5
+      ],
+      "main_image_mean_abs_change": 0.9127619047619048
+    },
+    {
+      "name": "angle_snap_targets",
+      "times": [
+        5,
+        6
+      ],
+      "main_image_mean_abs_change": 2.297927906358074
+    },
+    {
+      "name": "wrap_and_fetch",
+      "times": [
+        7,
+        8
+      ],
+      "main_image_mean_abs_change": 1.9623953179036977
+    },
+    {
+      "name": "noise_detail_lens",
+      "times": [
+        1.8,
+        2.5
+      ],
+      "main_image_mean_abs_change": 32.59941048151104
+    }
+  ],
+  "doi": "https://doi.org/10.5281/zenodo.22782241",
+  "email": "voodoo6000@daum.net",
+  "link_provenance": "Owner supplied; no external archive identity or new performance evidence inferred"
+}

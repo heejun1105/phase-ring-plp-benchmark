@@ -46,15 +46,69 @@ The study also records a custom edge score. V2 raises that mean score from 0.866
 
 </details>
 
-## The three explanation videos
+## More ways to understand the same idea
 
-These explain the calculation shortcut above. They are not three more performance results, and you can skip the bit-level check when viewing the main results.
+These are additional versions. Start with the circle and wave, then follow the stored-answer shortcut, angle error, wrapping and photo details. The earlier videos remain visible farther down this page.
+
+### A turn on a circle becomes a wave
+
+![A turn on a circle becomes a wave](animations/phase_wave_basics.gif)
+
+The moving circle hand and the marked wave point always have the same height. This introduces phase before any computation.
+
+[MP4](animations/video/phase_wave_basics.mp4) · [GIF](animations/phase_wave_basics.gif)
+
+### Calculate again or fetch a stored answer
+
+![Calculate again or fetch a stored answer](animations/calculate_or_lookup.gif)
+
+Two shared angles take different routes: calculate the result, or add numbered positions and select a prepared answer.
+
+[MP4](animations/video/calculate_or_lookup.mp4) · [GIF](animations/calculate_or_lookup.gif)
+
+### A moving target between stored positions
+
+![A moving target between stored positions](animations/angle_snap_targets.gif)
+
+A white target moves smoothly while colored pins snap down to real stored angles. The gap is shown at one shared magnification.
+
+[MP4](animations/video/angle_snap_targets.mp4) · [GIF](animations/angle_snap_targets.gif)
+
+### Back to the start, then read an answer
+
+![Back to the start, then read an answer](animations/wrap_and_fetch.gif)
+
+A token passes the last position on the ring and returns to the beginning. Its actual final position selects the stored sine value.
+
+[MP4](animations/video/wrap_and_fetch.mp4) · [GIF](animations/wrap_and_fetch.gif)
+
+### A moving lens over real photo details
+
+![A moving lens over real photo details](animations/noise_detail_lens.gif)
+
+The lens visits the same sky and tripod pixels in noisy and filtered images. The displayed filter outputs are already complete.
+
+[MP4](animations/video/noise_detail_lens.mp4) · [GIF](animations/noise_detail_lens.gif)
+
+[New renderers and reproduction](docs/story_variants.md) · [All preserved measurements](docs/measurements.md)
+
+## The earlier explanation versions
+
+These versions show the same topics with more numerical or technical detail. They remain embedded here alongside the simpler versions.
+
+![Earlier calculation routes](animations/public_phase_computing.gif)
 
 **How the calculation changes.** Picture an angle as the position of a hand on a clock. The blue path calculates the waves and multiplies them. The cyan path adds their numbered positions and reads an answer from a stored table. The final waves are close, but not exactly equal; the actual difference is reported as a number. [Animation](animations/public_phase_computing.gif) · [MP4](animations/video/public_phase_computing.mp4)
 
+![Earlier precision terraces](animations/public_phase_precision.gif)
+
 **What precision the shortcut loses.** A table has a fixed number of positions. Z1024 has 1,024 marks around the circle; Z2048 has twice as many. The staircase shows an input snapping down to a stored angle, or staying there if it is already on a mark. Smaller steps reduce the angle error and require more table entries. This scene is about accuracy, not speed. [Animation](animations/public_phase_precision.gif) · [MP4](animations/video/public_phase_precision.mp4)
 
+![Detailed bit and LUT replay](animations/phase_bits_to_lut.gif)
+
 **Whether the bits select the right answer.** Going past the last mark returns to the start, as on a clock face. The program numbers its 1,024 marks from 0: after 1023 comes 0. The bit video checks that wraparound, the table address and the stored value. It checks the implementation; it is not another acceleration claim. [Technical animation](animations/phase_bits_to_lut.gif) · [MP4](animations/video/phase_bits_to_lut.mp4)
+
+![The existing project overview](animations/project_overview.gif)
 
 [A short guide to these demos](docs/understanding_the_demos.md) · [All four calculation scenes in a 40-second video](animations/video/project_overview.mp4)
 
@@ -72,12 +126,14 @@ python -m venv .venv
 # Linux/macOS: source .venv/bin/activate
 python -m pip install -r requirements.txt
 python -m scripts.render_public_visuals --preview-only
+python -m scripts.render_story_variants --preview-only
 python -m scripts.public_gallery
 python -m scripts.validate_public_visuals
 python -m scripts.validate_reader_update
+python -m scripts.validate_story_variants
 ```
 
-To regenerate the current GIF/MP4 files from the committed data, run `python -m scripts.render_public_visuals`. This reads existing measurements and completed image outputs; it does not collect new benchmark data. Videos are 1920×1080 at 24 fps; GIFs are 960×540 at nominal 25 fps. Rendering sources and review frames are linked below.
+To regenerate these GIF/MP4 files from the committed data, run `python -m scripts.render_public_visuals` and `python -m scripts.render_story_variants`. They read existing measurements and completed image outputs; they do not collect new benchmark data. MP4s are 1920×1080 at 24 fps; GIFs are 960×540 with playback rates recorded by edition. The new angle stories use 25 fps GIFs, and the photo lens uses 20 fps. Rendering sources and review frames are linked below.
 
 <details>
 <summary>Experiment details and rendering sources</summary>
@@ -93,11 +149,86 @@ To regenerate the current GIF/MP4 files from the committed data, run `python -m 
 
 </details>
 
-<details>
-<summary>Earlier videos and review records</summary>
+## More existing versions
 
-[Native timing and accuracy GIF](animations/native_cpp_performance.gif) / [MP4](animations/video/native_cpp_performance.mp4) · [Architecture GIF](animations/computing_architecture.gif) / [MP4](animations/video/computing_architecture.mp4) · [NumPy race GIF](animations/benchmark_speed_race.gif) / [MP4](animations/video/benchmark_speed_race.mp4) · [Overflow GIF](animations/phase_overflow_lut.gif) / [MP4](animations/video/phase_overflow_lut.mp4) · [Precision GIF](animations/phase_precision_comparison.gif) / [MP4](animations/video/phase_precision_comparison.mp4) · [Earlier noise GIF](animations/noise_reduction_comparison.gif) / [MP4](animations/video/noise_reduction_comparison.mp4) · [Edge ablation GIF](animations/edge_preservation_comparison.gif) / [MP4](animations/video/edge_preservation_comparison.mp4)
+All earlier GIFs remain embedded below. No video has been removed or replaced.
+
+### Native timing and accuracy
+
+![Native timing and accuracy](animations/native_cpp_performance.gif)
+
+The earlier native CPU race includes both formula baselines and the measured approximation errors.
+
+[MP4](animations/video/native_cpp_performance.mp4) · [GIF](animations/native_cpp_performance.gif)
+
+### Detailed computational architecture
+
+![Detailed computational architecture](animations/computing_architecture.gif)
+
+The shared inputs travel through complex arithmetic or quantization, addition and a paired lookup.
+
+[MP4](animations/video/computing_architecture.mp4) · [GIF](animations/computing_architecture.gif)
+
+### NumPy CPU race
+
+![NumPy CPU race](animations/benchmark_speed_race.gif)
+
+The separate NumPy experiment shows kernel and full-pipeline timings. Kernel output types differ; see its scope labels.
+
+[MP4](animations/video/benchmark_speed_race.mp4) · [GIF](animations/benchmark_speed_race.gif)
+
+### Overflow and addressed memory
+
+![Overflow and addressed memory](animations/phase_overflow_lut.gif)
+
+A phase dial, register carry and selected lookup word remain linked through the rollover examples.
+
+[MP4](animations/video/phase_overflow_lut.mp4) · [GIF](animations/phase_overflow_lut.gif)
+
+### Precision as actual stair steps
+
+![Precision as actual stair steps](animations/phase_precision_comparison.gif)
+
+This earlier view uses an angle plot to show floor quantization in a magnified four-degree window.
+
+[MP4](animations/video/phase_precision_comparison.mp4) · [GIF](animations/phase_precision_comparison.gif)
+
+### Text, edges and image errors
+
+![Text, edges and image errors](animations/noise_reduction_comparison.gif)
+
+The recorded text/edge comparison adds common-scale error maps after actual image views.
+
+[MP4](animations/video/noise_reduction_comparison.mp4) · [GIF](animations/noise_reduction_comparison.gif)
+
+### Noise quality and edge tradeoffs
+
+![Noise quality and edge tradeoffs](animations/edge_preservation_comparison.gif)
+
+Actual V1/V2 profiles expose detail attenuation, residual noise and processing-time differences.
+
+[MP4](animations/video/edge_preservation_comparison.mp4) · [GIF](animations/edge_preservation_comparison.gif)
+
+### First arithmetic demonstration
+
+![First arithmetic demonstration](animations/computing_comparison.gif)
+
+The first edition combines rollover examples with measured CPU scopes. It remains available for comparison.
+
+[MP4](animations/video/computing_comparison.mp4) · [GIF](animations/computing_comparison.gif)
+
+### First image-stage demonstration
+
+![First image-stage demonstration](animations/noise_comparison.gif)
+
+The first edition tours the recorded local shrinkage, guided smoothing and final quantization stages.
+
+[MP4](animations/video/noise_comparison.mp4) · [GIF](animations/noise_comparison.gif)
 
 [Previous visual review](docs/visual_quality.md) · [Noise revision](docs/noise_visual_revision.md) · [Previous validation](results/validation.json) · [Source manifest before the English upload](results/archive/source_manifest_viii_ko.json)
 
-</details>
+## Paper and author
+
+Paper VIII — Zenodo: [10.5281/zenodo.22782241](https://doi.org/10.5281/zenodo.22782241)
+
+Author email: [voodoo6000@daum.net](mailto:voodoo6000@daum.net)

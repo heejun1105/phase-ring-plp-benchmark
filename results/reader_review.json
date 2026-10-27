@@ -3,20 +3,22 @@
   "baseline": "68305e034cc141a3b00063bf90092754664ca4a0",
   "unchanged_scientific_files": 277,
   "measurement_or_algorithm_changes": false,
-  "media_rerendered": false,
+  "existing_baseline_media_rerendered": false,
   "english_original_sha256": "d743c111e16aef248092c8bb077ae6edf79942103f6810c3bc4180e3e57faefc",
   "original_language": "English",
   "translation_pdf_included": false,
   "previous_source_manifest_preserved": true,
   "python_tests": 11,
-  "local_links_checked": 131,
+  "local_links_checked": 167,
   "historical_generators_preserve_current_readme": true,
   "readme_order": [
     "CPU runtime",
     "Photo denoising",
-    "Optional arithmetic explanation",
-    "Optional accuracy explanation",
-    "Optional bit/address check"
+    "Additional story variants",
+    "Earlier explanations",
+    "Paper and scope",
+    "More existing versions",
+    "Paper and author"
   ],
   "publication_language": "English",
   "sha256": {

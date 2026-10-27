@@ -134,7 +134,7 @@ def main():
             mp4_duration_s=duration,mp4_fps=24,mp4_decoded_frames=nframes,mp4_bytes=(ROOT/f'animations/video/{name}.mp4').stat().st_size))
     for path in [ROOT/'README.md',*list((ROOT/'docs').glob('*.md'))]:
         for target in re.findall(r'!?\[[^\]]*\]\(([^)]+)\)',path.read_text(encoding='utf-8')):
-            if '://' not in target and not target.startswith('#'):
+            if '://' not in target and not target.startswith(('#','mailto:')):
                 check((path.parent/target.split('#')[0]).exists(),'Document link '+target)
     published=subprocess.check_output(['git','ls-files','-z','--cached','--others','--exclude-standard'],cwd=ROOT).decode().strip('\0').split('\0')
     files=[ROOT/p for p in published if (ROOT/p).is_file()]

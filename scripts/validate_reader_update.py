@@ -30,7 +30,7 @@ def main():
     links=0
     for p in [ROOT/'README.md',ROOT/'paper/README.md',*list((ROOT/'docs').glob('*.md'))]:
         for target in re.findall(r'!?\[[^\]]*\]\(([^)]+)\)',p.read_text(encoding='utf-8')):
-            if '://' not in target and not target.startswith('#'):
+            if '://' not in target and not target.startswith(('#','mailto:')):
                 assert (p.parent/target.split('#')[0]).exists(),f'{p.name}: {target}'
                 links+=1
     names=subprocess.check_output(['git','ls-files','-z','--cached','--others','--exclude-standard'],cwd=ROOT).decode().strip('\0').split('\0')
@@ -39,10 +39,10 @@ def main():
         if p.suffix.lower() in ['.md','.py','.json','.csv','.txt','.v','.cpp','.hex'] or p.name=='LICENSE':
             assert not re.search('[\uac00-\ud7af\u1100-\u11ff]',p.read_text(encoding='utf-8')),name
     record=dict(status='passed',baseline=BASE,unchanged_scientific_files=len(frozen),
-        measurement_or_algorithm_changes=False,media_rerendered=False,english_original_sha256=source['sha256'],
+        measurement_or_algorithm_changes=False,existing_baseline_media_rerendered=False,english_original_sha256=source['sha256'],
         original_language='English',translation_pdf_included=False,previous_source_manifest_preserved=True,
         python_tests=result.testsRun,local_links_checked=links,historical_generators_preserve_current_readme=True,
-        readme_order=['CPU runtime','Photo denoising','Optional arithmetic explanation','Optional accuracy explanation','Optional bit/address check'],
+        readme_order=['CPU runtime','Photo denoising','Additional story variants','Earlier explanations','Paper and scope','More existing versions','Paper and author'],
         publication_language='English',sha256=frozen)
     (ROOT/'results/reader_review.json').write_text(json.dumps(record,indent=2),encoding='utf-8')
     names=subprocess.check_output(['git','ls-files','-z','--cached','--others','--exclude-standard'],cwd=ROOT).decode().strip('\0').split('\0')

@@ -18,3 +18,8 @@ records the matching equations, code and table values, along with dates and page
 differences. [Source manifest](../results/source_manifest.json) identifies both
 editions. The paper's hardware and image-processing claims remain separate from
 this repository's CPU and filter measurements; see the [technical review](../docs/paper_review.md).
+
+The owner also supplied the Paper VIII archive link:
+[10.5281/zenodo.22782241](https://doi.org/10.5281/zenodo.22782241).
+Author email: [voodoo6000@daum.net](mailto:voodoo6000@daum.net).
+The included PDF is unchanged and still contains its earlier printed placeholder.

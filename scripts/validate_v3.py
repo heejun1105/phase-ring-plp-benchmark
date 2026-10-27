@@ -73,7 +73,7 @@ def main(require_media=True):
             check(hashlib.sha256(path.read_bytes()).hexdigest()==digest,'Retained file or archived source record unchanged: '+name)
     for path in [ROOT/'README.md',*list((ROOT/'docs').glob('*.md'))]:
         for target in re.findall(r'!?\[[^\]]*\]\(([^)]+)\)',path.read_text(encoding='utf-8')):
-            if '://' not in target and not target.startswith('#'):
+            if '://' not in target and not target.startswith(('#','mailto:')):
                 check((path.parent/target.split('#')[0]).exists(),'Local document/media link: '+target)
     files=[p for p in ROOT.rglob('*') if p.is_file() and '.git' not in p.parts and '__pycache__' not in p.parts]
     from scripts.source_policy import validate_source

@@ -83,12 +83,14 @@ python -m venv .venv
 # Linux/macOS: source .venv/bin/activate
 python -m pip install -r requirements.txt
 python -m scripts.render_public_visuals --preview-only
+python -m scripts.render_story_variants --preview-only
 python -m scripts.public_gallery
 python -m scripts.validate_public_visuals
 python -m scripts.validate_reader_update
+python -m scripts.validate_story_variants
 ```
 
-To regenerate the current GIF/MP4 files from the committed data, run `python -m scripts.render_public_visuals`. This reads existing measurements and completed image outputs; it does not collect new benchmark data. Videos are 1920×1080 at 24 fps; GIFs are 960×540 at nominal 25 fps. Rendering sources and review frames are linked below.
+To regenerate these GIF/MP4 files from the committed data, run `python -m scripts.render_public_visuals` and `python -m scripts.render_story_variants`. They read existing measurements and completed image outputs; they do not collect new benchmark data. MP4s are 1920×1080 at 24 fps; GIFs are 960×540 with playback rates recorded by edition. The new angle stories use 25 fps GIFs, and the photo lens uses 20 fps. Rendering sources and review frames are linked below.
 
 <details>
 <summary>Experiment details and rendering sources</summary>
@@ -113,7 +115,9 @@ To regenerate the current GIF/MP4 files from the committed data, run `python -m 
 
 </details>
 '''
+    from scripts.expand_visual_gallery import expand
+    text=expand(text)
     (ROOT/'README.md').write_text(text,encoding='utf-8')
-    print('Built README with the two experiments first and optional explanations afterward.',flush=True)
+    print('Built README with all existing animations visible and additional story variants.',flush=True)
 
 if __name__=='__main__':main()

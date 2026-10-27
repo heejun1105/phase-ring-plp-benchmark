@@ -14,6 +14,12 @@ Both VIII editions contain Paper VIII on pages 1-5 and the appended signal/image
 
 ## Paper VIII, section by section
 
+The owner has since supplied [10.5281/zenodo.22782241](https://doi.org/10.5281/zenodo.22782241)
+as the Paper VIII archive link. References below to `zenodo.XXXXX` concern the
+placeholder printed in the unchanged PDF. The supplied DOI is a paper link;
+this update does not claim a separately retrieved code release or new validation
+of the paper's hardware and image-processing results.
+
 1. **Abstract and Section I (p. 1):** Two proposed layers combine modular phase arithmetic and a PLP decision engine on a PIM substrate. The text acknowledges domain specialization. This project implements CPU reference models, not a fabricated memory-compute substrate.
 2. **Section II (pp. 1-2), Eq. (1)-(4):** Quantization uses a floor followed by modulo N. Unit phasor multiplication becomes angle addition modulo N. For N=1024/2048, 10/11-bit truncation implements the modulo exactly. Our software uses uint16 storage and an explicit mask; a uint16 overflow alone is not a 10-bit overflow. The 0.3515625/0.17578125 degree bin widths are resolution, not a measured end-to-end error. Two separately floored inputs can accumulate almost two bins of angular error.
 3. **Section III (p. 2), Eq. (5):** The unified PLP expression combines a surface potential, entropy sum, prime contour integrals, and Dirac localization. It does not define a complete discrete image estimator: the potential, probability estimators, image-to-manifold map, finite contour set, finite-time operator, and reconstruction rules are insufficiently specified. The definitions do not supply executable denoising code.
