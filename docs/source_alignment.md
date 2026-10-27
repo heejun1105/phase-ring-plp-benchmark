@@ -29,7 +29,7 @@ The reference is documented in [source_manifest.json](../results/source_manifest
 
 ## V3 extension
 
-The six-animation gallery now separates conceptual architecture, measured speed, exact overflow/LUT addressing, experimental noise processing, actual quantization, and legacy/V2 ablation. `src/benchmark/visual_study.py` expands testing to six content classes and 54 noisy cases. V1 remains unchanged; V2 removes the guided pass to expose its quality/edge/latency tradeoff, rather than claiming a new paper-derived PLP algorithm. `native/benchmark.cpp` adds a separately measured fused, preallocated CPU study. No new source-paper equation or hardware performance has been invented. See [visual_study.md](visual_study.md) and [visual_quality.md](visual_quality.md).
+The V3 six-animation gallery separated conceptual architecture, measured speed, exact overflow/LUT addressing, experimental noise processing, actual quantization, and legacy/V2 ablation. `src/benchmark/visual_study.py` expanded testing to six content classes and 54 noisy cases. V1 remained unchanged; V2 removed the guided pass to expose its quality/edge/latency tradeoff. `native/benchmark.cpp` added a separately measured fused, preallocated CPU study. No new source-paper equation or hardware performance was inferred from that edition. See [visual_study.md](visual_study.md) and [visual_quality.md](visual_quality.md). The later [conventional comparisons](conventional_comparison.md) reuse retained measurements.
 
 ## Local source check
 

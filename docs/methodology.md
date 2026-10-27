@@ -1,6 +1,6 @@
 # Experimental methodology
 
-This document describes the retained NumPy and original two-image baseline experiment. The current six-image study, ablation and six-animation presentation are documented in [visual_study.md](visual_study.md), [native_benchmark.md](native_benchmark.md) and [visual_quality.md](visual_quality.md). Historical media semantics below refer to `computing_comparison` and `noise_comparison`, which are preserved rather than overwritten by the new gallery.
+This document describes the retained NumPy and original two-image baseline experiment. The six-image study, ablation and historical six-animation presentation are documented in [visual_study.md](visual_study.md), [native_benchmark.md](native_benchmark.md) and [visual_quality.md](visual_quality.md). [Current conventional comparisons](conventional_comparison.md) use the retained native audit. Historical media semantics below refer to `computing_comparison` and `noise_comparison`, which remain available in the gallery.
 
 ## Evidence categories
 

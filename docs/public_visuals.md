@@ -4,8 +4,11 @@ This visual edition changed presentation, not the experiment. Its original
 validation record checked prior files against commit
 `b6fffe6484b35a5f54d4a7df13e7474627727742`. The later source/reading update adds
 the English paper and revises prose, source metadata and validators. Numerical
-algorithms, measured CSVs, recorded image arrays and earlier videos remain
-unchanged. The three arithmetic demos explain the shortcut, its precision cost
+algorithms, measured CSVs and recorded image arrays remain unchanged. The
+current precision video adds a conventional FP32 panel beside both lookup
+settings; its unchanged earlier video is retained as
+`legacy_two_settings_public_precision`. [Current comparison methods and archives](conventional_comparison.md).
+The three arithmetic demos explain the shortcut, its precision cost
 and its correctness; they are optional after the speed and photo comparisons.
 [Short reading guide](understanding_the_demos.md). The backup branch is
 `backup/pre-public-visuals-b6fffe6`. New artifacts use new filenames and a separate
@@ -17,7 +20,7 @@ and its correctness; they are optional after the speed and photo comparisons.
 | --- | ---: | --- | --- |
 | A: Public CPU workflow | 16 s | Waiting tile queues drain; finished queues fill; devices stop at measured completion | Retained native audit medians |
 | B: Public phase computing | 14 s | Four real products/combinations versus combining phase hands and a selected LUT word | Shared raw angles; actual quantizer and Q15 output |
-| C: Public precision | 15 s | Smooth reference traverses real coarse/fine floor terraces; actual gaps change | Real quantizer; retained product RMSE |
+| C: Public precision | 15 s | Equal panels show conventional FP32 and both Q15 outputs for one input | Actual reconstructed channels; retained native time and product RMSE |
 | D: Bits to LUT | 18 s | LSB-first addition, carry discard, moving retained address, selected signed-Q15 word | Python reference and adapted scalar-sine RTL |
 | Photo noise supplement | 18 s | Large same-photo editorial slider, shared detail crops, then real quality/time | Committed camera/fixture outputs and 54-case CSV |
 
@@ -68,18 +71,18 @@ applies to unit-magnitude phasors, not arbitrary complex MACs.
 
 ### C: Precision
 
-The displayed 0–2.109375-degree window is magnified equally in both panels.
-Every stair comes from the existing floor-and-wrap quantizer. The broad orange
-region and moving cursor show the actual separation of input and quantized
-output, not invented error. Bin widths are 0.3515625 and 0.17578125 degrees.
-The separate 0.29° + 0.29° example shows that floor errors from two inputs can
-accumulate before the output table is reconstructed.
+Three equal panels use the same magnified 0–2.109375-degree window. The blue
+panel shows conventional FP32 sine/cosine reconstruction without angle bins.
+The other two show actual Q15 outputs after floor quantization, using bins of
+0.3515625 and 0.17578125 degrees. The orange region and the displayed gaps come
+from each reconstructed output phase. FP32 rounding is retained and reported
+numerically even when it is smaller than a display pixel.
 
-The final angular RMSE values (about 0.00661736 and 0.00331063 radians) are the
-first-200,000-pair accuracy checks in the retained 10M native audit. They are
-not a measurement on the animated single-input trajectory. Q15 reconstruction
-and floating-point rounding are included in those recorded product errors.
-This scene makes no timing ranking.
+The final cards give retained median CPU time and angular RMSE for all three
+methods, using the optimized summed-angle control. RMSE comes from the first
+200,000 input pairs of the 10M native audit, not the animated single-input
+trajectory. The two-input 0.29° + 0.29° example appears in the separate target
+and wave comparisons. [Current methods, exact values and archives](conventional_comparison.md).
 
 ### D: Bits and logical memory
 
@@ -140,6 +143,7 @@ edit (four seconds of A, three of B, three of C, two of D), not the entire
 ```bash
 python -m scripts.render_public_visuals --preview-only
 python -m scripts.render_public_visuals
+python -m scripts.render_conventional_comparisons
 python -m scripts.public_gallery
 python -m scripts.validate_public_visuals
 ```
@@ -155,7 +159,9 @@ actual main-region motion, all three ripple examples, real floor quantization,
 source-data consistency, unchanged previous files, document links, English
 publication text and full decoded streams. GIF source comparisons catch stale
 canvases/palette errors; first/last comparisons check loop continuity. Review
-frames are in [public_visuals](../results/public_visuals).
+frames for this edition are in [public_visuals](../results/public_visuals).
+The current three-panel precision frames and their check record are in
+[conventional_comparisons](../results/conventional_comparisons).
 
 Encoded-frame review caught and corrected an end-card text overlap and a GIF
 palette that had reduced the amber carry to gray. The final end card uses a

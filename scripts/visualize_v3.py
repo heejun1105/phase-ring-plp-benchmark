@@ -227,7 +227,7 @@ def noise(t,s):
         f"V2 minus Bilateral PSNR: {s.representative['psnr_v2_minus_bilateral']:+.3f} dB | Rank {s.representative['rank_ascending_psnr_gain']}/54, ascending gain; not a best-case selection.",color=AMBER)
     return im
 
-def precision(t,s):
+def precision_legacy(t,s):
     p=(t/11.2)%1;angle=4*ease(p);row=s.precision[min(2048,int(angle/4*2048))];angle=float(row['input_deg'])
     im,d=scene('05 / QUANTIZATION / TRUE ANGLES WITH MAGNIFIED DISPLAY','Half the bin width. A different error budget.',
         'A 4-degree input window makes quantization visible | Floor quantizer, not rounding-to-nearest')
@@ -291,6 +291,10 @@ def edges(t,s):
     footer(d,'V2 trades residual noise for lower work and less average edge attenuation. It is not a universal quality improvement.',
         'Profiles show actual clean/filtered intensities. Dark scene display gain is shared (1/0.22). Both variants are PLP-inspired substitutes.',color=AMBER)
     return im
+
+def precision(t,s):
+    from scripts.baseline_precision_overlay import frame
+    return frame(t,s)
 
 RENDERERS=dict(zip(NAMES,[architecture,race,overflow,noise,precision,edges]))
 

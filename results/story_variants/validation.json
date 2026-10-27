@@ -1,11 +1,11 @@
 {
   "status": "passed",
-  "check_count": 3420,
+  "check_count": 3458,
   "model_tests": 11,
   "new_variants": 5,
   "previous_gifs_preserved": 15,
-  "all_gifs_visible": 20,
-  "old_scientific_assets_preserved": 286,
+  "all_gifs_visible": 24,
+  "old_scientific_assets_preserved": 284,
   "new_benchmark_results": false,
   "media": [
     {
@@ -36,13 +36,13 @@
       "name": "angle_snap_targets",
       "duration_seconds": 16.0,
       "gif_nominal_fps": 25.0,
-      "gif_frames": 271,
-      "gif_bytes": 1990663,
-      "gif_max_source_mae": 0.6627617026748971,
-      "loop_join_mae": 0.26514017489711933,
+      "gif_frames": 246,
+      "gif_bytes": 2672016,
+      "gif_max_source_mae": 1.2167509002057613,
+      "loop_join_mae": 0.2471360596707819,
       "mp4_frames": 384,
       "mp4_fps": 24,
-      "mp4_bytes": 977562
+      "mp4_bytes": 1270066
     },
     {
       "name": "wrap_and_fetch",
@@ -92,7 +92,7 @@
         5,
         6
       ],
-      "main_image_mean_abs_change": 2.297927906358074
+      "main_image_mean_abs_change": 3.378678105879223
     },
     {
       "name": "wrap_and_fetch",

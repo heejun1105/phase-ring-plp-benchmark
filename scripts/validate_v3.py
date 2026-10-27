@@ -69,7 +69,8 @@ def main(require_media=True):
     preservation=ROOT/'results/refinement_preservation.json'
     if preservation.exists():
         for name,digest in json.loads(preservation.read_text())['sha256'].items():
-            path=ROOT/('results/archive/source_manifest_viii_ko.json' if name=='results/source_manifest.json' else name)
+            from scripts.media_history import historical_path
+            path=ROOT/('results/archive/source_manifest_viii_ko.json' if name=='results/source_manifest.json' else historical_path(name))
             check(hashlib.sha256(path.read_bytes()).hexdigest()==digest,'Retained file or archived source record unchanged: '+name)
     for path in [ROOT/'README.md',*list((ROOT/'docs').glob('*.md'))]:
         for target in re.findall(r'!?\[[^\]]*\]\(([^)]+)\)',path.read_text(encoding='utf-8')):

@@ -177,7 +177,7 @@ def _measured():
     return im
 
 
-def frame(t, study=None):
+def frame_legacy(t, study=None):
     """Return one 1920×1080 RGB frame; the exporter owns the loop transition."""
     if t < 4.0:
         return _one_input(t)
@@ -186,3 +186,8 @@ def frame(t, study=None):
     if t < 12.8:
         return _two_inputs()
     return _measured()
+
+
+def frame(t, study=None):
+    from scripts.baseline_precision_targets import frame as conventional_frame
+    return conventional_frame(t,study)

@@ -1,6 +1,6 @@
 {
   "status": "passed",
-  "check_count": 4226,
+  "check_count": 4306,
   "existing_python_tests": 11,
   "preserved_previous_files": 247,
   "native_remeasured": false,
@@ -39,15 +39,15 @@
       "name": "public_phase_precision",
       "gif_duration_s": 15.0,
       "gif_nominal_fps": 25,
-      "gif_decoded_frames": 241,
-      "gif_bytes": 1860486,
-      "gif_source_max_mae": 1.2779841820987654,
-      "loop_join_mae": 0.277554012345679,
+      "gif_decoded_frames": 283,
+      "gif_bytes": 2624077,
+      "gif_source_max_mae": 0.7356507201646091,
+      "loop_join_mae": 0.08303819444444445,
       "amber_min_rgb_l1_distance": null,
       "mp4_duration_s": 15.0,
       "mp4_fps": 24,
       "mp4_decoded_frames": 360,
-      "mp4_bytes": 988707
+      "mp4_bytes": 1632979
     },
     {
       "name": "phase_bits_to_lut",
@@ -117,8 +117,8 @@
         3,
         4
       ],
-      "main_region_mean_abs_change": 0.9234945448624002,
-      "changed_pixel_fraction": 0.008926884872170656
+      "main_region_mean_abs_change": 0.9551527981327689,
+      "changed_pixel_fraction": 0.007570428269011562
     },
     {
       "name": "phase_bits_to_lut",

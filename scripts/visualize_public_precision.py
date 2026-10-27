@@ -138,10 +138,15 @@ def _measured():
     return im
 
 
-def precision(t, study=None):
+def precision_legacy(t, study=None):
     """Return a 1920×1080 RGB frame; the exporter manages the loop transition."""
     if t < 8.8:
         return _stair_scene(t)
     if t < 11.5:
         return _two_inputs()
     return _measured()
+
+
+def precision(t, study=None):
+    from scripts.baseline_precision_stairs import frame
+    return frame(t,study)

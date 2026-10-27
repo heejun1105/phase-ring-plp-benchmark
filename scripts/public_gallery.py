@@ -63,7 +63,7 @@ These explain the calculation shortcut above. They are not three more performanc
 
 **How the calculation changes.** Picture an angle as the position of a hand on a clock. The blue path calculates the waves and multiplies them. The cyan path adds their numbered positions and reads an answer from a stored table. The final waves are close, but not exactly equal; the actual difference is reported as a number. [Animation](animations/public_phase_computing.gif) · [MP4](animations/video/public_phase_computing.mp4)
 
-**What precision the shortcut loses.** A table has a fixed number of positions. Z1024 has 1,024 marks around the circle; Z2048 has twice as many. The staircase shows an input snapping down to a stored angle, or staying there if it is already on a mark. Smaller steps reduce the angle error and require more table entries. This scene is about accuracy, not speed. [Animation](animations/public_phase_precision.gif) · [MP4](animations/video/public_phase_precision.mp4)
+**What precision the shortcut loses.** The full blue FP32 panel shows the conventional calculation without angle bins. Beside it, Z1024 and Z2048 reconstruct the same input using stored positions. The plot includes actual Q15 restoration error, and the final three cards show recorded CPU time and product RMSE together. Smaller bins improve measured phase accuracy while requiring more table entries. [Animation](animations/public_phase_precision.gif) · [MP4](animations/video/public_phase_precision.mp4)
 
 **Whether the bits select the right answer.** Going past the last mark returns to the start, as on a clock face. The program numbers its 1,024 marks from 0: after 1023 comes 0. The bit video checks that wraparound, the table address and the stored value. It checks the implementation; it is not another acceleration claim. [Technical animation](animations/phase_bits_to_lut.gif) · [MP4](animations/video/phase_bits_to_lut.mp4)
 
@@ -84,13 +84,15 @@ python -m venv .venv
 python -m pip install -r requirements.txt
 python -m scripts.render_public_visuals --preview-only
 python -m scripts.render_story_variants --preview-only
+python -m scripts.render_conventional_comparisons --preview-only
 python -m scripts.public_gallery
 python -m scripts.validate_public_visuals
 python -m scripts.validate_reader_update
 python -m scripts.validate_story_variants
+python -m scripts.validate_conventional_comparisons
 ```
 
-To regenerate these GIF/MP4 files from the committed data, run `python -m scripts.render_public_visuals` and `python -m scripts.render_story_variants`. They read existing measurements and completed image outputs; they do not collect new benchmark data. MP4s are 1920×1080 at 24 fps; GIFs are 960×540 with playback rates recorded by edition. The new angle stories use 25 fps GIFs, and the photo lens uses 20 fps. Rendering sources and review frames are linked below.
+To regenerate these GIF/MP4 files from the committed data, run `python -m scripts.render_public_visuals`, `python -m scripts.render_story_variants`, then `python -m scripts.render_conventional_comparisons`. They read existing measurements and completed image outputs; they do not collect new benchmark data. The last command updates the three precision views and the shared-scale waveform comparison. MP4s are 1920×1080 at 24 fps; GIFs are 960×540 with playback rates recorded by edition. The new angle stories use 25 fps GIFs, and the photo lens uses 20 fps. [Conventional comparison sources and checks](docs/conventional_comparison.md).
 
 <details>
 <summary>Experiment details and rendering sources</summary>

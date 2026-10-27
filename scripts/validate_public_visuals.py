@@ -23,7 +23,8 @@ def main():
     for line in tree:
         meta,name=line.split('\t',1)
         if name in ['README.md','LICENSE','THIRD_PARTY_NOTICES.md','.gitignore'] or name.startswith(('docs/','scripts/')):continue
-        path=ROOT/('results/archive/source_manifest_viii_ko.json' if name=='results/source_manifest.json' else name)
+        from scripts.media_history import historical_path
+        path=ROOT/('results/archive/source_manifest_viii_ko.json' if name=='results/source_manifest.json' else historical_path(name))
         data=path.read_bytes()
         blob=hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
         check(blob==meta.split()[2],'Existing file preserved: '+name)

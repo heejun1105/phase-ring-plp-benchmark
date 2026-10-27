@@ -12,7 +12,7 @@ FOLDER=ROOT/'results/story_variants'
 ITEMS={
  'phase_wave_basics':('story_phase_wave','A turn on a circle becomes a wave','The moving circle hand and the marked wave point always have the same height. This introduces phase before any computation.'),
  'calculate_or_lookup':('story_calculate_lookup','Calculate again or fetch a stored answer','Two shared angles take different routes: calculate the result, or add numbered positions and select a prepared answer.'),
- 'angle_snap_targets':('story_precision_targets','A moving target between stored positions','A white target moves smoothly while colored pins snap down to real stored angles. The gap is shown at one shared magnification.'),
+ 'angle_snap_targets':('story_precision_targets','Conventional FP32 beside both stored-angle settings','Three full lanes reconstruct the same white target: conventional FP32, Z1024 and Z2048. Actual output gaps use one shared magnification.'),
  'wrap_and_fetch':('story_wrap_fetch','Back to the start, then read an answer','A token passes the last position on the ring and returns to the beginning. Its actual final position selects the stored sine value.'),
  'noise_detail_lens':('story_noise_lens','A moving lens over real photo details','The lens visits the same sky and tripod pixels in noisy and filtered images. The displayed filter outputs are already complete.')}
 

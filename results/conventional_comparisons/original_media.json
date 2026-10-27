@@ -1,0 +1,26 @@
+{
+  "animations/phase_precision_comparison.gif": {
+    "archived_as": "animations/legacy_two_settings_phase_precision.gif",
+    "sha256": "faa60261a69703accd8ac6bcab43b9069cdb6c734ce7e9b683cf5ea137e0d829"
+  },
+  "animations/video/phase_precision_comparison.mp4": {
+    "archived_as": "animations/video/legacy_two_settings_phase_precision.mp4",
+    "sha256": "e22c26c5e17d3f6ca15fde7c2ebd45f0bcec5c828eef0c0fb41a9947cb4a996a"
+  },
+  "animations/public_phase_precision.gif": {
+    "archived_as": "animations/legacy_two_settings_public_precision.gif",
+    "sha256": "88c6d605a2f79877bfcd01d3514aceda8792ae3edb9545b4eeea25ce1cc4dbe4"
+  },
+  "animations/video/public_phase_precision.mp4": {
+    "archived_as": "animations/video/legacy_two_settings_public_precision.mp4",
+    "sha256": "0b7f4ba0520b1b9189fe87ff2b71f64ecc2da9550acfb1ea5c76bbc6414b01ff"
+  },
+  "animations/angle_snap_targets.gif": {
+    "archived_as": "animations/legacy_two_settings_angle_targets.gif",
+    "sha256": "032ec7390c08d79764fdb4e986dfbe48b3791bbd3eabb25ab542d585c45cea91"
+  },
+  "animations/video/angle_snap_targets.mp4": {
+    "archived_as": "animations/video/legacy_two_settings_angle_targets.mp4",
+    "sha256": "c5761720abb961f836d45932b82762558a393d65452c57918292d41363dd0c42"
+  }
+}

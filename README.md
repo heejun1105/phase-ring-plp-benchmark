@@ -19,6 +19,18 @@ Calculating both input waves before multiplying took **8.94 / 9.93 times as long
 
 [Watch MP4](animations/video/public_cpu_workflow.mp4) · [Measurement conditions](docs/native_audit.md) · [Data](results/native_audit_benchmark.csv)
 
+## Conventional FP32 and both phase settings
+
+### The same input, three computed outputs
+
+![The same input, three computed outputs](animations/fp32_and_phase_outputs.gif)
+
+The conventional route calculates sine and cosine for each result. Z1024 and Z2048 read prepared answers from tables with 1,024 and 2,048 positions. All three receive the same wave-angle inputs. A common zoom shows the differences in their outputs; the final cards compare recorded CPU time and error together. FP32 here describes the conventional output channels.
+
+[MP4](animations/video/fp32_and_phase_outputs.mp4) · [GIF](animations/fp32_and_phase_outputs.gif)
+
+[Comparison methods, source data and archives](docs/conventional_comparison.md)
+
 ## Removing noise from a photograph
 
 ![The same noisy photograph and recorded filter results](animations/photo_noise_comparison.gif)
@@ -66,11 +78,11 @@ Two shared angles take different routes: calculate the result, or add numbered p
 
 [MP4](animations/video/calculate_or_lookup.mp4) · [GIF](animations/calculate_or_lookup.gif)
 
-### A moving target between stored positions
+### Conventional FP32 beside both stored-angle settings
 
-![A moving target between stored positions](animations/angle_snap_targets.gif)
+![Conventional FP32 beside both stored-angle settings](animations/angle_snap_targets.gif)
 
-A white target moves smoothly while colored pins snap down to real stored angles. The gap is shown at one shared magnification.
+Three full lanes reconstruct the same white target: conventional FP32, Z1024 and Z2048. Actual output gaps use one shared magnification.
 
 [MP4](animations/video/angle_snap_targets.mp4) · [GIF](animations/angle_snap_targets.gif)
 
@@ -102,7 +114,7 @@ These versions show the same topics with more numerical or technical detail. The
 
 ![Earlier precision terraces](animations/public_phase_precision.gif)
 
-**What precision the shortcut loses.** A table has a fixed number of positions. Z1024 has 1,024 marks around the circle; Z2048 has twice as many. The staircase shows an input snapping down to a stored angle, or staying there if it is already on a mark. Smaller steps reduce the angle error and require more table entries. This scene is about accuracy, not speed. [Animation](animations/public_phase_precision.gif) · [MP4](animations/video/public_phase_precision.mp4)
+**What precision the shortcut loses.** The full blue FP32 panel shows the conventional calculation without angle bins. Beside it, Z1024 and Z2048 reconstruct the same input using stored positions. The plot includes actual Q15 restoration error, and the final three cards show recorded CPU time and product RMSE together. Smaller bins improve measured phase accuracy while requiring more table entries. [Animation](animations/public_phase_precision.gif) · [MP4](animations/video/public_phase_precision.mp4)
 
 ![Detailed bit and LUT replay](animations/phase_bits_to_lut.gif)
 
@@ -127,13 +139,15 @@ python -m venv .venv
 python -m pip install -r requirements.txt
 python -m scripts.render_public_visuals --preview-only
 python -m scripts.render_story_variants --preview-only
+python -m scripts.render_conventional_comparisons --preview-only
 python -m scripts.public_gallery
 python -m scripts.validate_public_visuals
 python -m scripts.validate_reader_update
 python -m scripts.validate_story_variants
+python -m scripts.validate_conventional_comparisons
 ```
 
-To regenerate these GIF/MP4 files from the committed data, run `python -m scripts.render_public_visuals` and `python -m scripts.render_story_variants`. They read existing measurements and completed image outputs; they do not collect new benchmark data. MP4s are 1920×1080 at 24 fps; GIFs are 960×540 with playback rates recorded by edition. The new angle stories use 25 fps GIFs, and the photo lens uses 20 fps. Rendering sources and review frames are linked below.
+To regenerate these GIF/MP4 files from the committed data, run `python -m scripts.render_public_visuals`, `python -m scripts.render_story_variants`, then `python -m scripts.render_conventional_comparisons`. They read existing measurements and completed image outputs; they do not collect new benchmark data. The last command updates the three precision views and the shared-scale waveform comparison. MP4s are 1920×1080 at 24 fps; GIFs are 960×540 with playback rates recorded by edition. The new angle stories use 25 fps GIFs, and the photo lens uses 20 fps. [Conventional comparison sources and checks](docs/conventional_comparison.md).
 
 <details>
 <summary>Experiment details and rendering sources</summary>
@@ -151,7 +165,7 @@ To regenerate these GIF/MP4 files from the committed data, run `python -m script
 
 ## More existing versions
 
-All earlier GIFs remain embedded below. No video has been removed or replaced.
+All previous views remain visible. The three precision videos now include FP32, and their unchanged earlier versions are preserved below as well.
 
 ### Native timing and accuracy
 
@@ -185,11 +199,11 @@ A phase dial, register carry and selected lookup word remain linked through the 
 
 [MP4](animations/video/phase_overflow_lut.mp4) · [GIF](animations/phase_overflow_lut.gif)
 
-### Precision as actual stair steps
+### Three-way precision on a shared plot
 
-![Precision as actual stair steps](animations/phase_precision_comparison.gif)
+![Three-way precision on a shared plot](animations/phase_precision_comparison.gif)
 
-This earlier view uses an angle plot to show floor quantization in a magnified four-degree window.
+Conventional FP32 and both phase-ring settings use the same magnified input/output-angle plot and actual restored phases.
 
 [MP4](animations/video/phase_precision_comparison.mp4) · [GIF](animations/phase_precision_comparison.gif)
 
@@ -224,6 +238,34 @@ The first edition combines rollover examples with measured CPU scopes. It remain
 The first edition tours the recorded local shrinkage, guided smoothing and final quantization stages.
 
 [MP4](animations/video/noise_comparison.mp4) · [GIF](animations/noise_comparison.gif)
+
+## Earlier two-setting compositions
+
+These are historical versions. Use the three-way comparisons above when comparing with a conventional method.
+
+### Original precision plot before the FP32 panel
+
+![Original precision plot before the FP32 panel](animations/legacy_two_settings_phase_precision.gif)
+
+The unchanged earlier two-setting plot is preserved here. The current conventional comparison appears above.
+
+[MP4](animations/video/legacy_two_settings_phase_precision.mp4) · [GIF](animations/legacy_two_settings_phase_precision.gif)
+
+### Original two-setting terraces
+
+![Original two-setting terraces](animations/legacy_two_settings_public_precision.gif)
+
+The earlier two-resolution composition is kept alongside its updated FP32/Z1024/Z2048 version.
+
+[MP4](animations/video/legacy_two_settings_public_precision.mp4) · [GIF](animations/legacy_two_settings_public_precision.gif)
+
+### Original two-setting target tracks
+
+![Original two-setting target tracks](animations/legacy_two_settings_angle_targets.gif)
+
+The earlier two-setting target video remains available. The current three-lane version includes conventional FP32.
+
+[MP4](animations/video/legacy_two_settings_angle_targets.mp4) · [GIF](animations/legacy_two_settings_angle_targets.gif)
 
 [Previous visual review](docs/visual_quality.md) · [Noise revision](docs/noise_visual_revision.md) · [Previous validation](results/validation.json) · [Source manifest before the English upload](results/archive/source_manifest_viii_ko.json)
 

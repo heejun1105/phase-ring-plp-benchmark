@@ -21,12 +21,14 @@ def main():
         meta,name=line.split('\t',1)
         old=name.startswith(('animations/','src/','native/','hardware/','tests/'))
         old=old or (name.startswith('results/') and (ROOT/name).suffix.lower() in ['.csv','.npz','.png'])
-        old=old or (name.startswith('scripts/') and ((ROOT/name).name.startswith('visualize_') or (ROOT/name).name=='render_public_visuals.py'))
+        old=old or (name.startswith('scripts/') and ((ROOT/name).name.startswith('visualize_') or (ROOT/name).name=='render_public_visuals.py') and (ROOT/name).name not in ['visualize_v3.py','visualize_public_precision.py'])
         if not old:continue
-        data=(ROOT/name).read_bytes()
+        from scripts.media_history import historical_path
+        path=ROOT/historical_path(name)
+        data=path.read_bytes()
         blob=hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
         check(blob==meta.split()[2],'Previous numerical code/data/media preserved: '+name)
-        kept[name]=hashlib.sha256(data).hexdigest()
+        kept[path.relative_to(ROOT).as_posix()]=hashlib.sha256(data).hexdigest()
         if name.startswith('animations/') and name.endswith('.gif'):old_gifs.append(name)
     check(validate_source(ROOT)['source_id']=='VIII-EN','The authorized English original is unchanged')
     from scripts.story_phase_wave import phase

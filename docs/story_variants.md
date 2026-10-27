@@ -1,14 +1,16 @@
 # Additional visual explanations
 
-The earlier videos remain intact and visible in the README. These five new
-GIF/MP4 pairs add other ways to understand the same material. No previous
-animation or measurement is replaced.
+These five GIF/MP4 pairs add other ways to understand the same material.
+The target-track video now includes a full conventional FP32 lane beside
+Z1024 and Z2048. Its earlier two-setting version remains unchanged under
+`legacy_two_settings_angle_targets`. All earlier videos remain visible in the
+README. [Current conventional comparisons](conventional_comparison.md).
 
 | New file name | Length | Visible idea |
 | --- | ---: | --- |
 | phase_wave_basics | 14 s | The hand on a circle and a point on a sine wave move together |
 | calculate_or_lookup | 16 s | Calculate a wave answer again, or read a prepared answer from a table |
-| angle_snap_targets | 16 s | A smooth white target and real quantized followers on a shared angle track |
+| angle_snap_targets | 16 s | Conventional FP32 and both quantized outputs follow the same target on three equal tracks |
 | wrap_and_fetch | 18 s | A token passes the last stored position, wraps and selects an answer |
 | noise_detail_lens | 18 s | The same sky and tripod patches enlarged from noisy and filtered photos |
 
@@ -33,7 +35,8 @@ explanation; the separate CPU race supplies the measured performance comparison.
 The target tracks use one magnified 0-2.109375-degree window and one common
 horizontal pixel/degree scale. Only the orange horizontal span represents
 angle error; vertical separation distinguishes symbols. Followers use the
-actual floor quantizer, not an invented visual error. The separate 0.29° + 0.29°
+actual reconstructed Q15 channels, including floor quantization. FP32 uses its
+actual complex64 channels and reports its small rounding error. The separate 0.29° + 0.29°
 example quantizes each input before adding. Final RMSE values are the retained
 200,000-pair accuracy checks in the 10M native audit, not statistics measured
 from the moving target. More stored positions do not establish a speed ranking.
@@ -57,15 +60,19 @@ equations. The CPU phase timings do not describe these image-filter runtimes.
 ```bash
 python -m scripts.render_story_variants --preview-only
 python -m scripts.render_story_variants
+python -m scripts.render_conventional_comparisons
 python -m scripts.public_gallery
 python -m scripts.validate_story_variants
 ```
 
-Use `--only <file_name>` to render one version. Existing media uses different
-filenames and remains unchanged. The new source modules are listed by the
+Use `--only <file_name>` to render one version. The current target source is
+`baseline_precision_targets.py`; its original frame function and unchanged
+media are retained as described above. The story modules are listed by the
 registry in [render_story_variants.py](../scripts/render_story_variants.py).
 Full-size and 720-pixel review frames are saved in
 [results/story_variants](../results/story_variants).
+The current precision comparison frames are in
+[results/conventional_comparisons](../results/conventional_comparisons).
 
 The gallery check requires every GIF under `animations/` to be embedded directly
 in the README, outside collapsed sections, with an MP4 link. It also checks

@@ -1,0 +1,71 @@
+{
+  "status": "passed",
+  "check_count": 2266,
+  "model_tests": 11,
+  "media_count": 4,
+  "media": [
+    {
+      "name": "phase_precision_comparison",
+      "duration_seconds": 12.0,
+      "gif_frames": 225,
+      "gif_bytes": 2591617,
+      "gif_max_source_mae": 0.9241499485596708,
+      "loop_join_mae": 0.08081854423868312,
+      "mp4_frames": 288,
+      "methods": [
+        "Conventional FP32",
+        "Z1024",
+        "Z2048"
+      ]
+    },
+    {
+      "name": "public_phase_precision",
+      "duration_seconds": 15.0,
+      "gif_frames": 283,
+      "gif_bytes": 2624077,
+      "gif_max_source_mae": 0.7356507201646091,
+      "loop_join_mae": 0.08303819444444445,
+      "mp4_frames": 360,
+      "methods": [
+        "Conventional FP32",
+        "Z1024",
+        "Z2048"
+      ]
+    },
+    {
+      "name": "angle_snap_targets",
+      "duration_seconds": 16.0,
+      "gif_frames": 246,
+      "gif_bytes": 2672016,
+      "gif_max_source_mae": 1.2167509002057613,
+      "loop_join_mae": 0.2471360596707819,
+      "mp4_frames": 384,
+      "methods": [
+        "Conventional FP32",
+        "Z1024",
+        "Z2048"
+      ]
+    },
+    {
+      "name": "fp32_and_phase_outputs",
+      "duration_seconds": 14.0,
+      "gif_frames": 263,
+      "gif_bytes": 3242191,
+      "gif_max_source_mae": 1.2949041923868312,
+      "loop_join_mae": 0.1614107510288066,
+      "mp4_frames": 336,
+      "methods": [
+        "Conventional FP32",
+        "Z1024",
+        "Z2048"
+      ]
+    }
+  ],
+  "unchanged_scientific_assets": 327,
+  "archived_original_pairs": 3,
+  "visible_gifs": 24,
+  "primary_conventional_control": "FP32 summed-angle trig",
+  "new_benchmark_results": false,
+  "source": "Retained native C++ medians and 200,000-pair accuracy; illustration inputs are separate",
+  "public_visibility_requested_by_owner": true
+}

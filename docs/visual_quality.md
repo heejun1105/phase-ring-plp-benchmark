@@ -1,5 +1,11 @@
 # Visualization review and presentation semantics
 
+This is the historical V3/V4 review. Its precision description refers to the
+unchanged [earlier two-setting plot](../animations/legacy_two_settings_phase_precision.gif).
+The current three-way versions are described in
+[conventional_comparison.md](conventional_comparison.md); the current README
+opens with CPU time, a conventional-method comparison and photo denoising.
+
 Scores below are subjective author self-assessment out of 10 after full-size and 720-pixel-wide review, not an independent user study or scientific measurement. No visual score is used as evidence of computational superiority.
 
 | Demo | Visual Impact | Clarity | Technical Accuracy | Readability | Scientific Credibility | Presentation Quality |
@@ -34,7 +40,7 @@ Both prototype variants must retain the label **PLP-Inspired Experimental Protot
 
 The original 30 full-size frames and all six 720-pixel posters were reviewed. Architecture, overflow/LUT, NumPy race, precision and edge ablation are preserved byte-for-byte. The old noise demo spent 8 of 12 seconds on heatmaps, with four small image panels; the replacement gives actual images most of the timeline. No denoising algorithm or quality/timing CSV changed.
 
-The README now opens with native C++, then overflow/LUT and architecture. The native race uses a common linear replay of new medians; completion counters assume uniform progress and are editorial, not instrumented execution traces. The giant ratios always name the four-trig baseline. A separate angle-sum/two-trig control is shown before accuracy, making baseline dependence explicit. Input angles and transcendental math are double precision; the output container is complex<float>. This is not a pure FP32 arithmetic throughput claim.
+At that revision the README opened with native C++, then overflow/LUT and architecture. The native race uses a common linear replay of those medians; completion counters assume uniform progress and are editorial, not instrumented execution traces. The giant ratios always name the four-trig baseline. A separate angle-sum/two-trig control is shown before accuracy, making baseline dependence explicit. Input angles and transcendental math are double precision; the output container is complex<float>. This is not a pure FP32 arithmetic throughput claim.
 
 The image-first noise revision uses completed real outputs, identical crop/display conditions per comparison, labeled editorial wipes, clean-reference crops and later common-scale pixel/edge errors. The final full-suite summary exposes both V2 quality losses and time/edge gains. Edge score is custom and not a standard quality metric. See [revision details](noise_visual_revision.md).
 
