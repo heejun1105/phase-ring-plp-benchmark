@@ -1,0 +1,266 @@
+{
+  "status": "passed",
+  "check_count": 1591,
+  "baseline": "bda78c67b4fd5f083da24f8d5ff375f50c0e0806",
+  "gallery": {
+    "selected_gifs": 9,
+    "archived_gifs": 19,
+    "retained_gif_mp4_pairs": 28,
+    "topic_groups": [
+      {
+        "id": "wave-angle-calculation",
+        "heading": "Wave-angle calculation",
+        "media": [
+          "public_cpu_workflow",
+          "phase_wave_basics",
+          "calculate_or_lookup",
+          "wrap_and_fetch",
+          "curated_phase_precision",
+          "curated_phase_outputs"
+        ]
+      },
+      {
+        "id": "photograph-denoising",
+        "heading": "Photograph denoising",
+        "media": [
+          "curated_photo_noise",
+          "curated_noise_errors",
+          "edge_preservation_comparison"
+        ]
+      }
+    ],
+    "selected_order": [
+      "public_cpu_workflow",
+      "phase_wave_basics",
+      "calculate_or_lookup",
+      "wrap_and_fetch",
+      "curated_phase_precision",
+      "curated_phase_outputs",
+      "curated_photo_noise",
+      "curated_noise_errors",
+      "edge_preservation_comparison"
+    ],
+    "archive": "docs/media_archive.md",
+    "archive_embeds": false,
+    "organization": "Unique selected embeds in contiguous topic groups; excluded pairs indexed by the same topics"
+  },
+  "media": [
+    {
+      "name": "curated_phase_precision",
+      "duration_seconds": 10.0,
+      "gif_frames": 250,
+      "mp4_frames": 240,
+      "gif_max_source_mae": 0.6691583076131687,
+      "loop_join_mae": 0.003399562757201646
+    },
+    {
+      "name": "curated_phase_outputs",
+      "duration_seconds": 9.0,
+      "gif_frames": 223,
+      "mp4_frames": 216,
+      "gif_max_source_mae": 1.0304880401234568,
+      "loop_join_mae": 0.04896090534979424
+    },
+    {
+      "name": "curated_photo_noise",
+      "duration_seconds": 12.0,
+      "gif_frames": 153,
+      "mp4_frames": 288,
+      "gif_max_source_mae": 2.161207561728395,
+      "loop_join_mae": 0.4164158950617284
+    },
+    {
+      "name": "curated_noise_errors",
+      "duration_seconds": 8.0,
+      "gif_frames": 30,
+      "mp4_frames": 192,
+      "gif_max_source_mae": 2.194110725308642,
+      "loop_join_mae": 0.17412615740740742
+    }
+  ],
+  "cuts": {
+    "curated_phase_precision": {
+      "function": "precision",
+      "duration": 10.0,
+      "poster": 3.0,
+      "title": "A smooth conventional result and two stored-angle grids",
+      "description": "Three equal panels show actual reconstructed phases on the same magnified angle scale. Repeated native result cards are omitted.",
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 10.0,
+          "source": "scripts.baseline_precision_stairs.frame",
+          "source_start": 0.0,
+          "source_end": 10.0,
+          "kind": "unchanged scene cut"
+        }
+      ],
+      "omitted": [
+        {
+          "source_start": 10.5,
+          "source_end": 15.0,
+          "reason": "Repeated native time and RMSE endcard"
+        }
+      ],
+      "preview_times": [
+        0.6,
+        2.5,
+        4.8,
+        6.8,
+        8.2,
+        9.0
+      ],
+      "loop_dissolve_seconds": 0.8
+    },
+    "curated_phase_outputs": {
+      "function": "phase_outputs",
+      "duration": 9.0,
+      "poster": 7.3,
+      "title": "The same three computed waves, enlarged together",
+      "description": "The original full-scale wave view moves into one common zero-crossing close-up. Repeated native result cards are omitted.",
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 9.0,
+          "source": "scripts.baseline_wave_outputs.frame",
+          "source_start": 0.0,
+          "source_end": 9.0,
+          "kind": "unchanged scene cut"
+        }
+      ],
+      "omitted": [
+        {
+          "source_start": 9.4,
+          "source_end": 14.0,
+          "reason": "Repeated native time and RMSE endcard"
+        }
+      ],
+      "preview_times": [
+        0.6,
+        2.8,
+        4.8,
+        6.4,
+        7.5,
+        8.0
+      ],
+      "loop_dissolve_seconds": 0.8
+    },
+    "curated_photo_noise": {
+      "function": "photo_noise",
+      "duration": 12.0,
+      "poster": 5.5,
+      "title": "One real photograph, then its sky and tripod pixels",
+      "description": "Full-photo wipes show Bilateral, V1 and V2. A labeled V2 detail lens then visits sky noise and a tripod edge, without repeating synthetic fixtures or scorecards.",
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 6.0,
+          "source": "scripts.visualize_photo_noise.photo_noise",
+          "source_start": 0.0,
+          "source_end": 6.0,
+          "kind": "unchanged full-photo scenes"
+        },
+        {
+          "start": 6.0,
+          "end": 11.0,
+          "source": "scripts.story_noise_lens.frame",
+          "source_start": 10.0,
+          "source_end": 15.0,
+          "source_end_exclusive": true,
+          "kind": "unchanged V2 sky-to-tripod detail scene"
+        },
+        {
+          "start": 11.0,
+          "end": 12.0,
+          "source": "scripts.story_noise_lens.frame",
+          "source_start": 14.999,
+          "source_end": 14.999,
+          "kind": "editorial final-detail hold"
+        }
+      ],
+      "omitted": [
+        {
+          "source": "scripts.visualize_photo_noise.photo_noise",
+          "source_start": 6.0,
+          "source_end": 18.0,
+          "reason": "Synthetic-detail tour and repeated camera/suite scorecards"
+        },
+        {
+          "source": "scripts.story_noise_lens.frame",
+          "source_start": 15.0,
+          "source_end": 18.0,
+          "reason": "Repeated three-result comparison"
+        }
+      ],
+      "preview_times": [
+        0.6,
+        2.8,
+        5.5,
+        6.8,
+        8.8,
+        10.8
+      ],
+      "loop_dissolve_seconds": 0.8
+    },
+    "curated_noise_errors": {
+      "function": "noise_errors",
+      "duration": 8.0,
+      "poster": 1.5,
+      "title": "Pixel and edge errors on shared diagnostic scales",
+      "description": "Only the existing absolute-pixel and Sobel-magnitude error maps are shown. Removed-intensity maps and the clean reference remain; repeated image tours and suite scorecards are omitted.",
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.6,
+          "source": "scripts.visualize_noise_v4._heatmap",
+          "source_start": 9.8,
+          "source_end": 9.8,
+          "kind": "editorial pixel-map inspection hold"
+        },
+        {
+          "start": 3.6,
+          "end": 4.0,
+          "source": "scripts.visualize_noise_v4._heatmap",
+          "source_start": 9.8,
+          "source_end": 11.2,
+          "kind": "editorial dissolve between completed diagnostic views"
+        },
+        {
+          "start": 4.0,
+          "end": 8.0,
+          "source": "scripts.visualize_noise_v4._heatmap",
+          "source_start": 11.2,
+          "source_end": 11.2,
+          "kind": "editorial edge-map inspection hold"
+        }
+      ],
+      "omitted": [
+        {
+          "source_start": 0.0,
+          "source_end": 9.2,
+          "reason": "Image comparisons already covered by adjacent clips"
+        },
+        {
+          "source_start": 12.0,
+          "source_end": 15.0,
+          "reason": "Repeated V1/V2 suite scorecard"
+        }
+      ],
+      "preview_times": [
+        0.6,
+        2.8,
+        3.8,
+        4.7,
+        6.0,
+        6.9
+      ],
+      "loop_dissolve_seconds": 0.8
+    }
+  },
+  "original_assets_and_scene_sources_preserved": 384,
+  "new_benchmark_results": false,
+  "previous_embeds": 24,
+  "current_embeds": 9,
+  "previous_readme_words": 1991,
+  "current_readme_words": 848
+}

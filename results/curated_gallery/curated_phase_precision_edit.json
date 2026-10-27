@@ -1,0 +1,38 @@
+{
+  "name": "curated_phase_precision",
+  "function": "precision",
+  "duration": 10.0,
+  "poster": 3.0,
+  "title": "A smooth conventional result and two stored-angle grids",
+  "description": "Three equal panels show actual reconstructed phases on the same magnified angle scale. Repeated native result cards are omitted.",
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 10.0,
+      "source": "scripts.baseline_precision_stairs.frame",
+      "source_start": 0.0,
+      "source_end": 10.0,
+      "kind": "unchanged scene cut"
+    }
+  ],
+  "omitted": [
+    {
+      "source_start": 10.5,
+      "source_end": 15.0,
+      "reason": "Repeated native time and RMSE endcard"
+    }
+  ],
+  "preview_times": [
+    0.6,
+    2.5,
+    4.8,
+    6.8,
+    8.2,
+    9.0
+  ],
+  "loop_dissolve_seconds": 0.8,
+  "mp4_fps": 24,
+  "gif_fps": 25,
+  "mp4_frames": 240,
+  "gif_sample_frames": 250
+}

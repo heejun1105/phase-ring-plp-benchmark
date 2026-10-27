@@ -1,10 +1,53 @@
 {
   "status": "passed",
-  "check_count": 3458,
+  "check_count": 3461,
   "model_tests": 11,
   "new_variants": 5,
   "previous_gifs_preserved": 15,
-  "all_gifs_visible": 24,
+  "selected_gifs_visible": 9,
+  "excluded_gifs_indexed": 19,
+  "gallery": {
+    "selected_gifs": 9,
+    "archived_gifs": 19,
+    "retained_gif_mp4_pairs": 28,
+    "topic_groups": [
+      {
+        "id": "wave-angle-calculation",
+        "heading": "Wave-angle calculation",
+        "media": [
+          "public_cpu_workflow",
+          "phase_wave_basics",
+          "calculate_or_lookup",
+          "wrap_and_fetch",
+          "curated_phase_precision",
+          "curated_phase_outputs"
+        ]
+      },
+      {
+        "id": "photograph-denoising",
+        "heading": "Photograph denoising",
+        "media": [
+          "curated_photo_noise",
+          "curated_noise_errors",
+          "edge_preservation_comparison"
+        ]
+      }
+    ],
+    "selected_order": [
+      "public_cpu_workflow",
+      "phase_wave_basics",
+      "calculate_or_lookup",
+      "wrap_and_fetch",
+      "curated_phase_precision",
+      "curated_phase_outputs",
+      "curated_photo_noise",
+      "curated_noise_errors",
+      "edge_preservation_comparison"
+    ],
+    "archive": "docs/media_archive.md",
+    "archive_embeds": false,
+    "organization": "Unique selected embeds in contiguous topic groups; excluded pairs indexed by the same topics"
+  },
   "old_scientific_assets_preserved": 284,
   "new_benchmark_results": false,
   "media": [

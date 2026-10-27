@@ -1,0 +1,59 @@
+{
+  "name": "curated_noise_errors",
+  "function": "noise_errors",
+  "duration": 8.0,
+  "poster": 1.5,
+  "title": "Pixel and edge errors on shared diagnostic scales",
+  "description": "Only the existing absolute-pixel and Sobel-magnitude error maps are shown. Removed-intensity maps and the clean reference remain; repeated image tours and suite scorecards are omitted.",
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.6,
+      "source": "scripts.visualize_noise_v4._heatmap",
+      "source_start": 9.8,
+      "source_end": 9.8,
+      "kind": "editorial pixel-map inspection hold"
+    },
+    {
+      "start": 3.6,
+      "end": 4.0,
+      "source": "scripts.visualize_noise_v4._heatmap",
+      "source_start": 9.8,
+      "source_end": 11.2,
+      "kind": "editorial dissolve between completed diagnostic views"
+    },
+    {
+      "start": 4.0,
+      "end": 8.0,
+      "source": "scripts.visualize_noise_v4._heatmap",
+      "source_start": 11.2,
+      "source_end": 11.2,
+      "kind": "editorial edge-map inspection hold"
+    }
+  ],
+  "omitted": [
+    {
+      "source_start": 0.0,
+      "source_end": 9.2,
+      "reason": "Image comparisons already covered by adjacent clips"
+    },
+    {
+      "source_start": 12.0,
+      "source_end": 15.0,
+      "reason": "Repeated V1/V2 suite scorecard"
+    }
+  ],
+  "preview_times": [
+    0.6,
+    2.8,
+    3.8,
+    4.7,
+    6.0,
+    6.9
+  ],
+  "loop_dissolve_seconds": 0.8,
+  "mp4_fps": 24,
+  "gif_fps": 25,
+  "mp4_frames": 192,
+  "gif_sample_frames": 200
+}

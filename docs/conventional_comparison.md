@@ -1,9 +1,11 @@
 # Conventional FP32 alongside both phase settings
 
-The current precision videos compare three methods, with a full-size blue
+The full precision versions below compare three methods, with a full-size blue
 conventional path beside Z1024 and Z2048. The conventional result is no longer
 only a white guide or a number in the footer. The same inputs and output-angle
-scale are used for every path.
+scale are used for every path. The article uses shorter precision and output-wave
+edits without their repeated timing cards. [Article reproduction](reproduction.md)
+describes those cuts; the [media archive](media_archive.md) links the full versions.
 
 | Current video | What it shows |
 | --- | --- |
@@ -70,8 +72,8 @@ toy example or silently mixed with the NumPy timing experiment.
 
 ## Preserved earlier versions
 
-The original GIF/MP4 pairs remain unchanged under these names and are embedded
-in the README:
+The original GIF/MP4 pairs remain unchanged under these names and are linked
+in the media archive:
 
 - `legacy_two_settings_phase_precision`
 - `legacy_two_settings_public_precision`

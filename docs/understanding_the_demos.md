@@ -26,7 +26,7 @@ the separate speed demo supplies the measured CPU comparison.
 
 ## More positions reduce the approximation error
 
-[The precision demo](../animations/public_phase_precision.gif) shows the price
+[The precision demo](../animations/curated_phase_precision.gif) shows the price
 of replacing a continuous angle with a whole-number position. The blue FP32
 panel is the conventional calculation: it uses sine and cosine without
 snapping the input angle to a stored position. Its rounding error is real but
@@ -38,8 +38,8 @@ closely, with twice as many table entries.
 The code chooses the lower position for each input, so both errors can add to
 the output error. The stored answers also have limited precision. The enlarged
 steps make these effects easier to see; they do not show a speed advantage.
-The final cards compare recorded CPU time and angular error for all three
-methods. [A separate wave view](../animations/fp32_and_phase_outputs.gif)
+Recorded CPU time and angular error are in the comparison details.
+[The following wave view](../animations/curated_phase_outputs.gif)
 enlarges the same part of each output on identical axes. [Comparison details](conventional_comparison.md).
 
 ## The bit demo checks the address and answer

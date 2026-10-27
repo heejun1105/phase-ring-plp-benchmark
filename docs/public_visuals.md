@@ -1,5 +1,10 @@
 # Public visual edition: motion before explanation
 
+This records the full visual edition. The current article groups related
+material and uses four shorter edits to remove overlapping scenes and result
+cards. [Current reproduction](reproduction.md) describes the selected sequence;
+the full versions remain in the [media archive](media_archive.md).
+
 This visual edition changed presentation, not the experiment. Its original
 validation record checked prior files against commit
 `b6fffe6484b35a5f54d4a7df13e7474627727742`. The later source/reading update adds

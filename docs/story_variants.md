@@ -3,8 +3,9 @@
 These five GIF/MP4 pairs add other ways to understand the same material.
 The target-track video now includes a full conventional FP32 lane beside
 Z1024 and Z2048. Its earlier two-setting version remains unchanged under
-`legacy_two_settings_angle_targets`. All earlier videos remain visible in the
-README. [Current conventional comparisons](conventional_comparison.md).
+`legacy_two_settings_angle_targets`. The article now selects distinct videos
+in two topic groups; alternate versions are linked in the
+[media archive](media_archive.md). [Current article reproduction](reproduction.md).
 
 | New file name | Length | Visible idea |
 | --- | ---: | --- |
@@ -74,8 +75,9 @@ Full-size and 720-pixel review frames are saved in
 The current precision comparison frames are in
 [results/conventional_comparisons](../results/conventional_comparisons).
 
-The gallery check requires every GIF under `animations/` to be embedded directly
-in the README, outside collapsed sections, with an MP4 link. It also checks
+The gallery check requires each selected GIF to appear once in its topic group,
+with an MP4 link. Excluded versions must have one GIF and MP4 link in the
+separate archive under the matching topic, without repeated embeds. It also checks
 previous media hashes, mathematical examples, recorded image/accuracy data,
 decoded GIF/source agreement, looping joins, MP4 frames, English text and links.
 No human comprehension study or new performance experiment is claimed.

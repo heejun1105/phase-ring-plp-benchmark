@@ -85,15 +85,8 @@ def main():
         check(frames==int(duration*24) and abs(meta['fps']-24)<.01 and abs(meta['duration']-duration)<.1,'MP4 timing '+name)
         media.append(dict(name=name,duration_seconds=duration,gif_frames=gf,gif_bytes=(ROOT/f'animations/{name}.gif').stat().st_size,
             gif_max_source_mae=max(errors),loop_join_mae=join,mp4_frames=frames,methods=['Conventional FP32','Z1024','Z2048']))
-    readme=(ROOT/'README.md').read_text(encoding='utf-8');depth=0;visible=set()
-    for line in readme.splitlines():
-        if '<details>' in line:depth+=1
-        if '</details>' in line:depth-=1
-        for target in re.findall(r'!\[[^\]]*\]\((animations/[^)]+\.gif)\)',line):
-            check(depth==0,'Visible uncollapsed animation '+target);visible.add(target)
-    actual={p.relative_to(ROOT).as_posix() for p in (ROOT/'animations').glob('*.gif')}
-    check(actual==visible,'All current and historical GIFs remain embedded')
-    for name in actual:check('animations/video/'+name.split('/')[-1][:-4]+'.mp4' in readme,'Every view retains an MP4 link')
+    from scripts.gallery_catalog import validate_gallery
+    gallery=validate_gallery(ROOT,check)
     for path in [ROOT/'README.md',ROOT/'paper/README.md',*list((ROOT/'docs').glob('*.md'))]:
         for target in re.findall(r'!?\[[^\]]*\]\(([^)]+)\)',path.read_text(encoding='utf-8')):
             if '://' not in target and not target.startswith(('#','mailto:')):check((path.parent/target.split('#')[0]).exists(),'Link '+target)
@@ -104,7 +97,8 @@ def main():
         p=ROOT/name
         if p.suffix.lower() in ['.md','.py','.json','.csv','.txt','.cpp','.v','.hex'] or p.name=='LICENSE':check(not re.search('[\uac00-\ud7af\u1100-\u11ff]',p.read_text(encoding='utf-8')),'English publication text '+name)
     record=dict(status='passed',check_count=count,model_tests=tests.testsRun,media_count=len(media),media=media,
-        unchanged_scientific_assets=len(preserved),archived_original_pairs=len(ARCHIVES),visible_gifs=len(visible),
+        unchanged_scientific_assets=len(preserved),archived_original_pairs=len(ARCHIVES),visible_gifs=gallery['selected_gifs'],
+        excluded_gifs_indexed=gallery['archived_gifs'],gallery=gallery,
         primary_conventional_control=reference.METRIC_METHODS[0],new_benchmark_results=False,
         source='Retained native C++ medians and 200,000-pair accuracy; illustration inputs are separate',
         public_visibility_requested_by_owner=True)

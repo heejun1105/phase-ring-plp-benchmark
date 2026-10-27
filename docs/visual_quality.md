@@ -3,8 +3,9 @@
 This is the historical V3/V4 review. Its precision description refers to the
 unchanged [earlier two-setting plot](../animations/legacy_two_settings_phase_precision.gif).
 The current three-way versions are described in
-[conventional_comparison.md](conventional_comparison.md); the current README
-opens with CPU time, a conventional-method comparison and photo denoising.
+[conventional_comparison.md](conventional_comparison.md). The current article
+keeps all wave-angle content together before photograph denoising; see
+[reproduction.md](reproduction.md) for its shorter video edits.
 
 Scores below are subjective author self-assessment out of 10 after full-size and 720-pixel-wide review, not an independent user study or scientific measurement. No visual score is used as evidence of computational superiority.
 

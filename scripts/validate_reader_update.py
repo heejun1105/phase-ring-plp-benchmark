@@ -44,7 +44,7 @@ def main():
         measurement_or_algorithm_changes=False,original_media_preserved_including_named_archives=True,english_original_sha256=source['sha256'],
         original_language='English',translation_pdf_included=False,previous_source_manifest_preserved=True,
         python_tests=result.testsRun,local_links_checked=links,historical_generators_preserve_current_readme=True,
-        readme_order=['CPU runtime','Conventional FP32 and both phase settings','Photo denoising','Additional story variants','Earlier explanations','Paper and scope','More existing versions','Earlier two-setting compositions','Paper and author'],
+        readme_order=['Wave-angle calculation','Photograph denoising','Paper and scope','Reproduction and supporting material','Paper and author'],
         publication_language='English',sha256=frozen)
     (ROOT/'results/reader_review.json').write_text(json.dumps(record,indent=2),encoding='utf-8')
     names=subprocess.check_output(['git','ls-files','-z','--cached','--others','--exclude-standard'],cwd=ROOT).decode().strip('\0').split('\0')

@@ -1,0 +1,38 @@
+{
+  "name": "curated_phase_outputs",
+  "function": "phase_outputs",
+  "duration": 9.0,
+  "poster": 7.3,
+  "title": "The same three computed waves, enlarged together",
+  "description": "The original full-scale wave view moves into one common zero-crossing close-up. Repeated native result cards are omitted.",
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 9.0,
+      "source": "scripts.baseline_wave_outputs.frame",
+      "source_start": 0.0,
+      "source_end": 9.0,
+      "kind": "unchanged scene cut"
+    }
+  ],
+  "omitted": [
+    {
+      "source_start": 9.4,
+      "source_end": 14.0,
+      "reason": "Repeated native time and RMSE endcard"
+    }
+  ],
+  "preview_times": [
+    0.6,
+    2.8,
+    4.8,
+    6.4,
+    7.5,
+    8.0
+  ],
+  "loop_dissolve_seconds": 0.8,
+  "mp4_fps": 24,
+  "gif_fps": 25,
+  "mp4_frames": 216,
+  "gif_sample_frames": 225
+}

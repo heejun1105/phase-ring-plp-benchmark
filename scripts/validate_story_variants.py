@@ -1,4 +1,4 @@
-"""Check new variants, preserve old assets, and require all GIFs visible in README."""
+"""Check new variants, preserve old assets, and validate the curated gallery/archive."""
 import csv,hashlib,io,json,math,re,subprocess,unittest
 import numpy as np
 from PIL import Image
@@ -94,15 +94,9 @@ def main():
         check((ROOT/f'animations/{name}.gif').stat().st_size<10000000,'New GIF loading-size budget '+name)
         media.append(dict(name=name,duration_seconds=duration,gif_nominal_fps=1000/gif_interval_ms(name),gif_frames=nf,gif_bytes=(ROOT/f'animations/{name}.gif').stat().st_size,
             gif_max_source_mae=max(errors),loop_join_mae=join,mp4_frames=frames,mp4_fps=24,mp4_bytes=(ROOT/f'animations/video/{name}.mp4').stat().st_size))
-    readme=(ROOT/'README.md').read_text(encoding='utf-8');visible=set();depth=0
-    for line in readme.splitlines():
-        if '<details>' in line:depth+=1
-        if '</details>' in line:depth-=1
-        for target in re.findall(r'!\[[^\]]*\]\((animations/[^)]+\.gif)\)',line):
-            check(depth==0,'GIF is directly visible, not collapsed: '+target);visible.add(target)
-    actual={p.relative_to(ROOT).as_posix() for p in (ROOT/'animations').glob('*.gif')}
-    check(visible==actual,'Every old and new GIF is embedded in README')
-    for name in actual:check('animations/video/'+name.split('/')[-1][:-4]+'.mp4' in readme,'Each GIF has an MP4 link')
+    from scripts.gallery_catalog import validate_gallery
+    gallery=validate_gallery(ROOT,check)
+    readme=(ROOT/'README.md').read_text(encoding='utf-8')
     check('https://doi.org/10.5281/zenodo.22782241' in readme[-700:] and 'mailto:voodoo6000@daum.net' in readme[-700:],'Requested DOI and email are at the end')
     for p in [ROOT/'README.md',ROOT/'paper/README.md',*list((ROOT/'docs').glob('*.md'))]:
         for target in re.findall(r'!?\[[^\]]*\]\(([^)]+)\)',p.read_text(encoding='utf-8')):
@@ -116,7 +110,8 @@ def main():
         if p.suffix.lower() in ['.md','.py','.json','.csv','.txt','.v','.cpp','.hex'] or p.name=='LICENSE':
             check(not re.search('[\uac00-\ud7af\u1100-\u11ff]',p.read_text(encoding='utf-8')),'English publication text '+name)
     record=dict(status='passed',check_count=count,model_tests=tests.testsRun,new_variants=len(ITEMS),
-        previous_gifs_preserved=len(old_gifs),all_gifs_visible=len(visible),old_scientific_assets_preserved=len(kept),
+        previous_gifs_preserved=len(old_gifs),selected_gifs_visible=gallery['selected_gifs'],
+        excluded_gifs_indexed=gallery['archived_gifs'],gallery=gallery,old_scientific_assets_preserved=len(kept),
         new_benchmark_results=False,media=media,motion_probes=motion,
         doi='https://doi.org/10.5281/zenodo.22782241',email='voodoo6000@daum.net',
         link_provenance='Owner supplied; no external archive identity or new performance evidence inferred')

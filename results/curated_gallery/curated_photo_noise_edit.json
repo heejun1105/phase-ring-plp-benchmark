@@ -1,0 +1,62 @@
+{
+  "name": "curated_photo_noise",
+  "function": "photo_noise",
+  "duration": 12.0,
+  "poster": 5.5,
+  "title": "One real photograph, then its sky and tripod pixels",
+  "description": "Full-photo wipes show Bilateral, V1 and V2. A labeled V2 detail lens then visits sky noise and a tripod edge, without repeating synthetic fixtures or scorecards.",
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.0,
+      "source": "scripts.visualize_photo_noise.photo_noise",
+      "source_start": 0.0,
+      "source_end": 6.0,
+      "kind": "unchanged full-photo scenes"
+    },
+    {
+      "start": 6.0,
+      "end": 11.0,
+      "source": "scripts.story_noise_lens.frame",
+      "source_start": 10.0,
+      "source_end": 15.0,
+      "source_end_exclusive": true,
+      "kind": "unchanged V2 sky-to-tripod detail scene"
+    },
+    {
+      "start": 11.0,
+      "end": 12.0,
+      "source": "scripts.story_noise_lens.frame",
+      "source_start": 14.999,
+      "source_end": 14.999,
+      "kind": "editorial final-detail hold"
+    }
+  ],
+  "omitted": [
+    {
+      "source": "scripts.visualize_photo_noise.photo_noise",
+      "source_start": 6.0,
+      "source_end": 18.0,
+      "reason": "Synthetic-detail tour and repeated camera/suite scorecards"
+    },
+    {
+      "source": "scripts.story_noise_lens.frame",
+      "source_start": 15.0,
+      "source_end": 18.0,
+      "reason": "Repeated three-result comparison"
+    }
+  ],
+  "preview_times": [
+    0.6,
+    2.8,
+    5.5,
+    6.8,
+    8.8,
+    10.8
+  ],
+  "loop_dissolve_seconds": 0.8,
+  "mp4_fps": 24,
+  "gif_fps": 25,
+  "mp4_frames": 288,
+  "gif_sample_frames": 300
+}
