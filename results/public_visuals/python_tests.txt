@@ -11,6 +11,6 @@ test_real_denoising_and_repeatability (test_models.PrototypeTests.test_real_deno
 test_v2_reduces_flat_noise_and_is_deterministic (test_models.PrototypeTests.test_v2_reduces_flat_noise_and_is_deterministic) ... ok
 
 ----------------------------------------------------------------------
-Ran 11 tests in 0.141s
+Ran 11 tests in 0.474s
 
 OK

@@ -28,6 +28,10 @@ def noise_summary(rows):
     return result
 
 def main():
+    if json.loads((ROOT/'results/source_manifest.json').read_text())['source_id']=='VIII-EN':
+        from scripts.public_gallery import main as current_gallery
+        current_gallery()
+        return
     audit();bench=read('benchmark.csv');accuracy=read('accuracy.csv');noise=read('noise_benchmark.csv')
     from src.phase_ring import paper_step
     vectors=[]

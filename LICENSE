@@ -7,7 +7,8 @@ The reviewed Paper VIII includes a public-domain dedication for its disclosed
 technical principles and implementation logic. This repository contains adapted
 reference logic and an independently designed experimental prototype. That source
 statement is recorded as evidence, not silently converted to an MIT/Apache/CC0
-license for every project asset. Original PDFs are not included.
+license for every project asset. The owner-supplied English paper is included
+unchanged at the owner's request; the translation is not included.
 
 Third-party software, example imagery, fonts, and codecs retain their respective
 terms. See THIRD_PARTY_NOTICES.md for sources and the scoped asset attribution.

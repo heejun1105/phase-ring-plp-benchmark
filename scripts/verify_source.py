@@ -4,7 +4,7 @@ from pathlib import Path
 
 def main():
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument('pdf',type=Path,help='Local reference PDF; it is never copied or uploaded.')
+    p.add_argument('pdf',type=Path,help='PDF to compare with the primary English reference; this command only reads it.')
     a=p.parse_args()
     root=Path(__file__).resolve().parents[1]
     source=json.loads((root/'results/source_manifest.json').read_text(encoding='utf-8'))

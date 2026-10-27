@@ -69,13 +69,15 @@ def main(require_media=True):
     preservation=ROOT/'results/refinement_preservation.json'
     if preservation.exists():
         for name,digest in json.loads(preservation.read_text())['sha256'].items():
-            check(hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest,'Retained file unchanged: '+name)
+            path=ROOT/('results/archive/source_manifest_viii_ko.json' if name=='results/source_manifest.json' else name)
+            check(hashlib.sha256(path.read_bytes()).hexdigest()==digest,'Retained file or archived source record unchanged: '+name)
     for path in [ROOT/'README.md',*list((ROOT/'docs').glob('*.md'))]:
         for target in re.findall(r'!?\[[^\]]*\]\(([^)]+)\)',path.read_text(encoding='utf-8')):
             if '://' not in target and not target.startswith('#'):
                 check((path.parent/target.split('#')[0]).exists(),'Local document/media link: '+target)
     files=[p for p in ROOT.rglob('*') if p.is_file() and '.git' not in p.parts and '__pycache__' not in p.parts]
-    check(not any(p.suffix.lower()=='.pdf' for p in files),'Original PDFs excluded')
+    from scripts.source_policy import validate_source
+    check(validate_source(ROOT)['source_id']=='VIII-EN','Authorized English PDF matches the source manifest')
     for p in files:
         if p.suffix in ['.md','.py','.cpp','.v','.json','.csv','.txt','.hex'] or p.name=='LICENSE':
             check(not re.search('[\uac00-\ud7af\u1100-\u11ff]',p.read_text(encoding='utf-8')),'English publication text: '+p.relative_to(ROOT).as_posix())

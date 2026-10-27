@@ -1,9 +1,13 @@
 # Public visual edition: motion before explanation
 
-This edition changes presentation, not the experiment. Every previously tracked
-file except the explicitly reorganized README remains byte-identical to commit
-`b6fffe6484b35a5f54d4a7df13e7474627727742`. All earlier rendering sources, GIFs,
-MP4s, CSVs, NPZs and validation reports remain available. The backup branch is
+This visual edition changed presentation, not the experiment. Its original
+validation record checked prior files against commit
+`b6fffe6484b35a5f54d4a7df13e7474627727742`. The later source/reading update adds
+the English paper and revises prose, source metadata and validators. Numerical
+algorithms, measured CSVs, recorded image arrays and earlier videos remain
+unchanged. The three arithmetic demos explain the shortcut, its precision cost
+and its correctness; they are optional after the speed and photo comparisons.
+[Short reading guide](understanding_the_demos.md). The backup branch is
 `backup/pre-public-visuals-b6fffe6`. New artifacts use new filenames and a separate
 `results/public_visuals/` directory.
 

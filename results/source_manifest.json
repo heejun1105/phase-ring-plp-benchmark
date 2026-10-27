@@ -1,12 +1,24 @@
 {
-  "source_id": "VIII-KO",
+  "source_id": "VIII-EN",
   "user_designated_reference": true,
-  "verification": "SHA-256 matches the PDF explicitly designated by the user",
-  "sha256": "249f651810bce6fab84693dd1049a3a551ab15e0b59893b5cd82a0461171ea41",
+  "primary_language": "English",
+  "verification": "SHA-256 matches the English PDF supplied by the owner; identical to the previously reviewed English edition",
+  "sha256": "d743c111e16aef248092c8bb077ae6edf79942103f6810c3bc4180e3e57faefc",
   "page_count": 9,
-  "document_date": "2026-10-01",
+  "document_date": "2026-09-16",
   "paper_viii_pages": [1, 2, 3, 4, 5],
   "appended_paper_ix_pages": [6, 7, 8, 9],
-  "same_bytes_as_initial_review": true,
-  "original_pdf_in_repository": false
+  "original_pdf_in_repository": true,
+  "repository_pdf_path": "paper/Paper_VIII_Dual_Layer_Topological_Neuromorphic_Architecture.pdf",
+  "pdf_upload_authorized_by_user": true,
+  "comparison_record": "docs/paper_comparison.md",
+  "previous_reference": {
+    "source_id": "VIII-KO",
+    "language": "Korean translation",
+    "document_date": "2026-10-01",
+    "sha256": "249f651810bce6fab84693dd1049a3a551ab15e0b59893b5cd82a0461171ea41",
+    "page_count": 9,
+    "pdf_in_repository": false,
+    "archived_manifest": "results/archive/source_manifest_viii_ko.json"
+  }
 }

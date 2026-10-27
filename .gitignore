@@ -2,6 +2,7 @@
 __pycache__/
 *.pyc
 *.pdf
+!paper/Paper_VIII_Dual_Layer_Topological_Neuromorphic_Architecture.pdf
 work/
 .env
 *.log

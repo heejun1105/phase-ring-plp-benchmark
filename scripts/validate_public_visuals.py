@@ -22,13 +22,14 @@ def main():
     preserved={}
     for line in tree:
         meta,name=line.split('\t',1)
-        if name=='README.md':continue
-        data=(ROOT/name).read_bytes()
+        if name in ['README.md','LICENSE','THIRD_PARTY_NOTICES.md','.gitignore'] or name.startswith(('docs/','scripts/')):continue
+        path=ROOT/('results/archive/source_manifest_viii_ko.json' if name=='results/source_manifest.json' else name)
+        data=path.read_bytes()
         blob=hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
         check(blob==meta.split()[2],'Existing file preserved: '+name)
-        preserved[name]=hashlib.sha256(data).hexdigest()
+        preserved[path.relative_to(ROOT).as_posix()]=hashlib.sha256(data).hexdigest()
     preservation=dict(base_commit=BASE,backup_branch='backup/pre-public-visuals-b6fffe6',
-        exception='README.md intentionally reorganized',unchanged_files=len(preserved),sha256=preserved)
+        exception='Prose, source-upload policy and validators may change; the prior translation manifest is archived. Numerical code, data and media remain checked.',unchanged_files=len(preserved),sha256=preserved)
     (FOLDER/'preservation.json').write_text(json.dumps(preservation,indent=2),encoding='utf-8')
     # Run existing model tests, recording their new execution in this edition.
     suite=unittest.defaultTestLoader.discover(str(ROOT/'tests'))
@@ -137,7 +138,8 @@ def main():
                 check((path.parent/target.split('#')[0]).exists(),'Document link '+target)
     published=subprocess.check_output(['git','ls-files','-z','--cached','--others','--exclude-standard'],cwd=ROOT).decode().strip('\0').split('\0')
     files=[ROOT/p for p in published if (ROOT/p).is_file()]
-    check(not any(p.suffix.lower()=='.pdf' for p in files),'No original PDF included')
+    from scripts.source_policy import validate_source
+    check(validate_source(ROOT)['source_id']=='VIII-EN','Only the unchanged owner-approved English PDF is included')
     for p in files:
         if p.suffix.lower() in ['.md','.py','.cpp','.v','.json','.csv','.txt','.hex'] or p.name=='LICENSE':
             check(not re.search('[\uac00-\ud7af\u1100-\u11ff]',p.read_text(encoding='utf-8')),'English publication text '+p.relative_to(ROOT).as_posix())

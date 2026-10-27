@@ -15,9 +15,10 @@ def main(require_media=True):
     def check(condition,text):
         if not condition:raise AssertionError(text)
         checks.append(text)
-    source=json.loads((ROOT/'results/source_manifest.json').read_text(encoding='utf-8'))
+    from scripts.source_policy import validate_source
+    source=validate_source(ROOT)
     check(source.get('user_designated_reference') is True,'Source is explicitly user-designated')
-    check(source['sha256']=='249f651810bce6fab84693dd1049a3a551ab15e0b59893b5cd82a0461171ea41','Source fingerprint matches the reviewed PDF')
+    check(source['source_id']=='VIII-EN','Primary source is the owner-approved English original')
     check(source['paper_viii_pages']==[1,2,3,4,5] and source['appended_paper_ix_pages']==[6,7,8,9],'Paper VIII and appended IX page ranges are distinct')
     for row in rows('reference_vectors.csv'):
         check((int(row['a'])+int(row['b']))%int(row['modulus'])==int(row['sum']),'Rollover example matches modular arithmetic')
@@ -54,7 +55,7 @@ def main(require_media=True):
                 check((file.parent/target.split('#')[0]).exists(),f'Local Markdown target exists: {target}')
     text_extensions={'.py','.md','.v','.txt','.json','.csv','.hex'}
     files=[p for p in ROOT.rglob('*') if p.is_file() and '.git' not in p.parts and '__pycache__' not in p.parts]
-    check(not any(p.suffix.lower()=='.pdf' for p in files),'No original research PDFs are present')
+    check(source['original_pdf_in_repository'] is True,'Only the authorized English source PDF is included')
     for file in files:
         if file.suffix in text_extensions or file.name in ['LICENSE','.gitignore']:
             content=file.read_text(encoding='utf-8')

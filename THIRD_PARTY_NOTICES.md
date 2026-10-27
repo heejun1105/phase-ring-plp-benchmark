@@ -2,7 +2,7 @@
 
 ## Research material
 
-Kim Chul, Paper VIII: Dual-Layer Topological Neuromorphic and Signal Processing Architecture, user-designated Korean translation dated October 1, 2026, with appended Paper IX on PLP signal/image processing. Its SHA-256 matches the primary source initially reviewed. The separate English version is dated September 16, 2026. `docs/paper_review.md` records source hashes, page boundaries, and the public-domain dedication stated in those files. No original PDF, source-page rendering, or full extracted paper text is distributed here.
+Kim Chul, Paper VIII: Dual-Layer Topological Neuromorphic and Signal Processing Architecture, English original dated September 16, 2026, with appended Paper IX on signal/image processing. The owner supplied and requested inclusion of the unchanged PDF in `paper/`. Its hash matches the English edition previously reviewed. The earlier Korean translation dated October 1, 2026 is not included. `docs/paper_comparison.md` records the comparison; `docs/paper_review.md` records the evidence limits and the public-domain statement made by the source. Source-page renderings and full extracted text are not distributed.
 
 ## Example images
 

@@ -9,6 +9,10 @@ def read(name):
     with (ROOT/'results'/name).open(encoding='utf-8') as f:return list(csv.DictReader(f))
 
 def main():
+    if json.loads((ROOT/'results/source_manifest.json').read_text())['source_id']=='VIII-EN':
+        from scripts.public_gallery import main as current_gallery
+        current_gallery()
+        return
     native={r['method']:r for r in read('native_audit_benchmark.csv') if int(r['n'])==10000000}
     accuracy={r['method']:r for r in read('native_audit_accuracy.csv') if int(r['n'])==10000000}
     old={r['method']:r for r in read('native_benchmark.csv') if int(r['n'])==10000000}

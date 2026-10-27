@@ -11,6 +11,10 @@ def read(name):
 def avg(rows,key):return statistics.mean(float(r[key]) for r in rows)
 
 def main():
+    if json.loads((ROOT/'results/source_manifest.json').read_text())['source_id']=='VIII-EN':
+        from scripts.public_gallery import main as current_gallery
+        current_gallery()
+        return
     b=read('benchmark.csv');native=read('native_benchmark.csv') if (ROOT/'results/native_benchmark.csv').exists() else []
     expanded=read('expanded_noise.csv');ab=read('noise_ablation.csv');env=json.loads((ROOT/'results/environment.json').read_text())
     size=max(int(r['n']) for r in b);largest={r['method']:r for r in b if int(r['n'])==size}
