@@ -97,11 +97,27 @@ The profiles compare actual pixel intensities across an edge. V2 finishes sooner
 
 These are means across 54 noisy cases: six images, three noise levels and three seeds. Higher PSNR and SSIM mean a closer match under those metrics; lower CPU time means faster processing. The clean image is used only for evaluation. [Study methods and all cases](docs/visual_study.md).
 
+### What the wider PLP model proposes
+
+The measured phase-arithmetic results are encouraging for the tested CPU workload. The wider PLP model still needs further research. The paper presents it as a combined mathematical framework for signal and image processing, with a broader intended scope than an individual filter or transform algorithm. This describes the proposal's scope, rather than a demonstrated performance advantage.
+
+PLP means Point-Line-Plane. The paper describes processing in the order Plane → Line → Point:
+
+| Component | Proposed role in the paper |
+| --- | --- |
+| Plane | Describe variation and noise across an image surface. |
+| Line | Select phase relationships along paths and contours. |
+| Point | Locate features where the selected structures meet. |
+
+The unified equation combines these components. The paper also uses fixed-point contraction to argue that the reconstructed state converges to a stable feature location. This is the proposed route to a convergence point; the formula by itself does not specify all the steps needed to compute that point from an image. [Source: VIII Eqs. (5)-(6), appendix B-C, pp. 2-3 and 6-8](paper/Paper_VIII_Dual_Layer_Topological_Neuromorphic_Architecture.pdf).
+
+Further work must define those steps, establish the conditions and rate of convergence, and compare a complete implementation with conventional methods. The filters shown above are simplified experimental substitutes, so their results do not yet validate the full point-line-plane model.
+
 ## Paper and scope
 
 The [English original](paper/Paper_VIII_Dual_Layer_Topological_Neuromorphic_Architecture.pdf) is included unchanged. Pages 1-5 contain Paper VIII; pages 6-9 contain the signal/image-processing IX appendix. [Source comparison and hash](docs/paper_comparison.md).
 
-The wave-angle timings concern unit-strength complex signals on a CPU. They do not predict image-filter performance or general multiplication speed. No physical PIM chip, energy or area was measured. The image filters are independently designed substitutes; they do not validate the complete PLP image method, zero-blur or super-resolution claims. [Paper review](docs/paper_review.md).
+The wave-angle timings concern unit-strength complex signals on a CPU. They do not predict image-filter performance or general multiplication speed. No physical PIM chip, energy or area was measured. Zero-blur and super-resolution claims remain unverified. [Paper review](docs/paper_review.md).
 
 ## Reproduction and supporting material
 
